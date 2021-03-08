@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>DatosCadete.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;DeliveryApp&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">datos</a> &gt; <span class="el_source">DatosCadete.java</span></div><h1>DatosCadete.java</h1><pre class="source lang-java linenums">
+package datos;
+
+import conexion.Conectar;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
+<span class="nc" id="L11">public class DatosCadete {</span>
+    
+    public void AgregarCadete(long DNI, long telefono, String nombre, String apellido,String carnet_estado, int id_vehiculo, int id_sucursal) throws SQLException {
+
+<span class="nc" id="L15">        Conectar con = new Conectar();</span>
+<span class="nc" id="L16">        Connection miConexion = con.conexion();</span>
+
+<span class="nc" id="L18">        String SQL = &quot;INSERT INTO cadete (cuit_cadete, nombre, apellido, telefono, carnet_estado, estado, id_vehiculo,id_sucursal) VALUES ('&quot; + DNI+ &quot;','&quot;+nombre+&quot;', '&quot;+apellido+&quot;', '&quot; + telefono+ &quot;',  '&quot;+carnet_estado+&quot;','Disponible', '&quot;+id_vehiculo+&quot;', '&quot;+id_sucursal+&quot;' )&quot;;</span>
+
+<span class="nc" id="L20">        Statement insertar = miConexion.createStatement();</span>
+
+<span class="nc" id="L22">        insertar.executeUpdate(SQL);</span>
+
+<span class="nc" id="L24">        con.cerrar(miConexion);</span>
+
+<span class="nc" id="L26">    }</span>
+    
+     public ResultSet obtenerCadetes() throws SQLException {
+
+<span class="nc" id="L30">        Conectar con = new Conectar();</span>
+<span class="nc" id="L31">        Connection miConexion = con.conexion();</span>
+
+<span class="nc" id="L33">        String SQL = &quot;SELECT * FROM cadete WHERE estado = 'Disponible' &quot;;</span>
+
+<span class="nc" id="L35">        Statement miEstatement = miConexion.createStatement();</span>
+
+<span class="nc" id="L37">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
+
+<span class="nc" id="L39">        return rs;</span>
+
+    }
+     
+      public ResultSet buscarCadetePorNombre(String cadete) throws SQLException {
+
+<span class="nc" id="L45">        Conectar con = new Conectar();</span>
+<span class="nc" id="L46">        Connection miConexion = con.conexion();</span>
+        
+<span class="nc" id="L48">        String SQL = &quot;SELECT * FROM cadete WHERE nombre = '&quot;+ cadete +&quot;'&quot;;</span>
+        
+<span class="nc" id="L50">        Statement miEstatement = miConexion.createStatement();</span>
+
+<span class="nc" id="L52">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
+        
+<span class="nc" id="L54">        return rs;</span>
+
+    }
+      
+       public ResultSet buscarCadetePorDni(String dni) throws SQLException {
+
+<span class="nc" id="L60">        Conectar con = new Conectar();</span>
+<span class="nc" id="L61">        Connection miConexion = con.conexion();</span>
+        
+<span class="nc" id="L63">        String SQL = &quot;SELECT * FROM cadete WHERE cuit_cadete = &quot;+ dni +&quot;&quot;;</span>
+        
+<span class="nc" id="L65">        Statement miEstatement = miConexion.createStatement();</span>
+
+<span class="nc" id="L67">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
+        
+<span class="nc" id="L69">        return rs;</span>
+
+    }
+     
+     public void eliminarCadete(String Nombre) throws SQLException{
+        
+<span class="nc" id="L75">        Conectar con = new Conectar();</span>
+<span class="nc" id="L76">        Connection miConexion = con.conexion();</span>
+
+<span class="nc" id="L78">        String SQL = &quot;UPDATE cadete SET estado = 'No disponible' WHERE nombre = '&quot; + Nombre + &quot;'&quot;;</span>
+
+<span class="nc" id="L80">        Statement eliminar = miConexion.createStatement();</span>
+
+<span class="nc" id="L82">        eliminar.executeUpdate(SQL);</span>
+        
+<span class="nc" id="L84">    }</span>
+     //no toque este MODIFICAR...
+     public void ModificarCadete(long telefono, String barrio, String calle, String nombre) throws SQLException{
+        
+<span class="nc" id="L88">        Conectar con = new Conectar();</span>
+<span class="nc" id="L89">        Connection miConexion = con.conexion();</span>
+
+<span class="nc" id="L91">        String SQL = &quot;UPDATE cadetes SET telefono = &quot;+telefono+&quot;, barrio = '&quot;+barrio+&quot;', calle = '&quot;+calle+&quot;' WHERE nombre = '&quot; + nombre + &quot;'&quot;;</span>
+
+<span class="nc" id="L93">        Statement modificar = miConexion.createStatement();</span>
+
+<span class="nc" id="L95">        modificar.executeUpdate(SQL);</span>
+<span class="nc" id="L96">    }</span>
+    
+     public void ActualizarEstadoCadete(int dni, String estado) throws SQLException {
+
+<span class="nc" id="L100">        Conectar con = new Conectar();</span>
+<span class="nc" id="L101">        Connection miConexion = con.conexion();</span>
+
+<span class="nc" id="L103">        String SQL = &quot;UPDATE cadete SET estado = '&quot; + estado + &quot;' WHERE cuit_cadete = &quot;+dni;</span>
+
+<span class="nc" id="L105">        Statement modificar = miConexion.createStatement();</span>
+
+<span class="nc" id="L107">        modificar.executeUpdate(SQL);</span>
+<span class="nc" id="L108">    }</span>
+     
+     
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

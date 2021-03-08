@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ControlCadete.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;DeliveryApp&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">controladores</a> &gt; <span class="el_source">ControlCadete.java</span></div><h1>ControlCadete.java</h1><pre class="source lang-java linenums">
+package controladores;
+
+
+import datos.DatosCadete;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import paneles.pnlChat;
+import subPaneles.Registro_Cadetes;
+
+
+<span class="nc" id="L14">public class ControlCadete {</span>
+    
+    public void AgregarCadete(Registro_Cadetes grafico) throws SQLException {
+       
+        String DNI;
+        String telefono;
+        String nombre;
+        String apellido;
+        String calle;
+        String altura;
+
+<span class="nc" id="L25">        DNI = grafico.Cuit_cadete.getText().trim();</span>
+<span class="nc" id="L26">        telefono = grafico.Tel_cadete.getText().trim();</span>
+<span class="nc" id="L27">        nombre = grafico.Nombre_cadete.getText().trim();</span>
+<span class="nc" id="L28">        apellido = grafico.Apellido_cadete.getText().trim();</span>
+<span class="nc" id="L29">        String carnetEstado = grafico.Tipo_carnet.getSelectedItem().toString().trim();</span>
+<span class="nc" id="L30">        String estadoCadete = grafico.Tipo_estado.getSelectedItem().toString().trim();</span>
+<span class="nc" id="L31">        int id_Vehiculo=Integer.parseInt(grafico.Tipo_vehiculo.getSelectedItem().toString().trim());</span>
+<span class="nc" id="L32">        int sucursal= Integer.parseInt(grafico.Sucursal_Cadete.getText());</span>
+<span class="nc bnc" id="L33" title="All 8 branches missed.">        if (DNI.isEmpty() || telefono.isEmpty() || nombre.isEmpty() || apellido.isEmpty()) {</span>
+<span class="nc" id="L34">            JOptionPane.showMessageDialog(grafico, &quot;Debes completar todos los datos&quot;, &quot;Error&quot;, 0);</span>
+<span class="nc" id="L35">            return;</span>
+        }
+        
+<span class="nc" id="L38">       long Dni = -1;</span>
+<span class="nc" id="L39">        long tel = -1;</span>
+         
+         try {
+<span class="nc" id="L42">            Dni = Long.parseLong(DNI);</span>
+
+<span class="nc" id="L44">        } catch (NumberFormatException e) {</span>
+<span class="nc" id="L45">            JOptionPane.showMessageDialog(grafico, &quot;No se ingreso el DNI correctamente&quot;, &quot;Error&quot;, 0);</span>
+<span class="nc" id="L46">            e.getMessage();</span>
+<span class="nc" id="L47">            return;</span>
+<span class="nc" id="L48">        }</span>
+         
+        try {
+<span class="nc" id="L51">            tel = Long.parseLong(telefono);</span>
+
+<span class="nc" id="L53">        } catch (NumberFormatException e) {</span>
+<span class="nc" id="L54">            JOptionPane.showMessageDialog(grafico, &quot;No se ingreso el telefono correctamente&quot;, &quot;Error&quot;, 0);</span>
+<span class="nc" id="L55">            e.getMessage();</span>
+<span class="nc" id="L56">            return;</span>
+<span class="nc" id="L57">        }</span>
+        
+<span class="nc" id="L59">        DatosCadete GC = new DatosCadete();</span>
+<span class="nc" id="L60">        GC.AgregarCadete(Dni,tel,nombre,apellido,carnetEstado,id_Vehiculo,sucursal);</span>
+
+<span class="nc" id="L62">        JOptionPane.showMessageDialog(grafico, &quot;Se registro correctamente&quot;, &quot;Cadete Registrado&quot;, 1);</span>
+        //actualizarTablaCadete(grafico);
+     
+<span class="nc" id="L65">    }</span>
+    
+    public void actualizarTablaCadete(pnlChat grafico) throws SQLException {
+
+<span class="nc" id="L69">        DatosCadete GC = new DatosCadete();</span>
+
+<span class="nc" id="L71">        ResultSet Cadetes = GC.obtenerCadetes();//ver despues</span>
+/*
+        grafico.model = new DefaultTableModel();
+
+        grafico.model.setColumnIdentifiers(new Object[]{&quot;DNI&quot;, &quot;Nombre&quot;, &quot;Apellido&quot;, &quot;Telefono&quot;});
+
+        //comidas.first();
+        while (Cadetes.next()) {
+
+            grafico.model.addRow(new Object[]{Cadetes.getString(&quot;DNICadete&quot;), Cadetes.getString(&quot;nombre&quot;), Cadetes.getString(&quot;apellido&quot;), Cadetes.getString(&quot;telefono&quot;)});
+
+        }
+
+        grafico.jTable1.setModel(grafico.model);
+*/
+<span class="nc" id="L86">    }</span>
+    /*
+    public void eliminarCadete(Cadetes grafico) throws SQLException {
+
+        int item = grafico.jTable1.getSelectedRow();
+        // System.out.println(&quot;&quot; + grafico.jTable1.getValueAt(item, 0));
+
+        if (item == -1) {
+            JOptionPane.showMessageDialog(grafico, &quot;Debes seleccionar una comida&quot;, &quot;Advertencia&quot;, JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            String Nombre = grafico.jTable1.getValueAt(item, 1).toString();
+
+            GestionCadete GC = new GestionCadete();
+            GC.eliminarCadete(Nombre);
+
+            actualizarTablaCadete(grafico);
+            JOptionPane.showMessageDialog(grafico, &quot;Se elimino correctamente&quot;, &quot;Eliminado&quot;, JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    */
+    public void ModificarCadete(Registro_Cadetes grafico) throws SQLException{
+        /*
+        int item = grafico.jTable1.getSelectedRow();
+
+        if (item == -1) {
+            JOptionPane.showMessageDialog(grafico, &quot;Debes seleccionar una zona&quot;, &quot;Advertencia&quot;, JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            String Nombre = grafico.jTable1.getValueAt(item, 1).toString();
+
+            GestionCadete GC = new GestionCadete();
+            ResultSet cadete = GC.buscarCadetePorNombre(Nombre);
+            
+            
+            while(cadete.next()){
+                
+                ModificarCadete MC = new ModificarCadete(cadete);
+                MC.setVisible(true);
+                grafico.dispose();
+                
+            }
+            
+        }*/
+<span class="nc" id="L130">    }</span>
+    /*
+     public void ActualizarCadete(ModificarCadete grafico) throws SQLException{
+        String nombre;
+        
+        String telefono;
+        String barrio;
+        String calle;
+        
+        long tel;
+        
+        nombre = grafico.labelNombre.getText().trim();
+        
+        telefono = grafico.txtTelefono.getText().trim();
+        barrio = grafico.txtBarrio.getText().trim();
+        calle = grafico.txtCalle.getText().trim();
+        
+        
+        if (telefono.isEmpty() || barrio.isEmpty() || calle.isEmpty()) {
+            JOptionPane.showMessageDialog(grafico, &quot;Debes completar todos los datos&quot;, &quot;Error&quot;, 0);
+            return;
+        }
+        
+        try{
+            tel = Long.parseLong(telefono);
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(grafico, &quot;El telefono se ingreso incorrectamente&quot;, &quot;Error&quot;, 0);
+            return;
+        }
+        
+        GestionCadete GC = new GestionCadete();
+        
+        GC.ModificarCadete(tel, barrio, calle, nombre);
+        
+        JOptionPane.showMessageDialog(grafico, &quot;El cadete se modifico correctamente!!!&quot;, &quot;Modificado&quot;, 1);
+        
+        Cadetes C = new Cadetes();
+        C.setVisible(true);
+        grafico.dispose();
+        
+    }
+     
+     public void pagarCadete(Cadetes grafico) throws SQLException{
+         int item = grafico.jTable1.getSelectedRow();
+
+        if (item == -1) {
+            JOptionPane.showMessageDialog(grafico, &quot;Debes seleccionar un cadete&quot;, &quot;Advertencia&quot;, JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            String dni_cadete = grafico.jTable1.getValueAt(item, 0).toString();
+
+            PagarCadetes PC = new PagarCadetes(dni_cadete);
+            PC.setVisible(true);
+        }
+     }
+    
+      public void actualizarTablaEnviosCadete(PagarCadetes grafico, String dni) throws SQLException {
+
+        grafico.model = new DefaultTableModel();
+        grafico.model.setColumnIdentifiers(new Object[]{&quot;Num. Pedido&quot;, &quot;Monto del Pedido&quot;, &quot;Tarifa de Envio&quot;});
+        
+        GestionCadete GC = new GestionCadete();
+        ResultSet cadete = GC.buscarCadetePorDni(dni);
+        while (cadete.next()) {
+
+            grafico.NombreCadete.setText(cadete.getString(&quot;nombre&quot;)+&quot; &quot;+cadete.getString(&quot;apellido&quot;));
+            grafico.dniCadete.setText(cadete.getString(&quot;DNICadete&quot;));
+            
+            GestionTicket GT = new GestionTicket();
+            ResultSet tickets = GT.obtenerTicketCadete(cadete.getString(&quot;DNICadete&quot;));
+            double pagar = 0;
+            while(tickets.next()){
+                grafico.model.addRow(new Object[]{tickets.getString(&quot;id_pedido&quot;), tickets.getString(&quot;montoT&quot;), tickets.getString(&quot;tarifaE&quot;)});
+                pagar += tickets.getDouble(&quot;tarifaE&quot;);
+            }
+            grafico.montoC.setText(String.valueOf(pagar));
+        }
+        
+        grafico.jTable1.setModel(grafico.model);
+
+    }
+      
+      public void registrarTicketPagadoCadete(PagarCadetes grafico) throws SQLException{
+          //cambiar es estado del ticket
+          GestionTicket GT = new GestionTicket();
+          GT.ActualizarEstadoTicket(grafico.dniCadete.getText());
+          //actualizar la caja
+          double monto = Double.parseDouble(grafico.montoC.getText());
+          GestionCaja GC = new GestionCaja();
+          ResultSet caja = GC.buscarCajaAbierta();
+          double montoNuevo = 0;
+          while(caja.next()){
+              montoNuevo = Double.parseDouble(caja.getString(&quot;monto_final&quot;)) - monto;
+              GC.actualizarMontoTotal(montoNuevo);
+              JOptionPane.showMessageDialog(grafico, &quot;Operacion de pago correcto&quot;, &quot;Pagado&quot;, 1);
+              grafico.dispose();
+          }
+      }
+*/
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

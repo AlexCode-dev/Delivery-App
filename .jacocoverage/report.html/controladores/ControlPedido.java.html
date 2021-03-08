@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ControlPedido.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;DeliveryApp&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">controladores</a> &gt; <span class="el_source">ControlPedido.java</span></div><h1>ControlPedido.java</h1><pre class="source lang-java linenums">package controladores;
+
+
+import datos.DatosCaja;
+import datos.DatosCliente;
+import datos.DatosPedido;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.table.DefaultTableModel;
+import paneles.pnlHome;
+import subPaneles.Correcto_Registro;
+import subPaneles.Listado_Pedidos;
+import static subPaneles.Modificar_Cliente.jLabel2;
+import static subPaneles.Modificar_Cliente.jLabel3;
+import static subPaneles.Modificar_Cliente.jLabel4;
+import static subPaneles.Modificar_Cliente.jLabel5;
+import static subPaneles.Modificar_Cliente.jLabel6;
+import static subPaneles.Modificar_Cliente.jLabel7;
+import static subPaneles.Modificar_Cliente.jLabel8;
+import static subPaneles.Modificar_Cliente.jLabel9;
+import subPaneles.Modificar_Pedido;
+import subPaneles.Registro_Pedido_Nuevo;
+import subPaneles.Registro_Pedido_Nuevo_otro;
+import subPaneles.Ver_Cliente;
+
+<span class="nc" id="L37">public class ControlPedido {</span>
+
+    public int id_cliente;
+    
+    /*
+     public void popupTablaPedidoNuevo(GestionEmpleado grafico){
+        JPopupMenu popup = new JPopupMenu();
+        
+        JMenuItem item = new JMenuItem(&quot;Quitar Comida&quot;, new ImageIcon(getClass().getResource(&quot;/ICONOS/eliminar.png&quot;)));
+        
+        item.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                comidaCancelada(grafico);
+            }
+        });
+        
+        popup.add(item);
+        grafico.pedidos.setComponentPopupMenu(popup);
+        
+    }
+     */
+    /*
+     public void popupTablaPedidos(GestionEmpleado grafico) throws SQLException{
+        JPopupMenu popup = new JPopupMenu();
+        
+        JMenuItem item = new JMenuItem(&quot;Ver/Modificar Pedido&quot;, new ImageIcon(getClass().getResource(&quot;/ICONOS/VerPedido.png&quot;)));
+        JMenuItem item1 = new JMenuItem(&quot;Cancelar Pedido&quot;, new ImageIcon(getClass().getResource(&quot;/ICONOS/eliminar.png&quot;)));
+        JMenuItem item2 = new JMenuItem(&quot;Pedido Pagado&quot;, new ImageIcon(getClass().getResource(&quot;/ICONOS/pagado.png&quot;)));
+        JMenuItem item3 = new JMenuItem(&quot;Pedido NO Pagado&quot;, new ImageIcon(getClass().getResource(&quot;/ICONOS/No_pagado.png&quot;)));
+        
+        item.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                verModificarPedido(grafico);
+            }
+        });
+        
+        item1.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                pedidoCancelado(grafico);
+            }
+        });
+        
+        item2.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                try {
+                    pedidoPagado(grafico);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControlPedido.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        item3.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                try {
+                    pedidoNoPagado(grafico);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControlPedido.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        popup.add(item);
+        popup.add(item1);
+        popup.add(item2);
+        popup.add(item3);
+        grafico.ultimosPedidos.setComponentPopupMenu(popup);
+        
+    }
+     */
+    /*
+     public void verModificarPedido(GestionEmpleado grafico){
+         int item = grafico.ultimosPedidos.getSelectedRow();
+                String id_pedido = grafico.ultimosPedidos.getValueAt(item, 0).toString();
+                
+                VerPedido ver;
+                try {
+                    ver = new VerPedido(id_pedido);
+                    ver.setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControlPedido.class.getName()).log(Level.SEVERE, null, ex);
+                }
+     }
+*/
+    public void ValidarCliente(Modificar_Pedido Grafico) {
+
+<span class="nc" id="L123">        String telIngresado = Grafico.Telefono_MP.getText().trim();</span>
+
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        if (telIngresado.isEmpty()) {</span>
+<span class="nc" id="L126">            JOptionPane.showMessageDialog(Grafico, &quot;No se ingreso el telefono&quot;, &quot;Error&quot;,0);</span>
+<span class="nc" id="L127">            return;</span>
+        }
+
+        long numero;
+        try {
+<span class="nc" id="L132">            numero = Long.parseLong(telIngresado);</span>
+
+<span class="nc" id="L134">        } catch (NumberFormatException e) {</span>
+<span class="nc" id="L135">            JOptionPane.showMessageDialog(Grafico, &quot;No se ingreso el telefono correctamente&quot;, &quot;Error&quot;, 0);</span>
+<span class="nc" id="L136">            e.getMessage();</span>
+<span class="nc" id="L137">            return;</span>
+<span class="nc" id="L138">        }</span>
+
+<span class="nc" id="L140">        DatosCliente c = new DatosCliente();</span>
+
+<span class="nc" id="L142">        ResultSet cliente = c.BuscarClienteTelefono(numero);</span>
+
+        try {
+
+<span class="nc bnc" id="L146" title="All 2 branches missed.">            if (!cliente.first()) {</span>
+<span class="nc" id="L147">                Grafico.Registro_MP.setEnabled(true);</span>
+               
+<span class="nc" id="L149">                Grafico.cliente_No_existe.setText(&quot;Cliente inexistente, Vuelva a ingresar&quot;);</span>
+            } else {
+
+<span class="nc" id="L152">                Ver_Cliente VP = new Ver_Cliente();</span>
+<span class="nc" id="L153">                VP.setVisible(true);</span>
+<span class="nc" id="L154">                VP.Modificar_Tel.setText(telIngresado);</span>
+<span class="nc" id="L155">                VP.Modificar_Nombre.setText(cliente.getString(&quot;nombre&quot;));</span>
+<span class="nc" id="L156">                VP.Modificar_Apellido.setText(cliente.getString(&quot;apellido&quot;));</span>
+<span class="nc" id="L157">                VP.Modificar_Direccion.setText(cliente.getString(&quot;domicilio&quot;));</span>
+<span class="nc" id="L158">                VP.Modificar_Barrio.setText(cliente.getString(&quot;barrio&quot;));</span>
+<span class="nc" id="L159">                VP.Modificar_Tipo.setSelectedItem(cliente.getString(&quot;tipo&quot;));</span>
+<span class="nc" id="L160">                VP.Modificar_Zona.setText(cliente.getString(&quot;id_zona&quot;));</span>
+                
+                //Mostrar Listado Pedidos Falta
+            }
+<span class="nc" id="L164">        } catch (SQLException ex) {</span>
+<span class="nc" id="L165">            System.out.println(&quot;error en clientefirst....&quot; + ex.getMessage());</span>
+<span class="nc" id="L166">        }</span>
+<span class="nc" id="L167">    }</span>
+
+ public void ValidarClientePNUEVO(Registro_Pedido_Nuevo Grafico) {
+
+<span class="nc" id="L171">        String telIngresado = Grafico.Ingrese_telefono_NP.getText().trim();</span>
+
+<span class="nc bnc" id="L173" title="All 2 branches missed.">        if (telIngresado.isEmpty()) {</span>
+<span class="nc" id="L174">            JOptionPane.showMessageDialog(Grafico, &quot;No se ingreso el telefono&quot;, &quot;Error&quot;,0);</span>
+<span class="nc" id="L175">            return;</span>
+        }
+
+        long numero;
+        try {
+<span class="nc" id="L180">            numero = Long.parseLong(telIngresado);</span>
+
+<span class="nc" id="L182">        } catch (NumberFormatException e) {</span>
+<span class="nc" id="L183">            JOptionPane.showMessageDialog(Grafico, &quot;No se ingreso el telefono correctamente&quot;, &quot;Error&quot;, 0);</span>
+<span class="nc" id="L184">            e.getMessage();</span>
+<span class="nc" id="L185">            return;</span>
+<span class="nc" id="L186">        }</span>
+
+<span class="nc" id="L188">        DatosCliente c = new DatosCliente();</span>
+
+<span class="nc" id="L190">        ResultSet cliente = c.BuscarClienteTelefono(numero);</span>
+
+        try {
+
+<span class="nc bnc" id="L194" title="All 2 branches missed.">            if (!cliente.first()) {</span>
+               
+<span class="nc" id="L196">                Grafico.cliente_No_Exite_RP.setText(&quot;Cliente inexistente, Vuelva a ingresar&quot;);</span>
+            } else {
+
+<span class="nc" id="L199">                Grafico.cliente_No_Exite_RP.setVisible(false);</span>
+<span class="nc" id="L200">                Grafico.Nombre_RP.setText(cliente.getString(&quot;nombre&quot;));</span>
+<span class="nc" id="L201">                Grafico.Apellido_RP1.setText(cliente.getString(&quot;apellido&quot;));</span>
+<span class="nc" id="L202">                Grafico.Domicilio_RP.setText(cliente.getString(&quot;domicilio&quot;));</span>
+
+                
+                //Mostrar Listado Pedidos Falta
+            }
+<span class="nc" id="L207">        } catch (SQLException ex) {</span>
+<span class="nc" id="L208">            System.out.println(&quot;error en clientefirst....&quot; + ex.getMessage());</span>
+<span class="nc" id="L209">        }</span>
+<span class="nc" id="L210">    }</span>
+
+
+    public void insertarPedido(Registro_Pedido_Nuevo Grafico) throws SQLException {
+
+<span class="nc" id="L215">        long telefono =  Long.parseLong(Grafico.Ingrese_telefono_NP.getText().trim());</span>
+<span class="nc" id="L216">        System.out.println(telefono);</span>
+<span class="nc" id="L217">       DatosCliente GC = new DatosCliente();</span>
+<span class="nc" id="L218">       DatosPedido GP = new DatosPedido();</span>
+            //verificar
+          
+
+<span class="nc" id="L222">            ResultSet cliente = GC.BuscarCliente(telefono);</span>
+            //cliente.getInt(&quot;id_cliente&quot;) obtener campo de cliente
+<span class="nc bnc" id="L224" title="All 2 branches missed.">            while (cliente.next()) {</span>
+<span class="nc" id="L225">                System.out.println(Grafico.ingresar_DirR_P.getText());</span>
+<span class="nc" id="L226">                System.out.println(Grafico.ingresar_DirA_P.getText());</span>
+<span class="nc" id="L227">                System.out.println(Grafico.ingresar_HR_P.getText());</span>
+<span class="nc" id="L228">                System.out.println(Grafico.ingresar_HD_P.getText());</span>
+<span class="nc" id="L229">                System.out.println(Grafico.Area_Descripcion_P.getText());</span>
+<span class="nc" id="L230">                System.out.println(Grafico.EstadoPed.getSelectedItem().toString().trim());</span>
+<span class="nc" id="L231">                System.out.println(Grafico.Final_Precio_P.getText());</span>
+<span class="nc" id="L232">                System.out.println(Grafico.ingresar_HD_P1.getText());</span>
+<span class="nc" id="L233">                System.out.println(cliente.getInt(&quot;id_cliente&quot;));</span>
+               // GP.guardarPedido(Grafico.ingresar_DirR_P.getText(),Grafico.ingresar_DirA_P.getText(),Grafico.ingresar_HR_P.getText(),Grafico.ingresar_HD_P.getText(),Grafico.Area_Descripcion_P.getText(),Grafico.ingresar_Estado_P.getSelectedItem().toString().trim(),Float.valueOf(Grafico.Final_Precio_P.getText()),Integer.parseInt(Grafico.ingresar_HD_P1.getText()),(int)cliente.getInt(&quot;id_cliente&quot;));
+            }   
+<span class="nc" id="L236">            int ultimo_P = -1;</span>
+<span class="nc" id="L237">            ResultSet ultimoPedido = GP.ultimoPedido();</span>
+<span class="nc bnc" id="L238" title="All 2 branches missed.">            while (ultimoPedido.next()) {</span>
+<span class="nc" id="L239">                ultimo_P = ultimoPedido.getInt(&quot;id_pedido&quot;);</span>
+            }
+            // hasta aqui
+           
+
+<span class="nc" id="L244">             Correcto_Registro x = new Correcto_Registro();</span>
+<span class="nc" id="L245">             x.setVisible(true);</span>
+              
+         
+
+        
+<span class="nc" id="L250">    }</span>
+    
+     public void insertarPedidoPrueba(Registro_Pedido_Nuevo_otro Grafico) throws SQLException {
+
+<span class="nc" id="L254">        long telefono =  Long.parseLong(Grafico.Ingrese_telefono_NP.getText().trim());</span>
+<span class="nc" id="L255">         System.out.println(telefono);</span>
+<span class="nc" id="L256">        System.out.println(telefono);</span>
+       
+<span class="nc" id="L258">        String formatoFecha= &quot;yyyy MMMM dd&quot;;</span>
+<span class="nc" id="L259">        Date fechaD=Grafico.recuperarfecha.getDate();</span>
+<span class="nc" id="L260">        SimpleDateFormat formateador = new SimpleDateFormat(formatoFecha);</span>
+        
+        
+<span class="nc" id="L263">        Date fechaR=Grafico.recuperarfecha2.getDate();</span>
+<span class="nc" id="L264">        SimpleDateFormat formateador2 = new SimpleDateFormat(formatoFecha);</span>
+        
+                
+                
+                
+                
+<span class="nc" id="L270">         DatosCliente GC = new DatosCliente();</span>
+<span class="nc" id="L271">         DatosPedido GP = new DatosPedido();</span>
+            //verificar
+          
+<span class="nc" id="L274">               String dir_AD=Grafico.ingresar_DirA_P.getText().trim();</span>
+<span class="nc" id="L275">                String diaAR=Grafico.ingresar_DirA_P1.getText().trim();</span>
+             
+<span class="nc" id="L277">                String fecha_A_rP=formateador.format(fechaD);</span>
+<span class="nc" id="L278">                String fecha_A_dP=formateador.format(fechaD);</span>
+<span class="nc" id="L279">                String Estadod2= Grafico.ingresar_Estado_P2.getSelectedItem().toString();</span>
+<span class="nc" id="L280">                System.out.println(fecha_A_dP);</span>
+<span class="nc" id="L281">                System.out.println(fecha_A_dP);</span>
+                
+                
+<span class="nc" id="L284">            ResultSet cliente = GC.BuscarCliente(telefono);</span>
+            //cliente.getInt(&quot;id_cliente&quot;) obtener campo de cliente
+<span class="nc bnc" id="L286" title="All 2 branches missed.">            while (cliente.next()) {</span>
+               
+            
+<span class="nc" id="L289">                int cliente_ingreso=cliente.getInt(&quot;id_cliente&quot;);</span>
+              
+<span class="nc" id="L291">                GP.guardarPedido(diaAR,dir_AD,fecha_A_rP,fecha_A_dP,Grafico.ingresar_HR_P.getText(),Grafico.ingresar_HD_P.getText(),Estadod2,Float.valueOf(Grafico.Final_Precio_P.getText()),Integer.parseInt(Grafico.ingresar_Cadete_P.getSelectedItem().toString().trim()),cliente_ingreso);</span>
+            
+<span class="nc" id="L293">           }   //problema en las fechas</span>
+<span class="nc" id="L294">            int ultimo_P = -1;</span>
+<span class="nc" id="L295">            ResultSet ultimoPedido = GP.ultimoPedido();</span>
+<span class="nc bnc" id="L296" title="All 2 branches missed.">            while (ultimoPedido.next()) {</span>
+<span class="nc" id="L297">                ultimo_P = ultimoPedido.getInt(&quot;id_pedido&quot;);</span>
+              
+            }
+            // hasta aqui
+<span class="nc" id="L301">             String ultimo_p2=Integer.toString(ultimo_P);</span>
+                
+<span class="nc" id="L303">             DatosCaja  dc = new DatosCaja();</span>
+<span class="nc" id="L304">             float sumand1=Float.parseFloat(Grafico.Final_Precio_P.getText());</span>
+             
+            
+            
+             
+<span class="nc" id="L309">              ResultSet caja = dc.buscarCajaAbierta();</span>
+<span class="nc bnc" id="L310" title="All 2 branches missed.">              if(caja.first()){</span>
+<span class="nc" id="L311">                  float sumand2= caja.getFloat(&quot;monto_inicial&quot;);</span>
+<span class="nc" id="L312">                  float suma = sumand1 + sumand2;</span>
+<span class="nc" id="L313">                   dc.actualizarMontoTotal(suma);</span>
+                 
+                 
+              } 
+             
+<span class="nc" id="L318">           Correcto_Registro x = new Correcto_Registro();</span>
+             
+            
+<span class="nc" id="L321">             x.ER_ID_PEDIDO.setText(ultimo_p2);</span>
+<span class="nc" id="L322">             x.setVisible(true);</span>
+             
+            
+          
+         
+
+        
+<span class="nc" id="L329">    }</span>
+     
+     public void ValidarClientePNUEVO_prueba(Registro_Pedido_Nuevo_otro Grafico) {
+
+<span class="nc" id="L333">        String telIngresado = Grafico.Ingrese_telefono_NP.getText().trim();</span>
+
+<span class="nc bnc" id="L335" title="All 2 branches missed.">        if (telIngresado.isEmpty()) {</span>
+<span class="nc" id="L336">            JOptionPane.showMessageDialog(Grafico, &quot;No se ingreso el telefono&quot;, &quot;Error&quot;,0);</span>
+<span class="nc" id="L337">            return;</span>
+        }
+
+        long numero;
+        try {
+<span class="nc" id="L342">            numero = Long.parseLong(telIngresado);</span>
+
+<span class="nc" id="L344">        } catch (NumberFormatException e) {</span>
+<span class="nc" id="L345">            JOptionPane.showMessageDialog(Grafico, &quot;No se ingreso el telefono correctamente&quot;, &quot;Error&quot;, 0);</span>
+<span class="nc" id="L346">            e.getMessage();</span>
+<span class="nc" id="L347">            return;</span>
+<span class="nc" id="L348">        }</span>
+
+<span class="nc" id="L350">        DatosCliente c = new DatosCliente();</span>
+
+<span class="nc" id="L352">        ResultSet cliente = c.BuscarClienteTelefono(numero);</span>
+
+        try {
+
+<span class="nc bnc" id="L356" title="All 2 branches missed.">            if (!cliente.first()) {</span>
+               
+<span class="nc" id="L358">                Grafico.cliente_No_Exite_RP.setText(&quot;Cliente inexistente, Vuelva a ingresar&quot;);</span>
+            } else {
+
+<span class="nc" id="L361">                Grafico.cliente_No_Exite_RP.setVisible(false);</span>
+<span class="nc" id="L362">                Grafico.Nombre_RP.setText(cliente.getString(&quot;nombre&quot;));</span>
+<span class="nc" id="L363">                Grafico.Apellido_RP1.setText(cliente.getString(&quot;apellido&quot;));</span>
+<span class="nc" id="L364">                Grafico.Domicilio_RP.setText(cliente.getString(&quot;domicilio&quot;));</span>
+
+                
+                //Mostrar Listado Pedidos Falta
+            }
+<span class="nc" id="L369">        } catch (SQLException ex) {</span>
+<span class="nc" id="L370">            System.out.println(&quot;error en clientefirst....&quot; + ex.getMessage());</span>
+<span class="nc" id="L371">        }</span>
+<span class="nc" id="L372">    }</span>
+
+    
+    public void insertarPedidoModificado(Modificar_Pedido Grafico) throws SQLException {
+
+<span class="nc" id="L377">        DatosCliente GC = new DatosCliente();</span>
+<span class="nc" id="L378">        DatosPedido GP = new DatosPedido();</span>
+       
+
+        
+<span class="nc" id="L382">        int telefono = (int) Long.parseLong(Grafico.Telefono_MP.getText().trim());</span>
+      
+            //verificar
+          
+
+<span class="nc" id="L387">            ResultSet cliente = GC.BuscarCliente(telefono);</span>
+            //cliente.getInt(&quot;id_cliente&quot;) obtener campo de cliente
+<span class="nc bnc" id="L389" title="All 2 branches missed.">            while (cliente.next()) {</span>
+                //GP.guardarPedido(Grafico.ingresar_DirR_P.getText(),Grafico.ingresar_DirA_P.getText(),Grafico.ingresar_HR_P.getText(),Grafico.ingresar_HD_P.getText(),Grafico.Area_Descripcion_P.getText(),Grafico.EstadoPed.getSelectedItem().toString().trim(),Float.valueOf(Grafico.Final_Precio_P.getText()),Integer.parseInt(Grafico.SeleccionarCadete.getSelectedItem().toString().trim()),(int)cliente.getInt(&quot;id_cliente&quot;));
+            } 
+        
+    
+<span class="nc" id="L394">    }</span>
+
+    public void actualizarTablaPedidos(pnlHome grafico) throws SQLException {
+
+<span class="nc" id="L398">        DatosPedido GP = new DatosPedido();</span>
+<span class="nc" id="L399">        DatosCliente GC = new DatosCliente();</span>
+
+<span class="nc" id="L401">        ResultSet pedidos = GP.obtenerPedidos();</span>
+
+<span class="nc" id="L403">        DefaultTableModel model = new DefaultTableModel();</span>
+<span class="nc" id="L404">        model.addColumn(&quot;id Pedido&quot;);</span>
+<span class="nc" id="L405">       model.addColumn(&quot;Dir Retiro&quot;);</span>
+<span class="nc" id="L406">       model.addColumn(&quot;Dir Entrega &quot;);</span>
+<span class="nc" id="L407">       model.addColumn(&quot;Fecha Retiro&quot;);</span>
+<span class="nc" id="L408">       model.addColumn(&quot;Fecha Entrega&quot;);</span>
+<span class="nc" id="L409">       model.addColumn(&quot;Hora Retiro&quot;);</span>
+<span class="nc" id="L410">       model.addColumn(&quot;Hora Entrega&quot;);</span>
+<span class="nc" id="L411">       model.addColumn(&quot;Estado&quot;);</span>
+<span class="nc" id="L412">        model.addColumn(&quot;Precio&quot;);</span>
+<span class="nc" id="L413">       grafico.Tabla_pro.setModel(model);</span>
+<span class="nc" id="L414">       String[] dato= new String [9];</span>
+       
+        try {
+            //Ejecutemos la query
+           
+            //Este while significa mientras resultado tenga mas resultado, me va a mostrar los siguiente
+<span class="nc bnc" id="L420" title="All 2 branches missed.">            while(pedidos.next()){</span>
+<span class="nc" id="L421">                dato[0]=pedidos.getString(1);</span>
+<span class="nc" id="L422">                dato[1]=pedidos.getString(2);</span>
+<span class="nc" id="L423">                dato[2]=pedidos.getString(3);</span>
+<span class="nc" id="L424">                dato[3]=pedidos.getString(4);</span>
+<span class="nc" id="L425">                dato[4]=pedidos.getString(5);</span>
+<span class="nc" id="L426">                dato[5]=pedidos.getString(6);</span>
+<span class="nc" id="L427">                dato[6]=pedidos.getString(7);</span>
+<span class="nc" id="L428">                dato[7]=pedidos.getString(9);</span>
+<span class="nc" id="L429">                dato[8]=pedidos.getString(10);</span>
+<span class="nc" id="L430">                model.addRow(dato);</span>
+            }
+<span class="nc" id="L432">        } catch (SQLException ex) {</span>
+<span class="nc" id="L433">            Logger.getLogger(Ver_Cliente.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L434">        }</span>
+        
+
+<span class="nc" id="L437">    }</span>
+      public void actualizarTablaPedidos2(Listado_Pedidos grafico) throws SQLException {
+
+<span class="nc" id="L440">        DatosPedido GP = new DatosPedido();</span>
+<span class="nc" id="L441">        DatosCliente GC = new DatosCliente();</span>
+
+<span class="nc" id="L443">        ResultSet pedidos = GP.obtenerPedidos();</span>
+
+<span class="nc" id="L445">        DefaultTableModel model = new DefaultTableModel();</span>
+<span class="nc" id="L446">        model.addColumn(&quot;id Pedido&quot;);</span>
+<span class="nc" id="L447">       model.addColumn(&quot;Dir Retiro&quot;);</span>
+<span class="nc" id="L448">       model.addColumn(&quot;Dir Entrega &quot;);</span>
+<span class="nc" id="L449">       model.addColumn(&quot;Fecha Retiro&quot;);</span>
+<span class="nc" id="L450">       model.addColumn(&quot;Fecha Entrega&quot;);</span>
+<span class="nc" id="L451">       model.addColumn(&quot;Hora Retiro&quot;);</span>
+<span class="nc" id="L452">       model.addColumn(&quot;Hora Entrega&quot;);</span>
+<span class="nc" id="L453">       model.addColumn(&quot;Estado&quot;);</span>
+<span class="nc" id="L454">        model.addColumn(&quot;Precio&quot;);</span>
+<span class="nc" id="L455">       grafico.Tabla_pro.setModel(model);</span>
+<span class="nc" id="L456">       String[] dato= new String [9];</span>
+       
+        try {
+            //Ejecutemos la query
+           
+            //Este while significa mientras resultado tenga mas resultado, me va a mostrar los siguiente
+<span class="nc bnc" id="L462" title="All 2 branches missed.">            while(pedidos.next()){</span>
+<span class="nc" id="L463">                dato[0]=pedidos.getString(1);</span>
+<span class="nc" id="L464">                dato[1]=pedidos.getString(2);</span>
+<span class="nc" id="L465">                dato[2]=pedidos.getString(3);</span>
+<span class="nc" id="L466">                dato[3]=pedidos.getString(4);</span>
+<span class="nc" id="L467">                dato[4]=pedidos.getString(5);</span>
+<span class="nc" id="L468">                dato[5]=pedidos.getString(6);</span>
+<span class="nc" id="L469">                dato[6]=pedidos.getString(7);</span>
+<span class="nc" id="L470">                dato[7]=pedidos.getString(9);</span>
+<span class="nc" id="L471">                dato[8]=pedidos.getString(10);</span>
+<span class="nc" id="L472">                model.addRow(dato);</span>
+            }
+<span class="nc" id="L474">        } catch (SQLException ex) {</span>
+<span class="nc" id="L475">            Logger.getLogger(Ver_Cliente.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L476">        }</span>
+        
+
+<span class="nc" id="L479">    }</span>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //metodo viejo
+    
+    /*
+    public void actualizarTablaPedidosDiario(GestionDueño grafico) throws SQLException{
+        
+        GestionPedido GP = new GestionPedido();
+        GestionCliente GC = new GestionCliente();
+
+        ResultSet pedidos = GP.obtenerPedidosDelDia();
+
+        grafico.model = new DefaultTableModel();
+
+        grafico.model.setColumnIdentifiers(new Object[]{&quot;Pedidos&quot;, &quot;Clientes&quot;, &quot;Montos&quot;});
+
+        while (pedidos.next()) {
+            ResultSet cliente = GC.BuscarClienteID(pedidos.getInt(&quot;id_cliente&quot;));
+            double monto = GP.obtenerMonto(pedidos.getInt(&quot;id_pedido&quot;));
+            while (cliente.next()) {
+                grafico.model.addRow(new Object[]{pedidos.getString(&quot;id_pedido&quot;), cliente.getString(&quot;nombre&quot;), monto});
+            }
+        }
+
+        grafico.jTable1.setModel(grafico.model);
+    }
+    
+    
+    //
+    
+     public void actualizarTablaUltimosPedidos(GestionDueño grafico) throws SQLException{
+        
+        GestionPedido GP = new GestionPedido();
+        GestionCliente GC = new GestionCliente();
+        GestionComida GCo = new GestionComida();
+        ResultSet pedidos = GP.obtenerUltimosPedidos();
+
+        grafico.model.setColumnIdentifiers(new Object[]{&quot;Num. Pedido&quot;, &quot;Comida&quot;, &quot;Cantidad&quot;, &quot;Estado&quot;, &quot;Precio Total&quot;});
+
+        while (pedidos.next()) {
+            ResultSet detalle = GP.obtenerDetallesPorIdPedido(pedidos.getInt(&quot;id_pedido&quot;));
+            while(detalle.next()){
+                ResultSet comida = GCo.BuscarComidaID(detalle.getString(&quot;id_comida&quot;));
+                while(comida.next()){
+                    grafico.model.addRow(new Object[]{pedidos.getString(&quot;id_pedido&quot;), comida.getString(&quot;nombre&quot;), detalle.getString(&quot;cantidad&quot;),pedidos.getString(&quot;estadoP&quot;), detalle.getString(&quot;precio&quot;)});
+                }
+            }
+        }
+
+        grafico.jTable1.setModel(grafico.model);
+    }
+    
+
+    public void EnviarPedido(GestionEmpleado grafico) throws SQLException {
+        
+        int item = grafico.ultimosPedidos.getSelectedRow();
+
+        if (item == -1) {
+            JOptionPane.showMessageDialog(grafico, &quot;Debes seleccionar un pedido&quot;, &quot;Advertencia&quot;, JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            String numero_pedido = grafico.ultimosPedidos.getValueAt(item, 0).toString();
+            String montoTotal = grafico.ultimosPedidos.getValueAt(item, 3).toString();
+
+            int num_pedido = Integer.parseInt(numero_pedido);
+            double montoT = Double.parseDouble(montoTotal);
+            
+            SeleccionarCadete SC = new SeleccionarCadete(num_pedido, montoT, grafico);
+            SC.setVisible(true);
+        }
+    }
+    
+     public void pedidoPagado(GestionEmpleado grafico) throws SQLException{
+        
+        int item = grafico.ultimosPedidos.getSelectedRow();
+
+        if (item == -1) {
+            JOptionPane.showMessageDialog(grafico, &quot;Debes seleccionar un pedido&quot;, &quot;Advertencia&quot;, JOptionPane.WARNING_MESSAGE);
+        } else {
+            if(grafico.ultimosPedidos.getValueAt(item, 1).toString().equals(&quot;Enviado&quot;)){
+                String numero_pedido = grafico.ultimosPedidos.getValueAt(item, 0).toString();
+
+                int num_pedido = Integer.parseInt(numero_pedido);
+
+                GestionPedido GP = new GestionPedido();
+                GestionCadete GCA = new GestionCadete();
+                GestionTicket GTI = new GestionTicket();
+                GestionCaja GC = new GestionCaja();
+                
+                ResultSet ticket = GTI.obtenerTicketPorIdPedido(num_pedido);
+
+                while(ticket.next()){
+                    GCA.ActualizarEstadoCadete(ticket.getInt(&quot;DNICadete&quot;), &quot;Disponible&quot;);
+                    double montoT=ticket.getDouble(&quot;montoT&quot;)+ticket.getDouble(&quot;tarifaE&quot;);
+                    ResultSet caja = GC.buscarCajaAbierta();
+                    if(caja.first()){
+                        montoT += caja.getDouble(&quot;monto_final&quot;);
+                        GC.actualizarMontoTotal(montoT);
+                    }else{
+                        JOptionPane.showMessageDialog(grafico, &quot;No se inicio la caja&quot;, &quot;Error&quot;, 0);
+                        AbrirCaja AC = new AbrirCaja();
+                        AC.setVisible(true);
+                        return;
+                    }
+
+                    GP.ActualizarEstadoPedido(num_pedido, &quot;Pagado&quot;);
+                    JOptionPane.showMessageDialog(grafico, &quot;El pedido fue pagado&quot;, &quot;Pagado&quot;, 1);
+                    actualizarTablaPedidos(grafico);
+                }
+             }else{
+                JOptionPane.showMessageDialog(grafico, &quot;Debes enviar el pedido&quot;, &quot;Advertencia&quot;, JOptionPane.WARNING_MESSAGE);
+            }   
+        }
+    }
+     
+     public void pedidoNoPagado(GestionEmpleado grafico) throws SQLException{
+         int item = grafico.ultimosPedidos.getSelectedRow();
+
+        if (item == -1) {
+            JOptionPane.showMessageDialog(grafico, &quot;Debe seleccionar un pedido&quot;, &quot;Advertencia&quot;, JOptionPane.WARNING_MESSAGE);
+        } else {
+            if(grafico.ultimosPedidos.getValueAt(item, 1).toString().equals(&quot;Enviado&quot;)){
+                
+                String numero_pedido = grafico.ultimosPedidos.getValueAt(item, 0).toString();
+
+                int num_pedido = Integer.parseInt(numero_pedido);
+
+                GestionPedido GP = new GestionPedido();
+                GestionCadete GCA = new GestionCadete();
+                GestionTicket GTI = new GestionTicket();
+                GestionCaja GC = new GestionCaja();
+                
+                ResultSet ticket = GTI.obtenerTicketPorIdPedido(num_pedido);
+
+                while(ticket.next()){
+                    GCA.ActualizarEstadoCadete(ticket.getInt(&quot;DNICadete&quot;), &quot;Disponible&quot;);
+                    ResultSet caja = GC.buscarCajaAbierta();
+                    if(caja.first()){
+                        GTI.TicketNoPagado(ticket.getString(&quot;id_ticket&quot;));
+                        
+                    }else{
+                        JOptionPane.showMessageDialog(grafico, &quot;No se inicio la caja&quot;, &quot;Error&quot;, 0);
+                        AbrirCaja AC = new AbrirCaja();
+                        AC.setVisible(true);
+                        return;
+                    }
+
+                    GP.ActualizarEstadoPedido(num_pedido, &quot;No Pagado&quot;);
+                    JOptionPane.showMessageDialog(grafico, &quot;El pedido NO fue pagado&quot;, &quot;No Pagado&quot;, 1);
+                    actualizarTablaPedidos(grafico);
+                }
+            }else{
+                JOptionPane.showMessageDialog(grafico, &quot;Debes enviar el pedido&quot;, &quot;Advertencia&quot;, JOptionPane.WARNING_MESSAGE);
+                
+            }       
+        }
+     }
+     
+     public void pedidoCancelado(GestionEmpleado grafico){
+         int item = grafico.ultimosPedidos.getSelectedRow();
+         
+        if (item == -1) {
+            JOptionPane.showMessageDialog(grafico, &quot;Debes seleccionar un pedido&quot;, &quot;Advertencia&quot;, JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            String numero_pedido = grafico.ultimosPedidos.getValueAt(item, 0).toString();
+
+            int num_pedido = Integer.parseInt(numero_pedido);
+
+            GestionPedido GP = new GestionPedido();
+
+            try {
+                GP.ActualizarEstadoPedido(num_pedido, &quot;Pedido Cancelado&quot;);
+                GP.ActualizarEstadoPedidoCancelado(num_pedido);
+                GP.eliminarDetallesPedido(numero_pedido);
+                JOptionPane.showMessageDialog(grafico, &quot;El pedido fue cancelado&quot;, &quot;Advertencia&quot;, 1);
+                actualizarTablaPedidos(grafico);
+            } catch (SQLException ex) {
+                Logger.getLogger(GestionEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+     }
+   */  
+      //Metodo para Ver/ModificarPedido
+     public void mostrarPedido(Ver_Cliente grafico, String id_pedido) throws SQLException{
+       
+       
+<span class="nc" id="L681">     }</span>
+      public void mostrarPedidosCliente(Ver_Cliente grafico, String id_pedido) throws SQLException{
+        
+<span class="nc" id="L684">      DatosPedido GP = new DatosPedido();</span>
+         
+<span class="nc" id="L686">      ResultSet rs = GP.obtenerPedidosPorId(Integer.parseInt(id_pedido));//cambiar esto por int</span>
+
+         
+         
+<span class="nc" id="L690">         DatosCliente GC = new DatosCliente();</span>
+<span class="nc" id="L691">           String telefono= grafico.Modificar_Tel.getText();</span>
+<span class="nc" id="L692">           long telefono1=Long.parseLong(telefono);</span>
+<span class="nc" id="L693">           ResultSet cliente = GC.BuscarCliente(telefono1);</span>
+<span class="nc" id="L694">            System.out.println(&quot;llego&quot;);</span>
+<span class="nc bnc" id="L695" title="All 2 branches missed.">                while(rs.next()){</span>
+                    
+                
+<span class="nc" id="L698">                System.out.println(&quot;llego1&quot;);</span>
+              /*  Modificar_Cliente MC = new Modificar_Cliente(cliente);
+                MC.setVisible(true);*/
+<span class="nc" id="L701">                grafico.Modificar_Tel.setText(telefono);</span>
+<span class="nc" id="L702">                grafico.Modificar_Nombre.setText(cliente.getString(&quot;nombre&quot;));</span>
+<span class="nc" id="L703">                grafico.Modificar_Apellido.setText(cliente.getString(&quot;apellido&quot;));</span>
+<span class="nc" id="L704">                grafico.Modificar_Direccion.setText(cliente.getString(&quot;domicilio&quot;));</span>
+<span class="nc" id="L705">                grafico.Modificar_Zona.setText(cliente.getString(&quot;id_zona&quot;));</span>
+<span class="nc" id="L706">                grafico.Modificar_Tipo.setSelectedItem(cliente.getString(&quot;tipo&quot;));</span>
+<span class="nc" id="L707">                grafico.Modificar_Barrio.setText(cliente.getString(&quot;barrio&quot;));</span>
+              
+                
+                
+                
+            }
+<span class="nc" id="L713">     }</span>
+    /* 
+    public void agregarComidaPedido_Modificar(VerPedido Grafico) throws SQLException {
+        
+            String cant = Grafico.Cantidad.getSelectedItem().toString();
+
+            GestionComida GC = new GestionComida();
+            String nombreComida = Grafico.Menu.getSelectedItem().toString();
+
+            ResultSet comida = GC.BuscarComidaNombre(nombreComida);
+            
+            double monto = Double.parseDouble(Grafico.MontoTotal.getText());
+            Grafico.model.setColumnIdentifiers(new Object[]{&quot;Comidas&quot;, &quot;Precio por unidad&quot;, &quot;Cantidad&quot;});
+
+            while (comida.next()) {
+                Grafico.model.addRow(new Object[]{Grafico.Menu.getSelectedItem().toString(), comida.getString(&quot;precio&quot;), cant});
+                monto += Double.parseDouble(comida.getString(&quot;precio&quot;))*Integer.parseInt(cant);
+            }
+            Grafico.verPedido.setModel(Grafico.model);
+            
+            Grafico.MontoTotal.setText(String.valueOf(monto));
+    }
+    
+    public void seleccionarCadete(SeleccionarCadete grafico) throws SQLException{
+        String cadete = grafico.cadetes.getSelectedItem().toString();
+        
+        GestionCadete GC = new GestionCadete();
+        ResultSet cade  = GC.buscarCadetePorNombre(cadete);
+        long dni_cad = 0;
+        while(cade.next()){
+            GC.ActualizarEstadoCadete(cade.getInt(&quot;DNICadete&quot;), &quot;Ocupado&quot;);
+            dni_cad = cade.getLong(&quot;DNICadete&quot;);
+        }
+        
+        GestionPedido GP = new GestionPedido();
+        GP.ActualizarEstadoPedido(grafico.numPedido, &quot;Enviado&quot;);
+        ResultSet pedido = GP.obtenerPedidoPorId(String.valueOf(grafico.numPedido));
+        
+        
+        while(pedido.next()){
+            GestionCliente GCl = new GestionCliente();
+            ResultSet cliente = GCl.BuscarClienteID(pedido.getInt(&quot;id_cliente&quot;));
+            while(cliente.next()){
+                GestionZona GZ = new GestionZona();
+                ResultSet zona = GZ.buscarZonaPorID(cliente.getInt(&quot;IDZona&quot;));
+                while(zona.next()){
+                    GestionTicket GT = new GestionTicket();
+                    GT.AgregarTicket(grafico.numPedido, dni_cad, grafico.monto, zona.getDouble(&quot;tarifaE&quot;));
+                }
+            }
+        }
+        
+        JOptionPane.showMessageDialog(grafico,&quot;Se Realizo el ticket correctamente&quot;, &quot;Listo&quot;, 1);
+        
+        actualizarTablaPedidos(grafico.grafico);
+        grafico.dispose();
+    }
+    
+    
+    */
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
