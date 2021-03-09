@@ -8,34 +8,37 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import subPaneles.Eliminar_Pedido;
 
-<span class="nc" id="L13">public class DatosPedido {</span>
+<span class="nc" id="L16">public class DatosPedido {</span>
 
     public void guardarPedido(String dir_A_retirarP,String dir_A_dejar,String fecha_retiro,String fecha_entrega,String hora_retiro,String hora_Entrega, String Estado, float precio,int cuit_cadete,int id_cliente ) throws SQLException {
 
-<span class="nc" id="L17">        Conectar con = new Conectar();</span>
-<span class="nc" id="L18">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L20">        Conectar con = new Conectar();</span>
+<span class="nc" id="L21">        Connection miConexion = con.conexion();</span>
 
-<span class="nc" id="L20">        String SQL = &quot;INSERT INTO pedido (dir_retirar_pedido,dir_dejar_pedido,fecha_retiro,fecha_entrega,hora_retiro,hora_entrega,estado,precio,cuit_cadete,id_cliente) VALUES ('&quot; + dir_A_retirarP</span>
+<span class="nc" id="L23">        String SQL = &quot;INSERT INTO pedido (dir_retirar_pedido,dir_dejar_pedido,fecha_retiro,fecha_entrega,hora_retiro,hora_entrega,estado,precio,cuit_cadete,id_cliente) VALUES ('&quot; + dir_A_retirarP</span>
                 + &quot;', '&quot; + dir_A_dejar + &quot;','&quot; + fecha_retiro + &quot;', '&quot; + fecha_entrega + &quot;', '&quot; + hora_retiro+ &quot;', '&quot; +hora_Entrega + &quot;','&quot;+Estado+&quot;', '&quot; + precio + &quot;', '&quot; + cuit_cadete + &quot;','&quot; + id_cliente + &quot;')&quot;;
 
-<span class="nc" id="L23">        Statement insertar = miConexion.createStatement();</span>
+<span class="nc" id="L26">        Statement insertar = miConexion.createStatement();</span>
 
-<span class="nc" id="L25">        insertar.executeUpdate(SQL);</span>
-<span class="nc" id="L26">    }</span>
+<span class="nc" id="L28">        insertar.executeUpdate(SQL);</span>
+<span class="nc" id="L29">    }</span>
 
     public ResultSet ultimoPedido() throws SQLException {
-<span class="nc" id="L29">        Conectar con = new Conectar();</span>
-<span class="nc" id="L30">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L32">        Conectar con = new Conectar();</span>
+<span class="nc" id="L33">        Connection miConexion = con.conexion();</span>
 
-<span class="nc" id="L32">        String SQL = &quot;Select * from pedido order by id_pedido desc limit 1&quot;;</span>
+<span class="nc" id="L35">        String SQL = &quot;Select * from pedido order by id_pedido desc limit 1&quot;;</span>
 
-<span class="nc" id="L34">        Statement miEstatement = miConexion.createStatement();</span>
+<span class="nc" id="L37">        Statement miEstatement = miConexion.createStatement();</span>
 
-<span class="nc" id="L36">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
+<span class="nc" id="L39">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
 
-<span class="nc" id="L38">        return rs;</span>
+<span class="nc" id="L41">        return rs;</span>
     }
 /*
     public void insertarDetallePedido(int id_comida, int id_pedido, int cantidad, float precio) throws SQLException {
@@ -52,32 +55,116 @@ import subPaneles.Eliminar_Pedido;
     }
 */
     public ResultSet obtenerPedidos() throws SQLException {
+<span class="nc" id="L58">      LocalDateTime myDateObj = LocalDateTime.now();  </span>
+<span class="nc" id="L59">     System.out.println(&quot;Before Formatting: &quot; + myDateObj);  </span>
+<span class="nc" id="L60">        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern(&quot;MMM&quot;);  </span>
+    
+<span class="nc" id="L62">    String formattedDate = myDateObj.format(myFormatObj);  </span>
+    
+<span class="nc" id="L64">    String mes= obtenerMes(formattedDate) ;</span>
+<span class="nc" id="L65">        int ano = myDateObj.getYear();</span>
+<span class="nc" id="L66">        int dia = myDateObj.getDayOfMonth();</span>
+<span class="nc" id="L67">        String dia2=obtenerDia(dia);</span>
+<span class="nc" id="L68">        System.out.println(dia2);</span>
+<span class="nc" id="L69">        final int diaN=Integer.parseInt(dia2);</span>
+        
+<span class="nc" id="L71">        String diaCompleto= ano +&quot; &quot;+mes+&quot; &quot;+dia2;</span>
+<span class="nc" id="L72">        System.out.println(diaCompleto);</span>
+<span class="nc" id="L73">        Conectar con = new Conectar();</span>
+<span class="nc" id="L74">        Connection miConexion = con.conexion();</span>
 
-<span class="nc" id="L56">        Conectar con = new Conectar();</span>
-<span class="nc" id="L57">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L76">        String SQL = &quot;SELECT * FROM pedido WHERE (estado = 'Activo' or estado = 'Enviado') and fecha_entrega LIKE '&quot;+diaCompleto+&quot;'&quot;;</span>
 
-<span class="nc" id="L59">        String SQL = &quot;SELECT * FROM pedido WHERE estado = 'Activo' or estado = 'Enviado'&quot;;</span>
+<span class="nc" id="L78">        Statement miEstatement = miConexion.createStatement();</span>
 
-<span class="nc" id="L61">        Statement miEstatement = miConexion.createStatement();</span>
+<span class="nc" id="L80">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
 
-<span class="nc" id="L63">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
-
-<span class="nc" id="L65">        return rs;</span>
+<span class="nc" id="L82">        return rs;</span>
 
     }
+    
+    public String obtenerDia(int dia){
+                
+        String dayString;
+        
+<span class="nc bnc" id="L90" title="All 10 branches missed.">        switch (dia) </span>
+        {
+<span class="nc" id="L92">            case 1:  dayString = &quot;01&quot;;</span>
+<span class="nc" id="L93">                     break;</span>
+<span class="nc" id="L94">            case 2:  dayString = &quot;02&quot;;</span>
+<span class="nc" id="L95">                     break;</span>
+<span class="nc" id="L96">            case 3:  dayString = &quot;03&quot;;</span>
+<span class="nc" id="L97">                     break;</span>
+<span class="nc" id="L98">            case 4:  dayString = &quot;04&quot;;</span>
+<span class="nc" id="L99">                     break;</span>
+<span class="nc" id="L100">            case 5:  dayString = &quot;05&quot;;</span>
+<span class="nc" id="L101">                     break;</span>
+<span class="nc" id="L102">            case 6:  dayString = &quot;06&quot;;</span>
+<span class="nc" id="L103">                     break;</span>
+<span class="nc" id="L104">            case 7:  dayString = &quot;07&quot;;</span>
+<span class="nc" id="L105">                     break;         </span>
+<span class="nc" id="L106">            case 8:  dayString = &quot;08&quot;;</span>
+<span class="nc" id="L107">                    break;</span>
+<span class="nc" id="L108">            case 9:  dayString = &quot;09&quot;;</span>
+<span class="nc" id="L109">                    break;         </span>
+                     
+<span class="nc" id="L111">            default: dayString = &quot;00&quot;;</span>
+                     break;
+        }
+        
+<span class="nc" id="L115">        return dayString;</span>
+    }
+    
+    
+    
+    
+    
+    public ResultSet obtenerPedidosMenuPed(String Estado) throws SQLException {
+<span class="nc" id="L123">      LocalDateTime myDateObj = LocalDateTime.now();  </span>
+<span class="nc" id="L124">     System.out.println(&quot;Before Formatting: &quot; + myDateObj);  </span>
+<span class="nc" id="L125">        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern(&quot;MMM&quot;);  </span>
+    
+<span class="nc" id="L127">    String formattedDate = myDateObj.format(myFormatObj);  </span>
+    
+<span class="nc" id="L129">    String mes= obtenerMes(formattedDate) ;</span>
+<span class="nc" id="L130">        int ano = myDateObj.getYear();</span>
+<span class="nc" id="L131">        int dia = myDateObj.getDayOfMonth();</span>
+<span class="nc" id="L132">          String dia2=obtenerDia(dia);</span>
+<span class="nc" id="L133">        System.out.println(dia2);</span>
+<span class="nc" id="L134">        final int diaN=Integer.parseInt(dia2);</span>
+        
+<span class="nc" id="L136">        String diaCompleto= ano +&quot; &quot;+mes+&quot; &quot;+dia2;</span>
+      
+<span class="nc" id="L138">        System.out.println(diaCompleto);</span>
+<span class="nc" id="L139">        Conectar con = new Conectar();</span>
+<span class="nc" id="L140">        Connection miConexion = con.conexion();</span>
+
+<span class="nc" id="L142">        String SQL = &quot;SELECT * FROM pedido WHERE estado = '&quot;+Estado+&quot;' and fecha_entrega LIKE '&quot;+diaCompleto+&quot;'&quot;;</span>
+
+<span class="nc" id="L144">        Statement miEstatement = miConexion.createStatement();</span>
+
+<span class="nc" id="L146">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
+
+<span class="nc" id="L148">        return rs;</span>
+
+    }
+    
+    
+    
+    
 
       public ResultSet obtenerPedidosPorId(int id) throws SQLException {
 
-<span class="nc" id="L71">        Conectar con = new Conectar();</span>
-<span class="nc" id="L72">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L158">        Conectar con = new Conectar();</span>
+<span class="nc" id="L159">        Connection miConexion = con.conexion();</span>
 
-<span class="nc" id="L74">        String SQL = &quot;SELECT * FROM pedido WHERE id_pedido =&quot;+id+&quot; AND estado = 'Activo' or estado='Enviado' &quot;;</span>
+<span class="nc" id="L161">        String SQL = &quot;SELECT * FROM pedido WHERE id_pedido =&quot;+id+&quot; AND estado = 'Activo' or estado='Enviado' &quot;;</span>
 
-<span class="nc" id="L76">        Statement miEstatement = miConexion.createStatement();</span>
+<span class="nc" id="L163">        Statement miEstatement = miConexion.createStatement();</span>
 
-<span class="nc" id="L78">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
+<span class="nc" id="L165">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
 
-<span class="nc" id="L80">        return rs;</span>
+<span class="nc" id="L167">        return rs;</span>
 
     }
       
@@ -85,137 +172,137 @@ import subPaneles.Eliminar_Pedido;
       //metodo viejo
     public ResultSet obtenerPedidosDelDia() throws SQLException {
 
-<span class="nc" id="L88">        Conectar con = new Conectar();</span>
-<span class="nc" id="L89">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L175">        Conectar con = new Conectar();</span>
+<span class="nc" id="L176">        Connection miConexion = con.conexion();</span>
 
-<span class="nc" id="L91">        java.util.Date utilDate = new java.util.Date(); //fecha actual</span>
-<span class="nc" id="L92">        long lnMilisegundos = utilDate.getTime();</span>
-<span class="nc" id="L93">        java.sql.Date sqlDate = new java.sql.Date(lnMilisegundos);</span>
+<span class="nc" id="L178">        java.util.Date utilDate = new java.util.Date(); //fecha actual</span>
+<span class="nc" id="L179">        long lnMilisegundos = utilDate.getTime();</span>
+<span class="nc" id="L180">        java.sql.Date sqlDate = new java.sql.Date(lnMilisegundos);</span>
         
-<span class="nc" id="L95">        String SQL = &quot;SELECT * FROM pedidos WHERE fecha_hora LIKE '&quot;+sqlDate+&quot;%'&quot;;</span>
+<span class="nc" id="L182">        String SQL = &quot;SELECT * FROM pedidos WHERE fecha_hora LIKE '&quot;+sqlDate+&quot;%'&quot;;</span>
 
-<span class="nc" id="L97">        Statement miEstatement = miConexion.createStatement();</span>
+<span class="nc" id="L184">        Statement miEstatement = miConexion.createStatement();</span>
 
-<span class="nc" id="L99">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
+<span class="nc" id="L186">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
 
-<span class="nc" id="L101">        return rs;</span>
+<span class="nc" id="L188">        return rs;</span>
     }
     public ResultSet obtenerPedidosPorId(String id) throws SQLException {
 
-<span class="nc" id="L105">        Conectar con = new Conectar();</span>
-<span class="nc" id="L106">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L192">        Conectar con = new Conectar();</span>
+<span class="nc" id="L193">        Connection miConexion = con.conexion();</span>
 
-<span class="nc" id="L108">        String SQL = &quot;SELECT * FROM pedido WHERE id_pedido =&quot;+id+&quot; AND estado = 'Activo'&quot;;</span>
+<span class="nc" id="L195">        String SQL = &quot;SELECT * FROM pedido WHERE id_pedido =&quot;+id+&quot; AND estado = 'Activo'&quot;;</span>
 
-<span class="nc" id="L110">        Statement miEstatement = miConexion.createStatement();</span>
+<span class="nc" id="L197">        Statement miEstatement = miConexion.createStatement();</span>
 
-<span class="nc" id="L112">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
+<span class="nc" id="L199">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
 
-<span class="nc" id="L114">        return rs;</span>
+<span class="nc" id="L201">        return rs;</span>
 
     }
     //
     
      public ResultSet obtenerUltimosPedidos() throws SQLException {
 
-<span class="nc" id="L121">        Conectar con = new Conectar();</span>
-<span class="nc" id="L122">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L208">        Conectar con = new Conectar();</span>
+<span class="nc" id="L209">        Connection miConexion = con.conexion();</span>
 
-<span class="nc" id="L124">        String SQL = &quot;SELECT * FROM pedido ORDER BY id_pedido DESC LIMIT 15&quot;;</span>
+<span class="nc" id="L211">        String SQL = &quot;SELECT * FROM pedido ORDER BY id_pedido DESC LIMIT 15&quot;;</span>
 
-<span class="nc" id="L126">        Statement miEstatement = miConexion.createStatement();</span>
+<span class="nc" id="L213">        Statement miEstatement = miConexion.createStatement();</span>
 
-<span class="nc" id="L128">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
+<span class="nc" id="L215">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
 
-<span class="nc" id="L130">        return rs;</span>
+<span class="nc" id="L217">        return rs;</span>
 
     }
      
        public ResultSet obtenerDetallesPorIdPedido(int id_pedido) throws SQLException {
 
-<span class="nc" id="L136">        Conectar con = new Conectar();</span>
-<span class="nc" id="L137">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L223">        Conectar con = new Conectar();</span>
+<span class="nc" id="L224">        Connection miConexion = con.conexion();</span>
 
-<span class="nc" id="L139">        String SQL = &quot;SELECT * FROM pedido WHERE id_pedido =&quot;+id_pedido;</span>
+<span class="nc" id="L226">        String SQL = &quot;SELECT * FROM pedido WHERE id_pedido =&quot;+id_pedido;</span>
 
-<span class="nc" id="L141">        Statement miEstatement = miConexion.createStatement();</span>
+<span class="nc" id="L228">        Statement miEstatement = miConexion.createStatement();</span>
 
-<span class="nc" id="L143">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
+<span class="nc" id="L230">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
 
-<span class="nc" id="L145">        return rs;</span>
+<span class="nc" id="L232">        return rs;</span>
 
     }
 
     public double obtenerMonto(int id_pedido) throws SQLException {
 
-<span class="nc" id="L151">        Conectar con = new Conectar();</span>
-<span class="nc" id="L152">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L238">        Conectar con = new Conectar();</span>
+<span class="nc" id="L239">        Connection miConexion = con.conexion();</span>
 
-<span class="nc" id="L154">        String SQL = &quot;SELECT * FROM pedido WHERE id_pedido = &quot; + id_pedido +&quot; AND estado = 'Activo'&quot;;</span>
+<span class="nc" id="L241">        String SQL = &quot;SELECT * FROM pedido WHERE id_pedido = &quot; + id_pedido +&quot; AND estado = 'Activo'&quot;;</span>
 
-<span class="nc" id="L156">        Statement miEstatement = miConexion.createStatement();</span>
+<span class="nc" id="L243">        Statement miEstatement = miConexion.createStatement();</span>
 
-<span class="nc" id="L158">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
+<span class="nc" id="L245">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
 
-<span class="nc" id="L160">        double monto = 0;</span>
-<span class="nc bnc" id="L161" title="All 2 branches missed.">        while (rs.next()) {</span>
+<span class="nc" id="L247">        double monto = 0;</span>
+<span class="nc bnc" id="L248" title="All 2 branches missed.">        while (rs.next()) {</span>
 
-<span class="nc" id="L163">            monto = monto + rs.getDouble(&quot;precio&quot;);</span>
+<span class="nc" id="L250">            monto = monto + rs.getDouble(&quot;precio&quot;);</span>
         }
-<span class="nc" id="L165">        return monto;</span>
+<span class="nc" id="L252">        return monto;</span>
     }
 
     public void ActualizarEstadoPedido(int id_pedido, String estadoPedido) throws SQLException {
 
-<span class="nc" id="L170">        Conectar con = new Conectar();</span>
-<span class="nc" id="L171">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L257">        Conectar con = new Conectar();</span>
+<span class="nc" id="L258">        Connection miConexion = con.conexion();</span>
 
-<span class="nc" id="L173">        String SQL = &quot;UPDATE pedido SET estado = '&quot; + estadoPedido + &quot;' WHERE id_pedido = &quot; + id_pedido;</span>
+<span class="nc" id="L260">        String SQL = &quot;UPDATE pedido SET estado = '&quot; + estadoPedido + &quot;' WHERE id_pedido = &quot; + id_pedido;</span>
 
-<span class="nc" id="L175">        Statement modificar = miConexion.createStatement();</span>
+<span class="nc" id="L262">        Statement modificar = miConexion.createStatement();</span>
 
-<span class="nc" id="L177">        modificar.executeUpdate(SQL);</span>
-<span class="nc" id="L178">    }</span>
+<span class="nc" id="L264">        modificar.executeUpdate(SQL);</span>
+<span class="nc" id="L265">    }</span>
     
     public void ActualizarEstadoPedidoCancelado(int id_pedido) throws SQLException {
 
-<span class="nc" id="L182">        Conectar con = new Conectar();</span>
-<span class="nc" id="L183">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L269">        Conectar con = new Conectar();</span>
+<span class="nc" id="L270">        Connection miConexion = con.conexion();</span>
 
-<span class="nc" id="L185">        String SQL = &quot;UPDATE pedido SET estado = 'Cancelado' WHERE id_pedido = &quot; + id_pedido;</span>
+<span class="nc" id="L272">        String SQL = &quot;UPDATE pedido SET estado = 'Cancelado' WHERE id_pedido = &quot; + id_pedido;</span>
 
-<span class="nc" id="L187">        Statement modificar = miConexion.createStatement();</span>
+<span class="nc" id="L274">        Statement modificar = miConexion.createStatement();</span>
 
-<span class="nc" id="L189">        modificar.executeUpdate(SQL);</span>
-<span class="nc" id="L190">    }</span>
+<span class="nc" id="L276">        modificar.executeUpdate(SQL);</span>
+<span class="nc" id="L277">    }</span>
 
     //no la uso todavia, despues ver que se puede hacer con esto!!!!
     public ResultSet obtenerTarifaEnvio(int id_pedido) throws SQLException {
 
-<span class="nc" id="L195">        Conectar con = new Conectar();</span>
-<span class="nc" id="L196">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L282">        Conectar con = new Conectar();</span>
+<span class="nc" id="L283">        Connection miConexion = con.conexion();</span>
 
-<span class="nc" id="L198">        String SQL = &quot;SELECT tarifaE FROM zonas z join clientes c join pedidos p WHERE p.id_pedido =&quot;+id_pedido;</span>
+<span class="nc" id="L285">        String SQL = &quot;SELECT tarifaE FROM zonas z join clientes c join pedidos p WHERE p.id_pedido =&quot;+id_pedido;</span>
 
-<span class="nc" id="L200">        Statement miEstatement = miConexion.createStatement();</span>
+<span class="nc" id="L287">        Statement miEstatement = miConexion.createStatement();</span>
 
-<span class="nc" id="L202">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
+<span class="nc" id="L289">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
 
-<span class="nc" id="L204">        return rs;</span>
+<span class="nc" id="L291">        return rs;</span>
     }
     
     // VOY A USAR ESTE METODO PARA DECIR QUE EL PEDIDO ESTA ENTREGADO
    public void eliminarDetallesPedido(Eliminar_Pedido modelo)throws SQLException {
-<span class="nc" id="L209">       Conectar con = new Conectar();</span>
-<span class="nc" id="L210">        Connection miConexion = con.conexion();</span>
-<span class="nc" id="L211">        int id_pedido=Integer.parseInt(modelo.Codigo_EP.getText());</span>
-<span class="nc" id="L212">        String estado = modelo.ingresar_Estado_P2.getSelectedItem().toString();</span>
-<span class="nc" id="L213">        String SQL = &quot;UPDATE pedido SET estado = '&quot;+estado+&quot;' WHERE id_pedido = &quot; + id_pedido;</span>
+<span class="nc" id="L296">       Conectar con = new Conectar();</span>
+<span class="nc" id="L297">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L298">        int id_pedido=Integer.parseInt(modelo.Codigo_EP.getText());</span>
+<span class="nc" id="L299">        String estado = modelo.ingresar_Estado_P2.getSelectedItem().toString();</span>
+<span class="nc" id="L300">        String SQL = &quot;UPDATE pedido SET estado = '&quot;+estado+&quot;' WHERE id_pedido = &quot; + id_pedido;</span>
 
-<span class="nc" id="L215">        Statement modificar = miConexion.createStatement();</span>
+<span class="nc" id="L302">        Statement modificar = miConexion.createStatement();</span>
 
-<span class="nc" id="L217">        modificar.executeUpdate(SQL);</span>
-<span class="nc" id="L218">   }</span>
+<span class="nc" id="L304">        modificar.executeUpdate(SQL);</span>
+<span class="nc" id="L305">   }</span>
    
 /* este metodo solo cuenta como uno cada comida vendida en el pedido (No uso)
    public int obtenerCantidadVendida(int idComida) throws SQLException{
@@ -233,33 +320,80 @@ import subPaneles.Eliminar_Pedido;
    
    //el modulo que sigue no los uso. !! ! ! !! ! !
    public ResultSet obtenerPeriodoParaComidasMasVendidas(String desde, String hasta) throws SQLException{
-<span class="nc" id="L236">        Conectar con = new Conectar();</span>
-<span class="nc" id="L237">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L323">        Conectar con = new Conectar();</span>
+<span class="nc" id="L324">        Connection miConexion = con.conexion();</span>
          
-<span class="nc" id="L239">        String SQL = &quot;SELECT * FROM detallepedido WHERE fecha &gt;= '&quot;+desde+&quot;' AND fecha &lt;= '&quot;+hasta+&quot;' AND estado = 1&quot;;</span>
+<span class="nc" id="L326">        String SQL = &quot;SELECT * FROM detallepedido WHERE fecha &gt;= '&quot;+desde+&quot;' AND fecha &lt;= '&quot;+hasta+&quot;' AND estado = 1&quot;;</span>
 
-<span class="nc" id="L241">        Statement miEstatement = miConexion.createStatement();</span>
+<span class="nc" id="L328">        Statement miEstatement = miConexion.createStatement();</span>
 
-<span class="nc" id="L243">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
-<span class="nc" id="L244">        return rs;</span>
+<span class="nc" id="L330">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
+<span class="nc" id="L331">        return rs;</span>
    }
    
    //OBTENGO LOS PEDIDOS QUE SE HICIERON EN UN PERIODO X DE TIEMPO....
    
    public ResultSet obtenerPeriodoPedidos(String desde, String hasta) throws SQLException{
-<span class="nc" id="L250">        Conectar con = new Conectar();</span>
-<span class="nc" id="L251">        Connection miConexion = con.conexion();</span>
+<span class="nc" id="L337">        Conectar con = new Conectar();</span>
+<span class="nc" id="L338">        Connection miConexion = con.conexion();</span>
          
-<span class="nc" id="L253">        String SQL = &quot;SELECT * FROM pedido WHERE fecha_entrega &gt;= '&quot;+desde+&quot;' AND fecha_entrega &lt;= '&quot;+hasta+&quot;' AND estado = 'Entregado' or estado ='Cancelado'&quot;;</span>
+<span class="nc" id="L340">        String SQL = &quot;SELECT * FROM pedido WHERE fecha_entrega &gt;= '&quot;+desde+&quot;' AND fecha_entrega &lt;= '&quot;+hasta+&quot;' AND estado = 'Entregado' or estado ='Cancelado'&quot;;</span>
 
-<span class="nc" id="L255">        Statement miEstatement = miConexion.createStatement();</span>
+<span class="nc" id="L342">        Statement miEstatement = miConexion.createStatement();</span>
 
-<span class="nc" id="L257">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
-<span class="nc" id="L258">        return rs;</span>
+<span class="nc" id="L344">        ResultSet rs = miEstatement.executeQuery(SQL);</span>
+<span class="nc" id="L345">        return rs;</span>
    }
 
     public void guardarPedido(String diaAR, String dir_AD, java.util.Date fecha_A_rP, java.util.Date fecha_A_dP, String text, String text0, String trim, Float valueOf, int parseInt, int cliente_ingreso) {
-<span class="nc" id="L262">        throw new UnsupportedOperationException(&quot;Not supported yet.&quot;); //To change body of generated methods, choose Tools | Templates.</span>
+<span class="nc" id="L349">        throw new UnsupportedOperationException(&quot;Not supported yet.&quot;); //To change body of generated methods, choose Tools | Templates.</span>
+    }
+    
+    
+    public String obtenerMes(String mesC){
+<span class="nc" id="L354">        String mes=&quot;&quot;;</span>
+ 
+<span class="nc bnc" id="L356" title="All 50 branches missed.">       switch (mesC) </span>
+        {
+<span class="nc" id="L358">            case &quot;ene&quot;:  mes = &quot;enero&quot;;</span>
+<span class="nc" id="L359">                     break;</span>
+<span class="nc" id="L360">            case &quot;feb&quot;:   mes = &quot;febrero&quot;;</span>
+<span class="nc" id="L361">                     break;</span>
+<span class="nc" id="L362">            case &quot;mar&quot;:   mes = &quot;marzo&quot;;</span>
+<span class="nc" id="L363">                     break;</span>
+<span class="nc" id="L364">            case &quot;abr&quot;:   mes = &quot;abril&quot;;</span>
+<span class="nc" id="L365">                     break;</span>
+<span class="nc" id="L366">            case &quot;may&quot;:   mes = &quot;mayo&quot;;</span>
+<span class="nc" id="L367">                     break;</span>
+<span class="nc" id="L368">            case &quot;jun&quot;:   mes= &quot;junio&quot;;</span>
+<span class="nc" id="L369">                     break;</span>
+<span class="nc" id="L370">            case &quot;jul&quot;:   mes = &quot;julio&quot;;</span>
+<span class="nc" id="L371">                     break;</span>
+                     
+                     
+<span class="nc" id="L374">            case &quot;ago&quot;:   mes = &quot;agosto&quot;;</span>
+<span class="nc" id="L375">                     break;         </span>
+                
+<span class="nc" id="L377">            case &quot;sep&quot;: mes = &quot;septiembre&quot;;</span>
+<span class="nc" id="L378">                     break;</span>
+                      
+<span class="nc" id="L380">           case &quot;oct&quot;: mes = &quot;octubre&quot;;</span>
+<span class="nc" id="L381">                     break;          </span>
+                     
+<span class="nc" id="L383">           case &quot;nov&quot;: mes = &quot;noviembre&quot;;</span>
+<span class="nc" id="L384">                     break;                     </span>
+                     
+<span class="nc" id="L386">           case &quot;dic&quot;: mes = &quot;diciembre&quot;;</span>
+<span class="nc" id="L387">              break;   </span>
+              
+              
+<span class="nc" id="L390">            default:  mes = &quot;00&quot;;</span>
+                     break;
+                     
+        }
+        
+        
+<span class="nc" id="L396">        return mes;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

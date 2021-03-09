@@ -43,226 +43,210 @@ public class Monto_Inicial extends javax.swing.JFrame {
 <span class="nc" id="L43">        jPanel1 = new javax.swing.JPanel();</span>
 <span class="nc" id="L44">        jLabel1 = new javax.swing.JLabel();</span>
 <span class="nc" id="L45">        Cerrar_btn = new necesario.MaterialButton();</span>
-<span class="nc" id="L46">        jLabel3 = new javax.swing.JLabel();</span>
-<span class="nc" id="L47">        jLabel4 = new javax.swing.JLabel();</span>
-<span class="nc" id="L48">        jLabel5 = new javax.swing.JLabel();</span>
-<span class="nc" id="L49">        jLabel6 = new javax.swing.JLabel();</span>
-<span class="nc" id="L50">        Registrar_Caja_inicial = new necesario.MaterialButton();</span>
-<span class="nc" id="L51">        M_Final = new javax.swing.JLabel();</span>
-<span class="nc" id="L52">        Mont_Final = new javax.swing.JLabel();</span>
-<span class="nc" id="L53">        ValorActual = new javax.swing.JLabel();</span>
-<span class="nc" id="L54">        M_Final1 = new javax.swing.JLabel();</span>
-<span class="nc" id="L55">        Ingreso_Mont_Inicial = new RSMaterialComponent.RSTextFieldMaterial();</span>
-<span class="nc" id="L56">        M_Final2 = new javax.swing.JLabel();</span>
-<span class="nc" id="L57">        Ingreso_cod_sucursal_IM = new RSMaterialComponent.RSTextFieldMaterial();</span>
-<span class="nc" id="L58">        M_Final3 = new javax.swing.JLabel();</span>
+<span class="nc" id="L46">        Registrar_Caja_inicial = new necesario.MaterialButton();</span>
+<span class="nc" id="L47">        M_Final = new javax.swing.JLabel();</span>
+<span class="nc" id="L48">        Mont_Final = new javax.swing.JLabel();</span>
+<span class="nc" id="L49">        ValorActual = new javax.swing.JLabel();</span>
+<span class="nc" id="L50">        M_Final1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L51">        Ingreso_Mont_Inicial = new RSMaterialComponent.RSTextFieldMaterial();</span>
+<span class="nc" id="L52">        M_Final2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L53">        Ingreso_cod_sucursal_IM = new RSMaterialComponent.RSTextFieldMaterial();</span>
+<span class="nc" id="L54">        M_Final3 = new javax.swing.JLabel();</span>
+<span class="nc" id="L55">        M_Final4 = new javax.swing.JLabel();</span>
+<span class="nc" id="L56">        M_Final5 = new javax.swing.JLabel();</span>
 
-<span class="nc" id="L60">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
-<span class="nc" id="L61">        setUndecorated(true);</span>
+<span class="nc" id="L58">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L59">        setUndecorated(true);</span>
 
-<span class="nc" id="L63">        jPanel1.setBackground(new java.awt.Color(255, 255, 255));</span>
-<span class="nc" id="L64">        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray));</span>
-<span class="nc" id="L65">        jPanel1.setFocusCycleRoot(true);</span>
+<span class="nc" id="L61">        jPanel1.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L62">        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray));</span>
+<span class="nc" id="L63">        jPanel1.setFocusCycleRoot(true);</span>
 
-<span class="nc" id="L67">        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/img_subPaneles/Registro_Notificaciones.png&quot;))); // NOI18N</span>
+<span class="nc" id="L65">        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/img_subPaneles/Registro_Notificaciones.png&quot;))); // NOI18N</span>
 
-<span class="nc" id="L69">        Cerrar_btn.setBackground(new java.awt.Color(153, 153, 255));</span>
-<span class="nc" id="L70">        Cerrar_btn.setForeground(new java.awt.Color(255, 255, 255));</span>
-<span class="nc" id="L71">        Cerrar_btn.setText(&quot;Volver&quot;);</span>
-<span class="nc" id="L72">        Cerrar_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
-<span class="nc" id="L73">        Cerrar_btn.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L67">        Cerrar_btn.setBackground(new java.awt.Color(153, 153, 255));</span>
+<span class="nc" id="L68">        Cerrar_btn.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L69">        Cerrar_btn.setText(&quot;Volver&quot;);</span>
+<span class="nc" id="L70">        Cerrar_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
+<span class="nc" id="L71">        Cerrar_btn.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L75">                Cerrar_btnActionPerformed(evt);</span>
-<span class="nc" id="L76">            }</span>
+<span class="nc" id="L73">                Cerrar_btnActionPerformed(evt);</span>
+<span class="nc" id="L74">            }</span>
         });
 
-<span class="nc" id="L79">        jLabel3.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
-<span class="nc" id="L80">        jLabel3.setForeground(new java.awt.Color(153, 153, 153));</span>
-<span class="nc" id="L81">        jLabel3.setText(&quot;Hora:&quot;);</span>
-
-<span class="nc" id="L83">        jLabel4.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
-<span class="nc" id="L84">        jLabel4.setForeground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L85">        jLabel4.setText(&quot;20:00&quot;);</span>
-
-<span class="nc" id="L87">        jLabel5.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
-<span class="nc" id="L88">        jLabel5.setForeground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L89">        jLabel5.setText(&quot;12/10/2020&quot;);</span>
-
-<span class="nc" id="L91">        jLabel6.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
-<span class="nc" id="L92">        jLabel6.setForeground(new java.awt.Color(153, 153, 153));</span>
-<span class="nc" id="L93">        jLabel6.setText(&quot;Fecha:&quot;);</span>
-
-<span class="nc" id="L95">        Registrar_Caja_inicial.setBackground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L96">        Registrar_Caja_inicial.setForeground(new java.awt.Color(255, 255, 255));</span>
-<span class="nc" id="L97">        Registrar_Caja_inicial.setText(&quot;Registrar Caja&quot;);</span>
-<span class="nc" id="L98">        Registrar_Caja_inicial.setContentAreaFilled(false);</span>
-<span class="nc" id="L99">        Registrar_Caja_inicial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
-<span class="nc" id="L100">        Registrar_Caja_inicial.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L77">        Registrar_Caja_inicial.setBackground(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L78">        Registrar_Caja_inicial.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L79">        Registrar_Caja_inicial.setText(&quot;Registrar Caja&quot;);</span>
+<span class="nc" id="L80">        Registrar_Caja_inicial.setContentAreaFilled(false);</span>
+<span class="nc" id="L81">        Registrar_Caja_inicial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
+<span class="nc" id="L82">        Registrar_Caja_inicial.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L102">                Registrar_Caja_inicialActionPerformed(evt);</span>
-<span class="nc" id="L103">            }</span>
+<span class="nc" id="L84">                Registrar_Caja_inicialActionPerformed(evt);</span>
+<span class="nc" id="L85">            }</span>
         });
 
-<span class="nc" id="L106">        M_Final.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
-<span class="nc" id="L107">        M_Final.setForeground(new java.awt.Color(153, 153, 153));</span>
-<span class="nc" id="L108">        M_Final.setText(&quot;Monto Final:    $&quot;);</span>
+<span class="nc" id="L88">        M_Final.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
+<span class="nc" id="L89">        M_Final.setForeground(new java.awt.Color(153, 153, 153));</span>
+<span class="nc" id="L90">        M_Final.setText(&quot;Monto Final:    $&quot;);</span>
 
-<span class="nc" id="L110">        Mont_Final.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
-<span class="nc" id="L111">        Mont_Final.setForeground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L112">        Mont_Final.setText(&quot;10000&quot;);</span>
+<span class="nc" id="L92">        Mont_Final.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
+<span class="nc" id="L93">        Mont_Final.setForeground(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L94">        Mont_Final.setText(&quot;10000&quot;);</span>
 
-<span class="nc" id="L114">        ValorActual.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
-<span class="nc" id="L115">        ValorActual.setForeground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L116">        ValorActual.setText(&quot;0,00&quot;);</span>
+<span class="nc" id="L96">        ValorActual.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
+<span class="nc" id="L97">        ValorActual.setForeground(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L98">        ValorActual.setText(&quot;0,00&quot;);</span>
 
-<span class="nc" id="L118">        M_Final1.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
-<span class="nc" id="L119">        M_Final1.setForeground(new java.awt.Color(153, 153, 153));</span>
-<span class="nc" id="L120">        M_Final1.setText(&quot;Monto Inicial:  $&quot;);</span>
+<span class="nc" id="L100">        M_Final1.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
+<span class="nc" id="L101">        M_Final1.setForeground(new java.awt.Color(153, 153, 153));</span>
+<span class="nc" id="L102">        M_Final1.setText(&quot;Monto Inicial:  $&quot;);</span>
 
-<span class="nc" id="L122">        Ingreso_Mont_Inicial.setForeground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L123">        Ingreso_Mont_Inicial.setColorMaterial(new java.awt.Color(102, 102, 255));</span>
-<span class="nc" id="L124">        Ingreso_Mont_Inicial.setDisabledTextColor(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L125">        Ingreso_Mont_Inicial.setPhColor(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L126">        Ingreso_Mont_Inicial.setPlaceholder(&quot;Dni/Cod.Cli/Cod.Paq/Cod.Cad&quot;);</span>
-<span class="nc" id="L127">        Ingreso_Mont_Inicial.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L104">        Ingreso_Mont_Inicial.setForeground(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L105">        Ingreso_Mont_Inicial.setColorMaterial(new java.awt.Color(102, 102, 255));</span>
+<span class="nc" id="L106">        Ingreso_Mont_Inicial.setDisabledTextColor(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L107">        Ingreso_Mont_Inicial.setPhColor(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L108">        Ingreso_Mont_Inicial.setPlaceholder(&quot;Ingrese Monto Inicial..&quot;);</span>
+<span class="nc" id="L109">        Ingreso_Mont_Inicial.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L129">                Ingreso_Mont_InicialActionPerformed(evt);</span>
-<span class="nc" id="L130">            }</span>
+<span class="nc" id="L111">                Ingreso_Mont_InicialActionPerformed(evt);</span>
+<span class="nc" id="L112">            }</span>
         });
 
-<span class="nc" id="L133">        M_Final2.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
-<span class="nc" id="L134">        M_Final2.setForeground(new java.awt.Color(153, 153, 153));</span>
-<span class="nc" id="L135">        M_Final2.setText(&quot;Ingrese Monto Inicial:  $&quot;);</span>
+<span class="nc" id="L115">        M_Final2.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
+<span class="nc" id="L116">        M_Final2.setForeground(new java.awt.Color(102, 153, 255));</span>
+<span class="nc" id="L117">        M_Final2.setText(&quot;Ingrese Monto Inicial&quot;);</span>
 
-<span class="nc" id="L137">        Ingreso_cod_sucursal_IM.setForeground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L138">        Ingreso_cod_sucursal_IM.setColorMaterial(new java.awt.Color(102, 102, 255));</span>
-<span class="nc" id="L139">        Ingreso_cod_sucursal_IM.setDisabledTextColor(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L140">        Ingreso_cod_sucursal_IM.setPhColor(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L141">        Ingreso_cod_sucursal_IM.setPlaceholder(&quot;Dni/Cod.Cli/Cod.Paq/Cod.Cad&quot;);</span>
-<span class="nc" id="L142">        Ingreso_cod_sucursal_IM.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L119">        Ingreso_cod_sucursal_IM.setForeground(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L120">        Ingreso_cod_sucursal_IM.setColorMaterial(new java.awt.Color(102, 102, 255));</span>
+<span class="nc" id="L121">        Ingreso_cod_sucursal_IM.setDisabledTextColor(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L122">        Ingreso_cod_sucursal_IM.setPhColor(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L123">        Ingreso_cod_sucursal_IM.setPlaceholder(&quot;Ingrese ID Sucursal..&quot;);</span>
+<span class="nc" id="L124">        Ingreso_cod_sucursal_IM.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L144">                Ingreso_cod_sucursal_IMActionPerformed(evt);</span>
-<span class="nc" id="L145">            }</span>
+<span class="nc" id="L126">                Ingreso_cod_sucursal_IMActionPerformed(evt);</span>
+<span class="nc" id="L127">            }</span>
         });
 
-<span class="nc" id="L148">        M_Final3.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
-<span class="nc" id="L149">        M_Final3.setForeground(new java.awt.Color(153, 153, 153));</span>
-<span class="nc" id="L150">        M_Final3.setText(&quot;Ingrese Cod Sucursal:  $&quot;);</span>
+<span class="nc" id="L130">        M_Final3.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
+<span class="nc" id="L131">        M_Final3.setForeground(new java.awt.Color(102, 153, 255));</span>
+<span class="nc" id="L132">        M_Final3.setText(&quot;Ingrese Cod Sucursal&quot;);</span>
 
-<span class="nc" id="L152">        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);</span>
-<span class="nc" id="L153">        jPanel1.setLayout(jPanel1Layout);</span>
-<span class="nc" id="L154">        jPanel1Layout.setHorizontalGroup(</span>
-<span class="nc" id="L155">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L156">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
-<span class="nc" id="L157">                .addGap(22, 22, 22)</span>
-<span class="nc" id="L158">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L159">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
-<span class="nc" id="L160">                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L161">                            .addComponent(jLabel1)</span>
-<span class="nc" id="L162">                            .addComponent(Cerrar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L163">                            .addGroup(jPanel1Layout.createSequentialGroup()</span>
-<span class="nc" id="L164">                                .addComponent(jLabel6)</span>
-<span class="nc" id="L165">                                .addGap(69, 69, 69)</span>
-<span class="nc" id="L166">                                .addComponent(jLabel5)))</span>
-<span class="nc" id="L167">                        .addContainerGap(20, Short.MAX_VALUE))</span>
-<span class="nc" id="L168">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
-<span class="nc" id="L169">                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
-<span class="nc" id="L170">                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L171">                                .addGroup(jPanel1Layout.createSequentialGroup()</span>
-<span class="nc" id="L172">                                    .addComponent(M_Final1)</span>
-<span class="nc" id="L173">                                    .addGap(18, 18, 18)</span>
-<span class="nc" id="L174">                                    .addComponent(ValorActual))</span>
-<span class="nc" id="L175">                                .addGroup(jPanel1Layout.createSequentialGroup()</span>
-<span class="nc" id="L176">                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L177">                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()</span>
-<span class="nc" id="L178">                                            .addComponent(M_Final)</span>
-<span class="nc" id="L179">                                            .addGap(14, 14, 14))</span>
-<span class="nc" id="L180">                                        .addGroup(jPanel1Layout.createSequentialGroup()</span>
-<span class="nc" id="L181">                                            .addComponent(jLabel3)</span>
-<span class="nc" id="L182">                                            .addGap(90, 90, 90)))</span>
-<span class="nc" id="L183">                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
-<span class="nc" id="L184">                                        .addComponent(Mont_Final, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-<span class="nc" id="L185">                                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))</span>
-<span class="nc" id="L186">                                .addComponent(Registrar_Caja_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L187">                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L188">                                .addComponent(M_Final2)</span>
-<span class="nc" id="L189">                                .addComponent(Ingreso_Mont_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L190">                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L191">                                .addComponent(Ingreso_cod_sucursal_IM, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L192">                                .addComponent(M_Final3)))</span>
-<span class="nc" id="L193">                        .addGap(0, 0, Short.MAX_VALUE))))</span>
+<span class="nc" id="L134">        M_Final4.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
+<span class="nc" id="L135">        M_Final4.setForeground(new java.awt.Color(153, 153, 153));</span>
+<span class="nc" id="L136">        M_Final4.setText(&quot;#&quot;);</span>
+
+<span class="nc" id="L138">        M_Final5.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
+<span class="nc" id="L139">        M_Final5.setForeground(new java.awt.Color(153, 153, 153));</span>
+<span class="nc" id="L140">        M_Final5.setText(&quot;$&quot;);</span>
+
+<span class="nc" id="L142">        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);</span>
+<span class="nc" id="L143">        jPanel1.setLayout(jPanel1Layout);</span>
+<span class="nc" id="L144">        jPanel1Layout.setHorizontalGroup(</span>
+<span class="nc" id="L145">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L146">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L147">                .addGap(22, 22, 22)</span>
+<span class="nc" id="L148">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L149">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L150">                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L151">                            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L152">                                .addComponent(M_Final1)</span>
+<span class="nc" id="L153">                                .addGap(18, 18, 18)</span>
+<span class="nc" id="L154">                                .addComponent(ValorActual))</span>
+<span class="nc" id="L155">                            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L156">                                .addComponent(M_Final)</span>
+<span class="nc" id="L157">                                .addGap(14, 14, 14)</span>
+<span class="nc" id="L158">                                .addComponent(Mont_Final)))</span>
+<span class="nc" id="L159">                        .addGap(0, 0, Short.MAX_VALUE))</span>
+<span class="nc" id="L160">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L161">                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L162">                            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L163">                                .addGap(5, 5, 5)</span>
+<span class="nc" id="L164">                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
+<span class="nc" id="L165">                                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L166">                                        .addComponent(M_Final5)</span>
+<span class="nc" id="L167">                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L168">                                        .addComponent(Ingreso_Mont_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L169">                                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L170">                                        .addComponent(M_Final4)</span>
+<span class="nc" id="L171">                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L172">                                        .addComponent(Ingreso_cod_sucursal_IM, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))</span>
+<span class="nc" id="L173">                            .addComponent(Registrar_Caja_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L174">                        .addGap(0, 0, Short.MAX_VALUE))</span>
+<span class="nc" id="L175">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L176">                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L177">                            .addComponent(jLabel1)</span>
+<span class="nc" id="L178">                            .addComponent(Cerrar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L179">                            .addComponent(M_Final2)</span>
+<span class="nc" id="L180">                            .addComponent(M_Final3))</span>
+<span class="nc" id="L181">                        .addContainerGap(20, Short.MAX_VALUE))))</span>
         );
-<span class="nc" id="L195">        jPanel1Layout.setVerticalGroup(</span>
-<span class="nc" id="L196">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L197">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
-<span class="nc" id="L198">                .addContainerGap()</span>
-<span class="nc" id="L199">                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L200">                .addGap(38, 38, 38)</span>
-<span class="nc" id="L201">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L202">                    .addComponent(jLabel6)</span>
-<span class="nc" id="L203">                    .addComponent(jLabel5))</span>
+<span class="nc" id="L183">        jPanel1Layout.setVerticalGroup(</span>
+<span class="nc" id="L184">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L185">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
+<span class="nc" id="L186">                .addContainerGap()</span>
+<span class="nc" id="L187">                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L188">                .addGap(40, 40, 40)</span>
+<span class="nc" id="L189">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L190">                    .addComponent(M_Final)</span>
+<span class="nc" id="L191">                    .addComponent(Mont_Final))</span>
+<span class="nc" id="L192">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L193">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L194">                    .addComponent(M_Final1)</span>
+<span class="nc" id="L195">                    .addComponent(ValorActual))</span>
+<span class="nc" id="L196">                .addGap(28, 28, 28)</span>
+<span class="nc" id="L197">                .addComponent(M_Final2)</span>
+<span class="nc" id="L198">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L199">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
+<span class="nc" id="L200">                    .addComponent(Ingreso_Mont_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L201">                    .addComponent(M_Final5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L202">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)</span>
+<span class="nc" id="L203">                .addComponent(M_Final3)</span>
 <span class="nc" id="L204">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
 <span class="nc" id="L205">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L206">                    .addComponent(jLabel3)</span>
-<span class="nc" id="L207">                    .addComponent(jLabel4))</span>
-<span class="nc" id="L208">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L209">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L210">                    .addComponent(M_Final)</span>
-<span class="nc" id="L211">                    .addComponent(Mont_Final))</span>
-<span class="nc" id="L212">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L213">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L214">                    .addComponent(M_Final1)</span>
-<span class="nc" id="L215">                    .addComponent(ValorActual))</span>
-<span class="nc" id="L216">                .addGap(30, 30, 30)</span>
-<span class="nc" id="L217">                .addComponent(M_Final2)</span>
-<span class="nc" id="L218">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L219">                .addComponent(Ingreso_Mont_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L220">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)</span>
-<span class="nc" id="L221">                .addComponent(M_Final3)</span>
-<span class="nc" id="L222">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L223">                .addComponent(Ingreso_cod_sucursal_IM, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L224">                .addGap(27, 27, 27)</span>
-<span class="nc" id="L225">                .addComponent(Registrar_Caja_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L226">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L227">                .addComponent(Cerrar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L228">                .addContainerGap())</span>
+<span class="nc" id="L206">                    .addComponent(Ingreso_cod_sucursal_IM, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L207">                    .addComponent(M_Final4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
+<span class="nc" id="L208">                .addGap(85, 85, 85)</span>
+<span class="nc" id="L209">                .addComponent(Registrar_Caja_inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L210">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
+<span class="nc" id="L211">                .addComponent(Cerrar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L212">                .addContainerGap())</span>
         );
 
-<span class="nc" id="L231">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
-<span class="nc" id="L232">        getContentPane().setLayout(layout);</span>
-<span class="nc" id="L233">        layout.setHorizontalGroup(</span>
-<span class="nc" id="L234">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L235">            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L215">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L216">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L217">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L218">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L219">            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
         );
-<span class="nc" id="L237">        layout.setVerticalGroup(</span>
-<span class="nc" id="L238">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L239">            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
+<span class="nc" id="L221">        layout.setVerticalGroup(</span>
+<span class="nc" id="L222">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L223">            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
         );
 
-<span class="nc" id="L242">        pack();</span>
-<span class="nc" id="L243">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+<span class="nc" id="L226">        pack();</span>
+<span class="nc" id="L227">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
 
     private void Cerrar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cerrar_btnActionPerformed
      
-<span class="nc" id="L247">        this.dispose();</span>
-<span class="nc" id="L248">    }//GEN-LAST:event_Cerrar_btnActionPerformed</span>
+<span class="nc" id="L231">        this.dispose();</span>
+<span class="nc" id="L232">    }//GEN-LAST:event_Cerrar_btnActionPerformed</span>
 
     private void Registrar_Caja_inicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Registrar_Caja_inicialActionPerformed
-<span class="nc" id="L251">      ControlCaja cc = new ControlCaja();</span>
+<span class="nc" id="L235">      ControlCaja cc = new ControlCaja();</span>
         try {
-<span class="nc" id="L253">            cc.abrirCaja(this);</span>
-<span class="nc" id="L254">        } catch (SQLException ex) {</span>
-<span class="nc" id="L255">            Logger.getLogger(Monto_Inicial.class.getName()).log(Level.SEVERE, null, ex);</span>
-<span class="nc" id="L256">        }</span>
-<span class="nc" id="L257">    }//GEN-LAST:event_Registrar_Caja_inicialActionPerformed</span>
+<span class="nc" id="L237">            cc.abrirCaja(this);</span>
+<span class="nc" id="L238">        } catch (SQLException ex) {</span>
+<span class="nc" id="L239">            Logger.getLogger(Monto_Inicial.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L240">        }</span>
+<span class="nc" id="L241">    }//GEN-LAST:event_Registrar_Caja_inicialActionPerformed</span>
 
     private void Ingreso_Mont_InicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ingreso_Mont_InicialActionPerformed
         // TODO add your handling code here:
-<span class="nc" id="L261">    }//GEN-LAST:event_Ingreso_Mont_InicialActionPerformed</span>
+<span class="nc" id="L245">    }//GEN-LAST:event_Ingreso_Mont_InicialActionPerformed</span>
 
     private void Ingreso_cod_sucursal_IMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ingreso_cod_sucursal_IMActionPerformed
         // TODO add your handling code here:
-<span class="nc" id="L265">    }//GEN-LAST:event_Ingreso_cod_sucursal_IMActionPerformed</span>
+<span class="nc" id="L249">    }//GEN-LAST:event_Ingreso_cod_sucursal_IMActionPerformed</span>
 
     /**
      * @param args the command line arguments
@@ -274,21 +258,21 @@ public class Monto_Inicial extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-<span class="nc bnc" id="L277" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
-<span class="nc bnc" id="L278" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName())) {</span>
-<span class="nc" id="L279">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
-<span class="nc" id="L280">                    break;</span>
+<span class="nc bnc" id="L261" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
+<span class="nc bnc" id="L262" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName())) {</span>
+<span class="nc" id="L263">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
+<span class="nc" id="L264">                    break;</span>
                 }
             }
-<span class="nc" id="L283">        } catch (ClassNotFoundException ex) {</span>
-<span class="nc" id="L284">            java.util.logging.Logger.getLogger(Monto_Inicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
-<span class="nc" id="L285">        } catch (InstantiationException ex) {</span>
-<span class="nc" id="L286">            java.util.logging.Logger.getLogger(Monto_Inicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
-<span class="nc" id="L287">        } catch (IllegalAccessException ex) {</span>
-<span class="nc" id="L288">            java.util.logging.Logger.getLogger(Monto_Inicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
-<span class="nc" id="L289">        } catch (javax.swing.UnsupportedLookAndFeelException ex) {</span>
-<span class="nc" id="L290">            java.util.logging.Logger.getLogger(Monto_Inicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
-<span class="nc" id="L291">        }</span>
+<span class="nc" id="L267">        } catch (ClassNotFoundException ex) {</span>
+<span class="nc" id="L268">            java.util.logging.Logger.getLogger(Monto_Inicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L269">        } catch (InstantiationException ex) {</span>
+<span class="nc" id="L270">            java.util.logging.Logger.getLogger(Monto_Inicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L271">        } catch (IllegalAccessException ex) {</span>
+<span class="nc" id="L272">            java.util.logging.Logger.getLogger(Monto_Inicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L273">        } catch (javax.swing.UnsupportedLookAndFeelException ex) {</span>
+<span class="nc" id="L274">            java.util.logging.Logger.getLogger(Monto_Inicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L275">        }</span>
         //&lt;/editor-fold&gt;
         //&lt;/editor-fold&gt;
         //&lt;/editor-fold&gt;
@@ -547,17 +531,17 @@ public class Monto_Inicial extends javax.swing.JFrame {
         //&lt;/editor-fold&gt;
 
         /* Create and display the form */
-<span class="nc" id="L550">        java.awt.EventQueue.invokeLater(new Runnable() {</span>
+<span class="nc" id="L534">        java.awt.EventQueue.invokeLater(new Runnable() {</span>
             
             public void run() {
                 try {
-<span class="nc" id="L554">                    new Monto_Inicial().setVisible(true);</span>
-<span class="nc" id="L555">                } catch (SQLException ex) {</span>
-<span class="nc" id="L556">                    Logger.getLogger(Monto_Inicial.class.getName()).log(Level.SEVERE, null, ex);</span>
-<span class="nc" id="L557">                }</span>
-<span class="nc" id="L558">            }</span>
+<span class="nc" id="L538">                    new Monto_Inicial().setVisible(true);</span>
+<span class="nc" id="L539">                } catch (SQLException ex) {</span>
+<span class="nc" id="L540">                    Logger.getLogger(Monto_Inicial.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L541">                }</span>
+<span class="nc" id="L542">            }</span>
         });
-<span class="nc" id="L560">    }</span>
+<span class="nc" id="L544">    }</span>
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private necesario.MaterialButton Cerrar_btn;
@@ -567,14 +551,12 @@ public class Monto_Inicial extends javax.swing.JFrame {
     private javax.swing.JLabel M_Final1;
     private javax.swing.JLabel M_Final2;
     private javax.swing.JLabel M_Final3;
+    private javax.swing.JLabel M_Final4;
+    private javax.swing.JLabel M_Final5;
     public static javax.swing.JLabel Mont_Final;
     public necesario.MaterialButton Registrar_Caja_inicial;
     public static javax.swing.JLabel ValorActual;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

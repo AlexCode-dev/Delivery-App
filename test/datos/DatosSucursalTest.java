@@ -92,8 +92,8 @@ public class DatosSucursalTest {
     @Test
     public void testDevolverusuario() {
         System.out.println("devolverusuario");
-        String usuario = "";
-        String expResult = "";
+        String usuario = "Alejo";
+        String expResult = "Alejo";
         String result = DatosSucursal.devolverusuario(usuario);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -106,12 +106,25 @@ public class DatosSucursalTest {
     @Test
     public void testDevolversucursal() {
         System.out.println("devolversucursal");
-        String usuario = "";
-        int expResult = 1;
+        String usuario = "Alejo";
+        int expResult = 2;
         int result = DatosSucursal.devolversucursal(usuario);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
       
     }
+    @Test
+    public void testdevolverNombSucursal(){
+    
+        System.out.println("devolverNombSucursal");
+        int idsucursal=1;
+        String expResult="delivery de armando";
+         DatosSucursal instance = new DatosSucursal();
+        String result = instance.devolverNombSucursal(idsucursal);
+
+        assertEquals(expResult, result);
+    
+    }
+    
     
 }

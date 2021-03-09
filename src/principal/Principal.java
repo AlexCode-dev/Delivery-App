@@ -46,7 +46,7 @@ public class Principal extends javax.swing.JFrame {
          Date datoObj = new Date();
          
          fecha.setText(LocalDate.now().toString());
-        
+         actualizarsucursal2();
          
          
     }
@@ -66,8 +66,6 @@ public class Principal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         fecha = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         bienvenido = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -138,12 +136,6 @@ public class Principal extends javax.swing.JFrame {
         fecha.setForeground(new java.awt.Color(102, 102, 255));
         fecha.setText("08/12/2020");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos_Img/pin-de-ubicacion.png"))); // NOI18N
-
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Santiago del Estero, Capital");
-
         bienvenido.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 16)); // NOI18N
         bienvenido.setForeground(new java.awt.Color(255, 255, 255));
         bienvenido.setText("Bienvenido, ");
@@ -193,33 +185,29 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(bienvenido)
                 .addGap(2, 2, 2)
                 .addComponent(nombre_loc)
-                .addGap(25, 25, 25)
+                .addGap(73, 73, 73)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fecha)
-                .addGap(23, 23, 23)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addGap(24, 24, 24)
+                .addGap(70, 70, 70)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(status_Caja, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(49, 49, 49)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel14)
                 .addGap(7, 7, 7)
                 .addComponent(Sucursal_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(57, 57, 57)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel15)
                 .addGap(7, 7, 7)
                 .addComponent(Sucursal_ID1)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,9 +243,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1)
-                            .addComponent(jLabel6)
                             .addComponent(jLabel4))))
                 .addContainerGap())
         );
@@ -852,6 +838,20 @@ public class Principal extends javax.swing.JFrame {
         this.ocho.setSelected(false);
     }//GEN-LAST:event_unoMousePressed
 
+     public void  actualizarsucursal2(){
+         
+     DatosSucursal ds= new DatosSucursal();
+     int idsucursal=Integer.parseInt(Sucursal_ID.getText());
+     String NombreSucursal;
+     NombreSucursal=ds.devolverNombSucursal(idsucursal);
+     Sucursal_ID1.setText(NombreSucursal);
+     }
+     
+
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -891,6 +891,7 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         });
+    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -910,8 +911,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

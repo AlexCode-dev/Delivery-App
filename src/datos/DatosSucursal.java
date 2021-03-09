@@ -158,9 +158,36 @@ public class DatosSucursal {
         
         return numerosucursal;
     }
+      
+       public String devolverNombSucursal(int sucursalID) {
+
+        Conectar con = new Conectar();
+        Connection miConexion = con.conexion();
+        String NombreSucursal = null ;
+        try {
+
+            Statement miEstatement = miConexion.createStatement();
+
+            String SQL = "SELECT * FROM sucursal WHERE sucursal.id_sucursal = '" + sucursalID + "'";
+
+            ResultSet rs = miEstatement.executeQuery(SQL);
+
+            if (rs.next()) {
+                NombreSucursal = rs.getString("nombre_Local");
+
+            } 
+
+        } catch (SQLException e) {
+            System.out.println("No conecta" + e.getMessage());
+        }
+
+        return NombreSucursal;
+    }
     
+       
 
 
+    
    
     
 }

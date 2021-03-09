@@ -5,8 +5,12 @@
  */
 package paneles;
 
+import controladores.ControlCliente;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import subPaneles.Modificar_Cliente;
 import subPaneles.Registro_Clientes;
@@ -20,14 +24,16 @@ public class pnlFeeBack extends javax.swing.JPanel {
     /**
      * Creates new form pnlHome
      */
-<span class="nc" id="L23">    public pnlFeeBack() {</span>
-<span class="nc" id="L24">        initComponents();</span>
-<span class="nc" id="L25">        tabla_clientes.getTableHeader().setFont(new Font(&quot;Segoe UI&quot;, Font.BOLD, 12));</span>
-<span class="nc" id="L26">        tabla_clientes.getTableHeader().setOpaque(false);</span>
-<span class="nc" id="L27">        tabla_clientes.getTableHeader().setBackground(new Color(32, 136, 203));</span>
-<span class="nc" id="L28">        tabla_clientes.getTableHeader().setForeground(new Color(255,255,255));</span>
-<span class="nc" id="L29">        tabla_clientes.setRowHeight(25);</span>
-<span class="nc" id="L30">    }</span>
+<span class="nc" id="L27">    public pnlFeeBack() {</span>
+<span class="nc" id="L28">        initComponents();</span>
+<span class="nc" id="L29">        tabla_clientes.getTableHeader().setFont(new Font(&quot;Segoe UI&quot;, Font.BOLD, 12));</span>
+<span class="nc" id="L30">        tabla_clientes.getTableHeader().setOpaque(false);</span>
+<span class="nc" id="L31">        tabla_clientes.getTableHeader().setBackground(new Color(32, 136, 203));</span>
+<span class="nc" id="L32">        tabla_clientes.getTableHeader().setForeground(new Color(255,255,255));</span>
+<span class="nc" id="L33">        tabla_clientes.setRowHeight(25);</span>
+        
+<span class="nc" id="L35">        actualizartablas();</span>
+<span class="nc" id="L36">    }</span>
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,35 +44,38 @@ public class pnlFeeBack extends javax.swing.JPanel {
     // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<span class="nc" id="L41">        jLabel7 = new javax.swing.JLabel();</span>
-<span class="nc" id="L42">        rSButtonMaterialTwo3 = new RSMaterialComponent.RSButtonMaterialTwo();</span>
-<span class="nc" id="L43">        jScrollPane1 = new javax.swing.JScrollPane();</span>
-<span class="nc" id="L44">        tabla_clientes = new javax.swing.JTable();</span>
-<span class="nc" id="L45">        rSButtonMaterialTwo2 = new RSMaterialComponent.RSButtonMaterialTwo();</span>
-<span class="nc" id="L46">        rSTextFieldMaterial1 = new RSMaterialComponent.RSTextFieldMaterial();</span>
-<span class="nc" id="L47">        rSButtonMaterialTwo6 = new RSMaterialComponent.RSButtonMaterialTwo();</span>
-<span class="nc" id="L48">        inicio_lbl5 = new javax.swing.JLabel();</span>
-<span class="nc" id="L49">        rSButtonMaterialTwo4 = new RSMaterialComponent.RSButtonMaterialTwo();</span>
+<span class="nc" id="L47">        jLabel7 = new javax.swing.JLabel();</span>
+<span class="nc" id="L48">        rSButtonMaterialTwo3 = new RSMaterialComponent.RSButtonMaterialTwo();</span>
+<span class="nc" id="L49">        jScrollPane1 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L50">        tabla_clientes = new javax.swing.JTable();</span>
+<span class="nc" id="L51">        rSButtonMaterialTwo2 = new RSMaterialComponent.RSButtonMaterialTwo();</span>
+<span class="nc" id="L52">        inicio_lbl5 = new javax.swing.JLabel();</span>
+<span class="nc" id="L53">        rSButtonMaterialTwo4 = new RSMaterialComponent.RSButtonMaterialTwo();</span>
+<span class="nc" id="L54">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L55">        jLabel1 = new javax.swing.JLabel();</span>
 
-<span class="nc" id="L51">        setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L57">        setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L58">        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());</span>
 
-<span class="nc" id="L53">        jLabel7.setFont(new java.awt.Font(&quot;Roboto&quot;, 1, 48)); // NOI18N</span>
-<span class="nc" id="L54">        jLabel7.setForeground(new java.awt.Color(128, 128, 131));</span>
-<span class="nc" id="L55">        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);</span>
-<span class="nc" id="L56">        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/iconos_Img/Recurso 16.png&quot;))); // NOI18N</span>
+<span class="nc" id="L60">        jLabel7.setFont(new java.awt.Font(&quot;Roboto&quot;, 1, 48)); // NOI18N</span>
+<span class="nc" id="L61">        jLabel7.setForeground(new java.awt.Color(128, 128, 131));</span>
+<span class="nc" id="L62">        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L63">        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/iconos_Img/Recurso 16.png&quot;))); // NOI18N</span>
+<span class="nc" id="L64">        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 18, -1, -1));</span>
 
-<span class="nc" id="L58">        rSButtonMaterialTwo3.setBackground(new java.awt.Color(0, 102, 102));</span>
-<span class="nc" id="L59">        rSButtonMaterialTwo3.setText(&quot;Modificar Cliente&quot;);</span>
-<span class="nc" id="L60">        rSButtonMaterialTwo3.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L66">        rSButtonMaterialTwo3.setBackground(new java.awt.Color(0, 102, 102));</span>
+<span class="nc" id="L67">        rSButtonMaterialTwo3.setText(&quot;Modificar Cliente&quot;);</span>
+<span class="nc" id="L68">        rSButtonMaterialTwo3.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L62">                rSButtonMaterialTwo3ActionPerformed(evt);</span>
-<span class="nc" id="L63">            }</span>
+<span class="nc" id="L70">                rSButtonMaterialTwo3ActionPerformed(evt);</span>
+<span class="nc" id="L71">            }</span>
         });
+<span class="nc" id="L73">        add(rSButtonMaterialTwo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 50, 159, -1));</span>
 
-<span class="nc" id="L66">        tabla_clientes.setBackground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L67">        tabla_clientes.setBorder(javax.swing.BorderFactory.createCompoundBorder());</span>
-<span class="nc" id="L68">        tabla_clientes.setForeground(new java.awt.Color(255, 255, 255));</span>
-<span class="nc" id="L69">        tabla_clientes.setModel(new javax.swing.table.DefaultTableModel(</span>
+<span class="nc" id="L75">        tabla_clientes.setBackground(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L76">        tabla_clientes.setBorder(javax.swing.BorderFactory.createCompoundBorder());</span>
+<span class="nc" id="L77">        tabla_clientes.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L78">        tabla_clientes.setModel(new javax.swing.table.DefaultTableModel(</span>
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -77,119 +86,92 @@ public class pnlFeeBack extends javax.swing.JPanel {
                 &quot;Cod_Cliente&quot;, &quot;Nombre &quot;, &quot;Apellido&quot;, &quot;Telefono&quot;, &quot;Ubicacion&quot;, &quot;Barrio&quot;, &quot;Zona&quot;
             }
         ));
-<span class="nc" id="L80">        tabla_clientes.setCellSelectionEnabled(true);</span>
-<span class="nc" id="L81">        tabla_clientes.setFillsViewportHeight(true);</span>
-<span class="nc" id="L82">        tabla_clientes.setFocusable(false);</span>
-<span class="nc" id="L83">        tabla_clientes.setIntercellSpacing(new java.awt.Dimension(0, 0));</span>
-<span class="nc" id="L84">        tabla_clientes.setRowHeight(25);</span>
-<span class="nc" id="L85">        tabla_clientes.setSelectionBackground(new java.awt.Color(232, 57, 95));</span>
-<span class="nc" id="L86">        tabla_clientes.getTableHeader().setReorderingAllowed(false);</span>
-<span class="nc" id="L87">        jScrollPane1.setViewportView(tabla_clientes);</span>
-<span class="nc" id="L88">        tabla_clientes.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);</span>
+<span class="nc" id="L89">        tabla_clientes.setCellSelectionEnabled(true);</span>
+<span class="nc" id="L90">        tabla_clientes.setFillsViewportHeight(true);</span>
+<span class="nc" id="L91">        tabla_clientes.setFocusable(false);</span>
+<span class="nc" id="L92">        tabla_clientes.setIntercellSpacing(new java.awt.Dimension(0, 0));</span>
+<span class="nc" id="L93">        tabla_clientes.setRowHeight(25);</span>
+<span class="nc" id="L94">        tabla_clientes.setSelectionBackground(new java.awt.Color(232, 57, 95));</span>
+<span class="nc" id="L95">        tabla_clientes.getTableHeader().setReorderingAllowed(false);</span>
+<span class="nc" id="L96">        jScrollPane1.setViewportView(tabla_clientes);</span>
+<span class="nc" id="L97">        tabla_clientes.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">        if (tabla_clientes.getColumnModel().getColumnCount() &gt; 0) {</span>
+<span class="nc" id="L99">            tabla_clientes.getColumnModel().getColumn(4).setHeaderValue(&quot;Ubicacion&quot;);</span>
+<span class="nc" id="L100">            tabla_clientes.getColumnModel().getColumn(5).setHeaderValue(&quot;Barrio&quot;);</span>
+        }
 
-<span class="nc" id="L90">        rSButtonMaterialTwo2.setBackground(new java.awt.Color(102, 102, 102));</span>
-<span class="nc" id="L91">        rSButtonMaterialTwo2.setText(&quot;Añadir nuevo Cliente&quot;);</span>
-<span class="nc" id="L92">        rSButtonMaterialTwo2.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L103">        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 1070, 460));</span>
+
+<span class="nc" id="L105">        rSButtonMaterialTwo2.setBackground(new java.awt.Color(102, 102, 102));</span>
+<span class="nc" id="L106">        rSButtonMaterialTwo2.setText(&quot;Añadir nuevo Cliente&quot;);</span>
+<span class="nc" id="L107">        rSButtonMaterialTwo2.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L94">                rSButtonMaterialTwo2ActionPerformed(evt);</span>
-<span class="nc" id="L95">            }</span>
+<span class="nc" id="L109">                rSButtonMaterialTwo2ActionPerformed(evt);</span>
+<span class="nc" id="L110">            }</span>
         });
+<span class="nc" id="L112">        add(rSButtonMaterialTwo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, 159, -1));</span>
 
-<span class="nc" id="L98">        rSTextFieldMaterial1.setForeground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L99">        rSTextFieldMaterial1.setColorMaterial(new java.awt.Color(102, 102, 255));</span>
-<span class="nc" id="L100">        rSTextFieldMaterial1.setDisabledTextColor(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L101">        rSTextFieldMaterial1.setPhColor(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L102">        rSTextFieldMaterial1.setPlaceholder(&quot;Dni/Cod.Cli/Cod.Paq/Cod.Cad&quot;);</span>
+<span class="nc" id="L114">        inicio_lbl5.setFont(new java.awt.Font(&quot;Roboto&quot;, 1, 48)); // NOI18N</span>
+<span class="nc" id="L115">        inicio_lbl5.setForeground(new java.awt.Color(128, 128, 131));</span>
+<span class="nc" id="L116">        inicio_lbl5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L117">        inicio_lbl5.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/img_Home/flecha-correcta(1).png&quot;))); // NOI18N</span>
+<span class="nc" id="L118">        add(inicio_lbl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 18, -1, 40));</span>
 
-<span class="nc" id="L104">        rSButtonMaterialTwo6.setBackground(new java.awt.Color(0, 0, 51));</span>
-<span class="nc" id="L105">        rSButtonMaterialTwo6.setText(&quot;Buscar&quot;);</span>
-
-<span class="nc" id="L107">        inicio_lbl5.setFont(new java.awt.Font(&quot;Roboto&quot;, 1, 48)); // NOI18N</span>
-<span class="nc" id="L108">        inicio_lbl5.setForeground(new java.awt.Color(128, 128, 131));</span>
-<span class="nc" id="L109">        inicio_lbl5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);</span>
-<span class="nc" id="L110">        inicio_lbl5.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/img_Home/flecha-correcta(1).png&quot;))); // NOI18N</span>
-
-<span class="nc" id="L112">        rSButtonMaterialTwo4.setBackground(new java.awt.Color(0, 102, 102));</span>
-<span class="nc" id="L113">        rSButtonMaterialTwo4.setText(&quot;Eliminar Cliente&quot;);</span>
-<span class="nc" id="L114">        rSButtonMaterialTwo4.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L120">        rSButtonMaterialTwo4.setBackground(new java.awt.Color(0, 102, 102));</span>
+<span class="nc" id="L121">        rSButtonMaterialTwo4.setText(&quot;Eliminar Cliente&quot;);</span>
+<span class="nc" id="L122">        rSButtonMaterialTwo4.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L116">                rSButtonMaterialTwo4ActionPerformed(evt);</span>
-<span class="nc" id="L117">            }</span>
+<span class="nc" id="L124">                rSButtonMaterialTwo4ActionPerformed(evt);</span>
+<span class="nc" id="L125">            }</span>
         });
+<span class="nc" id="L127">        add(rSButtonMaterialTwo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 50, 159, -1));</span>
 
-<span class="nc" id="L120">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);</span>
-<span class="nc" id="L121">        this.setLayout(layout);</span>
-<span class="nc" id="L122">        layout.setHorizontalGroup(</span>
-<span class="nc" id="L123">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L124">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L125">                .addContainerGap()</span>
-<span class="nc" id="L126">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L127">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L128">                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1091, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L129">                        .addContainerGap(23, Short.MAX_VALUE))</span>
-<span class="nc" id="L130">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L131">                        .addComponent(rSButtonMaterialTwo2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L132">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
-<span class="nc" id="L133">                        .addComponent(rSButtonMaterialTwo3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L134">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
-<span class="nc" id="L135">                        .addComponent(rSButtonMaterialTwo4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L136">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-<span class="nc" id="L137">                        .addComponent(rSTextFieldMaterial1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L138">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
-<span class="nc" id="L139">                        .addComponent(rSButtonMaterialTwo6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L140">                        .addGap(31, 31, 31))</span>
-<span class="nc" id="L141">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L142">                        .addComponent(jLabel7)</span>
-<span class="nc" id="L143">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L144">                        .addComponent(inicio_lbl5)</span>
-<span class="nc" id="L145">                        .addGap(0, 0, Short.MAX_VALUE))))</span>
-        );
-<span class="nc" id="L147">        layout.setVerticalGroup(</span>
-<span class="nc" id="L148">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L149">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L150">                .addGap(18, 18, 18)</span>
-<span class="nc" id="L151">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L152">                    .addComponent(jLabel7)</span>
-<span class="nc" id="L153">                    .addComponent(inicio_lbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L154">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L155">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L156">                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L157">                        .addComponent(rSButtonMaterialTwo6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L158">                        .addComponent(rSTextFieldMaterial1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L159">                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L160">                        .addComponent(rSButtonMaterialTwo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L161">                        .addComponent(rSButtonMaterialTwo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L162">                        .addComponent(rSButtonMaterialTwo4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
-<span class="nc" id="L163">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L164">                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L165">                .addContainerGap(42, Short.MAX_VALUE))</span>
-        );
-<span class="nc" id="L167">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+<span class="nc" id="L129">        jLabel2.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L130">        jLabel2.setForeground(new java.awt.Color(255, 102, 102));</span>
+<span class="nc" id="L131">        jLabel2.setText(&quot;Listado de todos los clientes de la sucursal&quot;);</span>
+<span class="nc" id="L132">        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));</span>
+
+<span class="nc" id="L134">        jLabel1.setForeground(new java.awt.Color(255, 102, 102));</span>
+<span class="nc" id="L135">        jLabel1.setText(&quot;*Listado de todos los clientes de la sucursal&quot;);</span>
+<span class="nc" id="L136">        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 570, -1, -1));</span>
+<span class="nc" id="L137">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
 
     private void rSButtonMaterialTwo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMaterialTwo2ActionPerformed
-<span class="nc" id="L170">        Registro_Clientes x = new Registro_Clientes();</span>
-<span class="nc" id="L171">        x.setVisible(true);</span>
-<span class="nc" id="L172">    }//GEN-LAST:event_rSButtonMaterialTwo2ActionPerformed</span>
+<span class="nc" id="L140">        Registro_Clientes x = new Registro_Clientes();</span>
+<span class="nc" id="L141">        x.setVisible(true);</span>
+<span class="nc" id="L142">    }//GEN-LAST:event_rSButtonMaterialTwo2ActionPerformed</span>
 
     private void rSButtonMaterialTwo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMaterialTwo4ActionPerformed
         // TODO add your handling code here:
-<span class="nc" id="L176">    }//GEN-LAST:event_rSButtonMaterialTwo4ActionPerformed</span>
+<span class="nc" id="L146">    }//GEN-LAST:event_rSButtonMaterialTwo4ActionPerformed</span>
 
     private void rSButtonMaterialTwo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMaterialTwo3ActionPerformed
-<span class="nc" id="L179">        Modificar_Cliente x = new Modificar_Cliente();</span>
-<span class="nc" id="L180">        x.setVisible(true);</span>
-<span class="nc" id="L181">    }//GEN-LAST:event_rSButtonMaterialTwo3ActionPerformed</span>
+<span class="nc" id="L149">        Modificar_Cliente x = new Modificar_Cliente();</span>
+<span class="nc" id="L150">        x.setVisible(true);</span>
+<span class="nc" id="L151">    }//GEN-LAST:event_rSButtonMaterialTwo3ActionPerformed</span>
 
+     public void actualizartablas(){
+<span class="nc" id="L154">         ControlCliente x = new ControlCliente();</span>
+         
+        try {
+<span class="nc" id="L157">            x.actualizarTablaClientes();</span>
+<span class="nc" id="L158">        } catch (SQLException ex) {</span>
+<span class="nc" id="L159">            Logger.getLogger(pnlFeeBack.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L160">        }</span>
+     
+<span class="nc" id="L162">     }</span>
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel inicio_lbl5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private RSMaterialComponent.RSButtonMaterialTwo rSButtonMaterialTwo2;
     private RSMaterialComponent.RSButtonMaterialTwo rSButtonMaterialTwo3;
     private RSMaterialComponent.RSButtonMaterialTwo rSButtonMaterialTwo4;
-    private RSMaterialComponent.RSButtonMaterialTwo rSButtonMaterialTwo6;
-    private RSMaterialComponent.RSTextFieldMaterial rSTextFieldMaterial1;
     public static javax.swing.JTable tabla_clientes;
     // End of variables declaration//GEN-END:variables
 }

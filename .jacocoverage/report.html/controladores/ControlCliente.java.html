@@ -7,12 +7,17 @@ package controladores;
 
 
 import datos.DatosCliente;
+import datos.DatosPedido;
 import datos.DatosZona;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import paneles.pnlCollection;
 import paneles.pnlFeeBack;
+import paneles.pnlHome;
 import subPaneles.Modificar_Cliente;
 import static subPaneles.Modificar_Cliente.jLabel2;
 import static subPaneles.Modificar_Cliente.jLabel3;
@@ -29,25 +34,25 @@ import subPaneles.Ver_Cliente;
  *
  * @author ALAN
  */
-<span class="nc" id="L32">public class ControlCliente {</span>
+<span class="nc" id="L37">public class ControlCliente {</span>
 
    public void actualizarTablaClientes(pnlFeeBack grafico) throws SQLException {
 
-<span class="nc" id="L36">        DatosCliente GCli = new DatosCliente();</span>
+<span class="nc" id="L41">        DatosCliente GCli = new DatosCliente();</span>
 
-<span class="nc" id="L38">        ResultSet clientes = GCli.obtenerClientes();</span>
+<span class="nc" id="L43">        ResultSet clientes = GCli.obtenerClientes();</span>
 
-<span class="nc" id="L40">        grafico.model = new DefaultTableModel();</span>
+<span class="nc" id="L45">        grafico.model = new DefaultTableModel();</span>
 
-<span class="nc" id="L42">        grafico.model.setColumnIdentifiers(new Object[]{&quot;Telefono&quot;, &quot;Nombre&quot;, &quot;Apellido&quot;, &quot;Barrio&quot;});</span>
+<span class="nc" id="L47">        grafico.model.setColumnIdentifiers(new Object[]{&quot;Telefono&quot;, &quot;Nombre&quot;, &quot;Apellido&quot;, &quot;Barrio&quot;});</span>
 
-<span class="nc bnc" id="L44" title="All 2 branches missed.">        while (clientes.next()) {</span>
-<span class="nc" id="L45">            grafico.model.addRow(new Object[]{clientes.getString(&quot;telefono&quot;), clientes.getString(&quot;nombre&quot;), clientes.getString(&quot;apellido&quot;), clientes.getString(&quot;barrio&quot;)});</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        while (clientes.next()) {</span>
+<span class="nc" id="L50">            grafico.model.addRow(new Object[]{clientes.getString(&quot;telefono&quot;), clientes.getString(&quot;nombre&quot;), clientes.getString(&quot;apellido&quot;), clientes.getString(&quot;barrio&quot;)});</span>
         }
 
-<span class="nc" id="L48">        grafico.tabla_clientes.setModel(grafico.model);</span>
+<span class="nc" id="L53">        grafico.tabla_clientes.setModel(grafico.model);</span>
 
-<span class="nc" id="L50">    }</span>
+<span class="nc" id="L55">    }</span>
 
 
     public void agregarCliente(Registro_Clientes grafico) throws SQLException {
@@ -55,64 +60,64 @@ import subPaneles.Ver_Cliente;
         String telefono;
         String nombre;
         String apellido;
-<span class="nc" id="L58">        String tipo = null;</span>
+<span class="nc" id="L63">        String tipo = null;</span>
         String barrio;
         String calle;
         String zona;
         String sucursal;
         
-<span class="nc" id="L64">        tipo=grafico.Tipo_cliente.getSelectedItem().toString().trim();</span>
-<span class="nc" id="L65">        telefono = grafico.Tel_cliente.getText().trim();</span>
-<span class="nc" id="L66">        nombre = grafico.Nombre_cliente.getText().trim();</span>
-<span class="nc" id="L67">        apellido = grafico.Apellido_cliente.getText().trim();</span>
-<span class="nc" id="L68">        barrio = grafico.Barrio_cliente.getText().trim();</span>
-<span class="nc" id="L69">        calle = grafico.Direccion_cliente.getText().trim();</span>
-<span class="nc" id="L70">        zona = grafico.Zona_cliente.getText().trim();</span>
-<span class="nc" id="L71">        sucursal = grafico.ID_SUCURSAL_CLIENTE.getText();</span>
+<span class="nc" id="L69">        tipo=grafico.Tipo_cliente.getSelectedItem().toString().trim();</span>
+<span class="nc" id="L70">        telefono = grafico.Tel_cliente.getText().trim();</span>
+<span class="nc" id="L71">        nombre = grafico.Nombre_cliente.getText().trim();</span>
+<span class="nc" id="L72">        apellido = grafico.Apellido_cliente.getText().trim();</span>
+<span class="nc" id="L73">        barrio = grafico.Barrio_cliente.getText().trim();</span>
+<span class="nc" id="L74">        calle = grafico.Direccion_cliente.getText().trim();</span>
+<span class="nc" id="L75">        zona = grafico.Zona_cliente.getText().trim();</span>
+<span class="nc" id="L76">        sucursal = grafico.ID_SUCURSAL_CLIENTE.getText();</span>
       
         
         
          //String zona = grafico.zonas.getSelectedItem().toString().trim();
         
 
-<span class="nc bnc" id="L78" title="All 10 branches missed.">        if (telefono.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || barrio.isEmpty() || calle.isEmpty()) {</span>
-<span class="nc" id="L79">            JOptionPane.showMessageDialog(grafico, &quot;Debes completar todos los datos&quot;, &quot;Error&quot;, 0);</span>
-<span class="nc" id="L80">            return;</span>
+<span class="nc bnc" id="L83" title="All 10 branches missed.">        if (telefono.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || barrio.isEmpty() || calle.isEmpty()) {</span>
+<span class="nc" id="L84">            JOptionPane.showMessageDialog(grafico, &quot;Debes completar todos los datos&quot;, &quot;Error&quot;, 0);</span>
+<span class="nc" id="L85">            return;</span>
         }
 
         long tel;
 
         try {
-<span class="nc" id="L86">            tel = Long.parseLong(telefono);</span>
+<span class="nc" id="L91">            tel = Long.parseLong(telefono);</span>
 
-<span class="nc" id="L88">        } catch (NumberFormatException e) {</span>
-<span class="nc" id="L89">            JOptionPane.showMessageDialog(grafico, &quot;No se ingreso el telefono correctamente&quot;, &quot;Error&quot;, 0);</span>
-<span class="nc" id="L90">            e.getMessage();</span>
-<span class="nc" id="L91">            return;</span>
-<span class="nc" id="L92">        }</span>
+<span class="nc" id="L93">        } catch (NumberFormatException e) {</span>
+<span class="nc" id="L94">            JOptionPane.showMessageDialog(grafico, &quot;No se ingreso el telefono correctamente&quot;, &quot;Error&quot;, 0);</span>
+<span class="nc" id="L95">            e.getMessage();</span>
+<span class="nc" id="L96">            return;</span>
+<span class="nc" id="L97">        }</span>
        //VEEEEEEEEER ESTOO!!!
        
        
        
         
-<span class="nc" id="L98">        DatosCliente GCli = new DatosCliente();</span>
+<span class="nc" id="L103">        DatosCliente GCli = new DatosCliente();</span>
        
      
                
                 //GCli.insertarCliente(tel, nombre, apellido, barrio, calle, id_zona.getInt(&quot;IDZona&quot;));
-<span class="nc" id="L103">                int zona_int=Integer.parseInt(zona);</span>
-<span class="nc" id="L104">                int sucursal_int=Integer.parseInt(sucursal);</span>
-<span class="nc" id="L105">                GCli.insertarCliente(tipo, nombre, apellido, tel, calle, barrio,zona_int, sucursal_int);</span>
+<span class="nc" id="L108">                int zona_int=Integer.parseInt(zona);</span>
+<span class="nc" id="L109">                int sucursal_int=Integer.parseInt(sucursal);</span>
+<span class="nc" id="L110">                GCli.insertarCliente(tipo, nombre, apellido, tel, calle, barrio,zona_int, sucursal_int);</span>
                 
                 
-<span class="nc" id="L108">                JOptionPane.showMessageDialog(grafico, &quot;Se inserto correctamente&quot;, &quot;Registrado&quot;, 1);</span>
+<span class="nc" id="L113">                JOptionPane.showMessageDialog(grafico, &quot;Se inserto correctamente&quot;, &quot;Registrado&quot;, 1);</span>
                /* actualizarTablaClientes(pnlFeeBack.tabla_clientes);*/
  
            
             
        
 
-<span class="nc" id="L115">    }</span>
+<span class="nc" id="L120">    }</span>
     
     public void eliminarCliente(Ver_Cliente grafico) throws SQLException {
 
@@ -123,16 +128,16 @@ import subPaneles.Ver_Cliente;
 
            // System.out.println(&quot;&quot; + Nombre);
 
-<span class="nc" id="L126">            DatosCliente GC = new DatosCliente();</span>
+<span class="nc" id="L131">            DatosCliente GC = new DatosCliente();</span>
            //Ver esto String Nombre= grafico.Ingrese_Telefono.getText();
          //   GC.eliminarCliente(Nombre);
 
             //actualizarTablaClientes(grafico);
-<span class="nc" id="L131">            JOptionPane.showMessageDialog(grafico, &quot;Se elimino correctamente&quot;, &quot;Eliminado&quot;, JOptionPane.INFORMATION_MESSAGE);</span>
+<span class="nc" id="L136">            JOptionPane.showMessageDialog(grafico, &quot;Se elimino correctamente&quot;, &quot;Eliminado&quot;, JOptionPane.INFORMATION_MESSAGE);</span>
         
 
 
-<span class="nc" id="L135">    }</span>
+<span class="nc" id="L140">    }</span>
     
     public void ModificarCliente(Modificar_Cliente grafico) throws SQLException{
         
@@ -148,36 +153,36 @@ import subPaneles.Ver_Cliente;
            //EN EL CASO QUE EXISTAN DOS PERSONAS CON EL MISMO NOMBRE....
            
 */
-<span class="nc" id="L151">           DatosCliente GC = new DatosCliente();</span>
-<span class="nc" id="L152">           String telefono= grafico.Ingrese_Tel_Mod.getText();</span>
-<span class="nc" id="L153">           long telefono1=Long.parseLong(telefono);</span>
-<span class="nc" id="L154">           ResultSet cliente = GC.BuscarCliente(telefono1);</span>
-<span class="nc" id="L155">            System.out.println(&quot;llego&quot;);</span>
-<span class="nc bnc" id="L156" title="All 2 branches missed.">            while(cliente.next()){</span>
-<span class="nc" id="L157">                System.out.println(&quot;llego1&quot;);</span>
+<span class="nc" id="L156">           DatosCliente GC = new DatosCliente();</span>
+<span class="nc" id="L157">           String telefono= grafico.Ingrese_Tel_Mod.getText();</span>
+<span class="nc" id="L158">           long telefono1=Long.parseLong(telefono);</span>
+<span class="nc" id="L159">           ResultSet cliente = GC.BuscarCliente(telefono1);</span>
+<span class="nc" id="L160">            System.out.println(&quot;llego&quot;);</span>
+<span class="nc bnc" id="L161" title="All 2 branches missed.">            while(cliente.next()){</span>
+<span class="nc" id="L162">                System.out.println(&quot;llego1&quot;);</span>
               /*  Modificar_Cliente MC = new Modificar_Cliente(cliente);
                 MC.setVisible(true);*/
-<span class="nc" id="L160">                grafico.Modificar_Tel.setText(telefono);</span>
-<span class="nc" id="L161">                grafico.Modificar_Nombre.setText(cliente.getString(&quot;nombre&quot;));</span>
-<span class="nc" id="L162">                grafico.Modificar_Apellido.setText(cliente.getString(&quot;apellido&quot;));</span>
-<span class="nc" id="L163">                grafico.Modificar_Direccion.setText(cliente.getString(&quot;domicilio&quot;));</span>
-<span class="nc" id="L164">                grafico.Modificar_Zona.setText(cliente.getString(&quot;id_zona&quot;));</span>
-<span class="nc" id="L165">                grafico.Modificar_Tipo.setSelectedItem(cliente.getString(&quot;tipo&quot;));</span>
-<span class="nc" id="L166">                grafico.Modificar_Barrio.setText(cliente.getString(&quot;barrio&quot;));</span>
-<span class="nc" id="L167">                grafico.Modificar_Barrio1.setText(cliente.getString(&quot;id_sucursal&quot;));</span>
-<span class="nc" id="L168">                jLabel2.setVisible(true);</span>
-<span class="nc" id="L169">                jLabel3.setVisible(true);</span>
-<span class="nc" id="L170">                jLabel4.setVisible(true);</span>
-<span class="nc" id="L171">                jLabel5.setVisible(true);</span>
-<span class="nc" id="L172">                jLabel6.setVisible(true);</span>
-<span class="nc" id="L173">                jLabel7.setVisible(true);</span>
-<span class="nc" id="L174">                jLabel8.setVisible(true);</span>
-<span class="nc" id="L175">                jLabel9.setVisible(true);</span>
+<span class="nc" id="L165">                grafico.Modificar_Tel.setText(telefono);</span>
+<span class="nc" id="L166">                grafico.Modificar_Nombre.setText(cliente.getString(&quot;nombre&quot;));</span>
+<span class="nc" id="L167">                grafico.Modificar_Apellido.setText(cliente.getString(&quot;apellido&quot;));</span>
+<span class="nc" id="L168">                grafico.Modificar_Direccion.setText(cliente.getString(&quot;domicilio&quot;));</span>
+<span class="nc" id="L169">                grafico.Modificar_Zona.setText(cliente.getString(&quot;id_zona&quot;));</span>
+<span class="nc" id="L170">                grafico.Modificar_Tipo.setSelectedItem(cliente.getString(&quot;tipo&quot;));</span>
+<span class="nc" id="L171">                grafico.Modificar_Barrio.setText(cliente.getString(&quot;barrio&quot;));</span>
+<span class="nc" id="L172">                grafico.Modificar_Barrio1.setText(cliente.getString(&quot;id_sucursal&quot;));</span>
+<span class="nc" id="L173">                jLabel2.setVisible(true);</span>
+<span class="nc" id="L174">                jLabel3.setVisible(true);</span>
+<span class="nc" id="L175">                jLabel4.setVisible(true);</span>
+<span class="nc" id="L176">                jLabel5.setVisible(true);</span>
+<span class="nc" id="L177">                jLabel6.setVisible(true);</span>
+<span class="nc" id="L178">                jLabel7.setVisible(true);</span>
+<span class="nc" id="L179">                jLabel8.setVisible(true);</span>
+<span class="nc" id="L180">                jLabel9.setVisible(true);</span>
                 
                 
                 
             }
-<span class="nc" id="L180">        }</span>
+<span class="nc" id="L185">        }</span>
     
     
        public void ActualizarCliente(Modificar_Cliente grafico) throws SQLException{
@@ -189,43 +194,133 @@ import subPaneles.Ver_Cliente;
         String Tipo;
         String zona;
           String sucursal;
-<span class="nc" id="L192">        double tel = -1;</span>
+<span class="nc" id="L197">        double tel = -1;</span>
         
-<span class="nc" id="L194">        nombre = grafico.Modificar_Nombre.getText().trim();</span>
-<span class="nc" id="L195">        apellido=grafico.Modificar_Apellido.getText().trim();</span>
-<span class="nc" id="L196">        telefono = grafico.Modificar_Tel.getText().trim();</span>
-<span class="nc" id="L197">        barrio = grafico.Modificar_Barrio.getText().trim();</span>
-<span class="nc" id="L198">        calle = grafico.Modificar_Direccion.getText().trim();</span>
-<span class="nc" id="L199">        Tipo = grafico.Modificar_Tipo.getSelectedItem().toString().trim();</span>
-<span class="nc" id="L200">        zona = grafico.Modificar_Zona.getText().trim();</span>
-<span class="nc" id="L201">        sucursal = grafico.Modificar_Barrio1.getText().trim();</span>
-<span class="nc bnc" id="L202" title="All 6 branches missed.">        if (telefono.isEmpty() || barrio.isEmpty() || calle.isEmpty()) {</span>
-<span class="nc" id="L203">            JOptionPane.showMessageDialog(grafico, &quot;Debes completar todos los datos&quot;, &quot;Error&quot;, 0);</span>
-<span class="nc" id="L204">            return;</span>
+<span class="nc" id="L199">        nombre = grafico.Modificar_Nombre.getText().trim();</span>
+<span class="nc" id="L200">        apellido=grafico.Modificar_Apellido.getText().trim();</span>
+<span class="nc" id="L201">        telefono = grafico.Modificar_Tel.getText().trim();</span>
+<span class="nc" id="L202">        barrio = grafico.Modificar_Barrio.getText().trim();</span>
+<span class="nc" id="L203">        calle = grafico.Modificar_Direccion.getText().trim();</span>
+<span class="nc" id="L204">        Tipo = grafico.Modificar_Tipo.getSelectedItem().toString().trim();</span>
+<span class="nc" id="L205">        zona = grafico.Modificar_Zona.getText().trim();</span>
+<span class="nc" id="L206">        sucursal = grafico.Modificar_Barrio1.getText().trim();</span>
+<span class="nc bnc" id="L207" title="All 6 branches missed.">        if (telefono.isEmpty() || barrio.isEmpty() || calle.isEmpty()) {</span>
+<span class="nc" id="L208">            JOptionPane.showMessageDialog(grafico, &quot;Debes completar todos los datos&quot;, &quot;Error&quot;, 0);</span>
+<span class="nc" id="L209">            return;</span>
         }
         
         
         try{
-<span class="nc" id="L209">            tel = Double.parseDouble(telefono);</span>
-<span class="nc" id="L210">        }catch(NumberFormatException e){</span>
-<span class="nc" id="L211">            JOptionPane.showMessageDialog(grafico, &quot;El telefono se ingreso incorrectamente&quot;, &quot;Error&quot;, 0);</span>
-<span class="nc" id="L212">            return;</span>
-<span class="nc" id="L213">        }</span>
+<span class="nc" id="L214">            tel = Double.parseDouble(telefono);</span>
+<span class="nc" id="L215">        }catch(NumberFormatException e){</span>
+<span class="nc" id="L216">            JOptionPane.showMessageDialog(grafico, &quot;El telefono se ingreso incorrectamente&quot;, &quot;Error&quot;, 0);</span>
+<span class="nc" id="L217">            return;</span>
+<span class="nc" id="L218">        }</span>
         
         
-<span class="nc" id="L216">        DatosCliente GC = new DatosCliente();</span>
+<span class="nc" id="L221">        DatosCliente GC = new DatosCliente();</span>
       
-<span class="nc" id="L218">           int zona_int=Integer.parseInt(zona);</span>
-<span class="nc" id="L219">           int sucursal_int= Integer.parseInt(sucursal);</span>
-<span class="nc" id="L220">            GC.ModificarCliente(Tipo, nombre, apellido, (long) tel, calle, barrio, zona_int, sucursal_int);</span>
+<span class="nc" id="L223">           int zona_int=Integer.parseInt(zona);</span>
+<span class="nc" id="L224">           int sucursal_int= Integer.parseInt(sucursal);</span>
+<span class="nc" id="L225">            GC.ModificarCliente(Tipo, nombre, apellido, (long) tel, calle, barrio, zona_int, sucursal_int);</span>
         
         
-<span class="nc" id="L223">        JOptionPane.showMessageDialog(grafico, &quot;El cliente se modifico correctamente&quot;, &quot;Modificado&quot;, 1);</span>
+<span class="nc" id="L228">        JOptionPane.showMessageDialog(grafico, &quot;El cliente se modifico correctamente&quot;, &quot;Modificado&quot;, 1);</span>
         
       
-<span class="nc" id="L226">        grafico.dispose();</span>
+<span class="nc" id="L231">        grafico.dispose();</span>
         
-<span class="nc" id="L228">    }</span>
+<span class="nc" id="L233">    }</span>
+       
+    
+       public void actualizarTablaPedidos(pnlHome grafico) throws SQLException {
+
+<span class="nc" id="L238">        DatosPedido GP = new DatosPedido();</span>
+<span class="nc" id="L239">        DatosCliente GC = new DatosCliente();</span>
+
+<span class="nc" id="L241">        ResultSet pedidos = GP.obtenerPedidos();</span>
+
+<span class="nc" id="L243">        DefaultTableModel model = new DefaultTableModel();</span>
+<span class="nc" id="L244">        model.addColumn(&quot;id Pedido&quot;);</span>
+<span class="nc" id="L245">       model.addColumn(&quot;Dir Retiro&quot;);</span>
+<span class="nc" id="L246">       model.addColumn(&quot;Dir Entrega &quot;);</span>
+<span class="nc" id="L247">       model.addColumn(&quot;Fecha Retiro&quot;);</span>
+<span class="nc" id="L248">       model.addColumn(&quot;Fecha Entrega&quot;);</span>
+<span class="nc" id="L249">       model.addColumn(&quot;Hora Retiro&quot;);</span>
+<span class="nc" id="L250">       model.addColumn(&quot;Hora Entrega&quot;);</span>
+<span class="nc" id="L251">       model.addColumn(&quot;Estado&quot;);</span>
+<span class="nc" id="L252">        model.addColumn(&quot;Precio&quot;);</span>
+<span class="nc" id="L253">       pnlHome.Tabla_pro.setModel(model);</span>
+<span class="nc" id="L254">       String[] dato= new String [9];</span>
+       
+        try {
+            //Ejecutemos la query
+           
+            //Este while significa mientras resultado tenga mas resultado, me va a mostrar los siguiente
+<span class="nc bnc" id="L260" title="All 2 branches missed.">            while(pedidos.next()){</span>
+<span class="nc" id="L261">                dato[0]=pedidos.getString(1);</span>
+<span class="nc" id="L262">                dato[1]=pedidos.getString(2);</span>
+<span class="nc" id="L263">                dato[2]=pedidos.getString(3);</span>
+<span class="nc" id="L264">                dato[3]=pedidos.getString(4);</span>
+<span class="nc" id="L265">                dato[4]=pedidos.getString(5);</span>
+<span class="nc" id="L266">                dato[5]=pedidos.getString(6);</span>
+<span class="nc" id="L267">                dato[6]=pedidos.getString(7);</span>
+<span class="nc" id="L268">                dato[7]=pedidos.getString(9);</span>
+<span class="nc" id="L269">                dato[8]=pedidos.getString(10);</span>
+<span class="nc" id="L270">                model.addRow(dato);</span>
+            }
+<span class="nc" id="L272">        } catch (SQLException ex) {</span>
+<span class="nc" id="L273">            Logger.getLogger(Ver_Cliente.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L274">        }</span>
+        
+
+<span class="nc" id="L277">    }</span>
+       
+    public void actualizarTablaClientes() throws SQLException {
+     
+        
+     
+<span class="nc" id="L283">        DatosCliente GC = new DatosCliente();</span>
+
+<span class="nc" id="L285">        ResultSet cliente = GC.obtenerClientes();</span>
+
+<span class="nc" id="L287">        DefaultTableModel model = new DefaultTableModel();</span>
+<span class="nc" id="L288">        model.addColumn(&quot;Cod Cliente&quot;);</span>
+<span class="nc" id="L289">       model.addColumn(&quot;Nombre&quot;);</span>
+<span class="nc" id="L290">       model.addColumn(&quot;Apellido&quot;);</span>
+<span class="nc" id="L291">       model.addColumn(&quot;Telefono&quot;);</span>
+<span class="nc" id="L292">       model.addColumn(&quot;Ubicacion&quot;);</span>
+<span class="nc" id="L293">       model.addColumn(&quot;Barrio&quot;);</span>
+<span class="nc" id="L294">       model.addColumn(&quot;Zona&quot;);</span>
+
+<span class="nc" id="L296">       pnlFeeBack.tabla_clientes.setModel(model);</span>
+      
+<span class="nc" id="L298">       String[] dato= new String [7];</span>
+       
+        try {
+            //Ejecutemos la query
+           
+            //Este while significa mientras resultado tenga mas resultado, me va a mostrar los siguiente
+<span class="nc bnc" id="L304" title="All 2 branches missed.">            while(cliente.next()){</span>
+<span class="nc" id="L305">                dato[0]=cliente.getString(1);</span>
+<span class="nc" id="L306">                dato[1]=cliente.getString(3);</span>
+<span class="nc" id="L307">                dato[2]=cliente.getString(4);</span>
+<span class="nc" id="L308">                dato[3]=cliente.getString(5);</span>
+<span class="nc" id="L309">                dato[4]=cliente.getString(6);</span>
+<span class="nc" id="L310">                dato[5]=cliente.getString(7);</span>
+<span class="nc" id="L311">                dato[6]=cliente.getString(8);</span>
+<span class="nc" id="L312">                model.addRow(dato);</span>
+            }
+<span class="nc" id="L314">        } catch (SQLException ex) {</span>
+<span class="nc" id="L315">            Logger.getLogger(Ver_Cliente.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L316">        }</span>
+        
+
+<span class="nc" id="L319">    }</span>
+       
+       
+       
+       
     }
     /*
  

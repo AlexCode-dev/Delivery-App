@@ -5,9 +5,18 @@
  */
 package paneles;
 
+import controladores.ControlCadete;
+import controladores.ControlPagoCadete;
+import datos.DatosPagoCadete;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import subPaneles.Realizar_Pago;
 import subPaneles.Registro_Cadetes;
+import static subPaneles.Registro_Pedido_Nuevo_otro.Final_Precio_P1;
+import static subPaneles.Registro_Pedido_Nuevo_otro.tabladecomida;
 
 /**
  *
@@ -18,14 +27,16 @@ public class pnlChat extends javax.swing.JPanel {
     /**
      * Creates new form pnlHome
      */
-<span class="nc" id="L21">    public pnlChat() {</span>
-<span class="nc" id="L22">        initComponents();</span>
-<span class="nc" id="L23">        tabla_pro_cadete.getTableHeader().setFont(new Font(&quot;Segoe UI&quot;, Font.BOLD, 12));</span>
-<span class="nc" id="L24">        tabla_pro_cadete.getTableHeader().setOpaque(false);</span>
-<span class="nc" id="L25">        tabla_pro_cadete.getTableHeader().setBackground(new Color(32, 136, 203));</span>
-<span class="nc" id="L26">        tabla_pro_cadete.getTableHeader().setForeground(new Color(255,255,255));</span>
-<span class="nc" id="L27">        tabla_pro_cadete.setRowHeight(25);</span>
-<span class="nc" id="L28">    }</span>
+<span class="nc" id="L30">    public pnlChat() {</span>
+<span class="nc" id="L31">        initComponents();</span>
+<span class="nc" id="L32">        tabla_pro_cadete.getTableHeader().setFont(new Font(&quot;Segoe UI&quot;, Font.BOLD, 12));</span>
+<span class="nc" id="L33">        tabla_pro_cadete.getTableHeader().setOpaque(false);</span>
+<span class="nc" id="L34">        tabla_pro_cadete.getTableHeader().setBackground(new Color(32, 136, 203));</span>
+<span class="nc" id="L35">        tabla_pro_cadete.getTableHeader().setForeground(new Color(255,255,255));</span>
+<span class="nc" id="L36">        tabla_pro_cadete.setRowHeight(25);</span>
+        
+<span class="nc" id="L38">        actualizartablacadetes();</span>
+<span class="nc" id="L39">    }</span>
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,128 +47,191 @@ public class pnlChat extends javax.swing.JPanel {
     // &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<span class="nc" id="L39">        jLabel7 = new javax.swing.JLabel();</span>
-<span class="nc" id="L40">        rSButtonMaterialTwo3 = new RSMaterialComponent.RSButtonMaterialTwo();</span>
-<span class="nc" id="L41">        jScrollPane1 = new javax.swing.JScrollPane();</span>
-<span class="nc" id="L42">        tabla_pro_cadete = new javax.swing.JTable();</span>
-<span class="nc" id="L43">        rSButtonMaterialTwo2 = new RSMaterialComponent.RSButtonMaterialTwo();</span>
-<span class="nc" id="L44">        rSButtonMaterialTwo6 = new RSMaterialComponent.RSButtonMaterialTwo();</span>
-<span class="nc" id="L45">        rSTextFieldMaterial1 = new RSMaterialComponent.RSTextFieldMaterial();</span>
-<span class="nc" id="L46">        inicio_lbl5 = new javax.swing.JLabel();</span>
+<span class="nc" id="L50">        jLabel7 = new javax.swing.JLabel();</span>
+<span class="nc" id="L51">        rSButtonMaterialTwo3 = new RSMaterialComponent.RSButtonMaterialTwo();</span>
+<span class="nc" id="L52">        jScrollPane1 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L53">        tabla_pro_cadete = new javax.swing.JTable();</span>
+<span class="nc" id="L54">        rSButtonMaterialTwo2 = new RSMaterialComponent.RSButtonMaterialTwo();</span>
+<span class="nc" id="L55">        inicio_lbl5 = new javax.swing.JLabel();</span>
+<span class="nc" id="L56">        jLabel1 = new javax.swing.JLabel();</span>
+<span class="nc" id="L57">        jLabel2 = new javax.swing.JLabel();</span>
+<span class="nc" id="L58">        jScrollPane2 = new javax.swing.JScrollPane();</span>
+<span class="nc" id="L59">        tabla_pro_cadete1 = new javax.swing.JTable();</span>
+<span class="nc" id="L60">        rSButtonMaterialTwo4 = new RSMaterialComponent.RSButtonMaterialTwo();</span>
+<span class="nc" id="L61">        jLabel3 = new javax.swing.JLabel();</span>
 
-<span class="nc" id="L48">        setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L63">        setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L64">        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());</span>
 
-<span class="nc" id="L50">        jLabel7.setFont(new java.awt.Font(&quot;Roboto&quot;, 1, 48)); // NOI18N</span>
-<span class="nc" id="L51">        jLabel7.setForeground(new java.awt.Color(128, 128, 131));</span>
-<span class="nc" id="L52">        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);</span>
-<span class="nc" id="L53">        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/iconos_Img/Recurso 14.png&quot;))); // NOI18N</span>
+<span class="nc" id="L66">        jLabel7.setFont(new java.awt.Font(&quot;Roboto&quot;, 1, 48)); // NOI18N</span>
+<span class="nc" id="L67">        jLabel7.setForeground(new java.awt.Color(128, 128, 131));</span>
+<span class="nc" id="L68">        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L69">        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/iconos_Img/Recurso 14.png&quot;))); // NOI18N</span>
+<span class="nc" id="L70">        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 18, -1, -1));</span>
 
-<span class="nc" id="L55">        rSButtonMaterialTwo3.setBackground(new java.awt.Color(0, 102, 102));</span>
-<span class="nc" id="L56">        rSButtonMaterialTwo3.setText(&quot;Modificar cadete&quot;);</span>
+<span class="nc" id="L72">        rSButtonMaterialTwo3.setBackground(new java.awt.Color(102, 102, 255));</span>
+<span class="nc" id="L73">        rSButtonMaterialTwo3.setText(&quot;Realizar Pago del Dia&quot;);</span>
+<span class="nc" id="L74">        rSButtonMaterialTwo3.addActionListener(new java.awt.event.ActionListener() {</span>
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+<span class="nc" id="L76">                rSButtonMaterialTwo3ActionPerformed(evt);</span>
+<span class="nc" id="L77">            }</span>
+        });
+<span class="nc" id="L79">        add(rSButtonMaterialTwo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 540, 159, -1));</span>
 
-<span class="nc" id="L58">        tabla_pro_cadete.setBackground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L59">        tabla_pro_cadete.setBorder(javax.swing.BorderFactory.createCompoundBorder());</span>
-<span class="nc" id="L60">        tabla_pro_cadete.setForeground(new java.awt.Color(255, 255, 255));</span>
-<span class="nc" id="L61">        tabla_pro_cadete.setModel(new javax.swing.table.DefaultTableModel(</span>
+<span class="nc" id="L81">        tabla_pro_cadete.setBackground(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L82">        tabla_pro_cadete.setBorder(javax.swing.BorderFactory.createCompoundBorder());</span>
+<span class="nc" id="L83">        tabla_pro_cadete.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L84">        tabla_pro_cadete.setModel(new javax.swing.table.DefaultTableModel(</span>
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                &quot;Cod_Cadete&quot;, &quot;Nombre &quot;, &quot;Apellido&quot;, &quot;Cuit&quot;, &quot;Vehiculo&quot;, &quot;Sucursal&quot;
+                &quot;Cod_Cadete&quot;, &quot;Nombre &quot;, &quot;Apellido&quot;, &quot;Vehiculo&quot;, &quot;Sucursal&quot;
             }
         ));
-<span class="nc" id="L72">        tabla_pro_cadete.setCellSelectionEnabled(true);</span>
-<span class="nc" id="L73">        tabla_pro_cadete.setFillsViewportHeight(true);</span>
-<span class="nc" id="L74">        tabla_pro_cadete.setFocusable(false);</span>
-<span class="nc" id="L75">        tabla_pro_cadete.setIntercellSpacing(new java.awt.Dimension(0, 0));</span>
-<span class="nc" id="L76">        tabla_pro_cadete.setRowHeight(25);</span>
-<span class="nc" id="L77">        tabla_pro_cadete.setSelectionBackground(new java.awt.Color(232, 57, 95));</span>
-<span class="nc" id="L78">        tabla_pro_cadete.getTableHeader().setReorderingAllowed(false);</span>
-<span class="nc" id="L79">        jScrollPane1.setViewportView(tabla_pro_cadete);</span>
-<span class="nc" id="L80">        tabla_pro_cadete.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);</span>
+<span class="nc" id="L95">        tabla_pro_cadete.setCellSelectionEnabled(true);</span>
+<span class="nc" id="L96">        tabla_pro_cadete.setFillsViewportHeight(true);</span>
+<span class="nc" id="L97">        tabla_pro_cadete.setFocusable(false);</span>
+<span class="nc" id="L98">        tabla_pro_cadete.setIntercellSpacing(new java.awt.Dimension(0, 0));</span>
+<span class="nc" id="L99">        tabla_pro_cadete.setRowHeight(25);</span>
+<span class="nc" id="L100">        tabla_pro_cadete.setSelectionBackground(new java.awt.Color(232, 57, 95));</span>
+<span class="nc" id="L101">        tabla_pro_cadete.getTableHeader().setReorderingAllowed(false);</span>
+<span class="nc" id="L102">        jScrollPane1.setViewportView(tabla_pro_cadete);</span>
+<span class="nc" id="L103">        tabla_pro_cadete.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);</span>
 
-<span class="nc" id="L82">        rSButtonMaterialTwo2.setBackground(new java.awt.Color(102, 102, 102));</span>
-<span class="nc" id="L83">        rSButtonMaterialTwo2.setText(&quot;Añadir nuevo cadete&quot;);</span>
-<span class="nc" id="L84">        rSButtonMaterialTwo2.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L105">        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 1060, 150));</span>
+
+<span class="nc" id="L107">        rSButtonMaterialTwo2.setBackground(new java.awt.Color(102, 102, 102));</span>
+<span class="nc" id="L108">        rSButtonMaterialTwo2.setText(&quot;Añadir nuevo cadete&quot;);</span>
+<span class="nc" id="L109">        rSButtonMaterialTwo2.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L86">                rSButtonMaterialTwo2ActionPerformed(evt);</span>
-<span class="nc" id="L87">            }</span>
+<span class="nc" id="L111">                rSButtonMaterialTwo2ActionPerformed(evt);</span>
+<span class="nc" id="L112">            }</span>
         });
+<span class="nc" id="L114">        add(rSButtonMaterialTwo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 50, 159, -1));</span>
 
-<span class="nc" id="L90">        rSButtonMaterialTwo6.setBackground(new java.awt.Color(0, 0, 51));</span>
-<span class="nc" id="L91">        rSButtonMaterialTwo6.setText(&quot;Buscar&quot;);</span>
+<span class="nc" id="L116">        inicio_lbl5.setFont(new java.awt.Font(&quot;Roboto&quot;, 1, 48)); // NOI18N</span>
+<span class="nc" id="L117">        inicio_lbl5.setForeground(new java.awt.Color(128, 128, 131));</span>
+<span class="nc" id="L118">        inicio_lbl5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);</span>
+<span class="nc" id="L119">        inicio_lbl5.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/img_Home/flecha-correcta(1).png&quot;))); // NOI18N</span>
+<span class="nc" id="L120">        add(inicio_lbl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 18, -1, 40));</span>
 
-<span class="nc" id="L93">        rSTextFieldMaterial1.setForeground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L94">        rSTextFieldMaterial1.setColorMaterial(new java.awt.Color(102, 102, 255));</span>
-<span class="nc" id="L95">        rSTextFieldMaterial1.setDisabledTextColor(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L96">        rSTextFieldMaterial1.setPhColor(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L97">        rSTextFieldMaterial1.setPlaceholder(&quot;Dni/Cod.Cli/Cod.Paq/Cod.Cad&quot;);</span>
+<span class="nc" id="L122">        jLabel1.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L123">        jLabel1.setForeground(new java.awt.Color(102, 102, 255));</span>
+<span class="nc" id="L124">        jLabel1.setText(&quot;Registro de todos los cadetes de la sucursal&quot;);</span>
+<span class="nc" id="L125">        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));</span>
 
-<span class="nc" id="L99">        inicio_lbl5.setFont(new java.awt.Font(&quot;Roboto&quot;, 1, 48)); // NOI18N</span>
-<span class="nc" id="L100">        inicio_lbl5.setForeground(new java.awt.Color(128, 128, 131));</span>
-<span class="nc" id="L101">        inicio_lbl5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);</span>
-<span class="nc" id="L102">        inicio_lbl5.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/img_Home/flecha-correcta(1).png&quot;))); // NOI18N</span>
+<span class="nc" id="L127">        jLabel2.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 12)); // NOI18N</span>
+<span class="nc" id="L128">        jLabel2.setForeground(new java.awt.Color(255, 102, 102));</span>
+<span class="nc" id="L129">        jLabel2.setText(&quot;*Recuerde que el pago a los cadetes se hace automaticamente al finalizar el dia.&quot;);</span>
+<span class="nc" id="L130">        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 500, -1, 20));</span>
 
-<span class="nc" id="L104">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);</span>
-<span class="nc" id="L105">        this.setLayout(layout);</span>
-<span class="nc" id="L106">        layout.setHorizontalGroup(</span>
-<span class="nc" id="L107">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L108">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L109">                .addContainerGap()</span>
-<span class="nc" id="L110">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)</span>
-<span class="nc" id="L111">                    .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L112">                        .addComponent(rSButtonMaterialTwo2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L113">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
-<span class="nc" id="L114">                        .addComponent(rSButtonMaterialTwo3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L115">                        .addGap(444, 444, 444)</span>
-<span class="nc" id="L116">                        .addComponent(rSTextFieldMaterial1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L117">                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
-<span class="nc" id="L118">                        .addComponent(rSButtonMaterialTwo6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L119">                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L120">                        .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L121">                            .addComponent(jLabel7)</span>
-<span class="nc" id="L122">                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L123">                            .addComponent(inicio_lbl5))</span>
-<span class="nc" id="L124">                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1072, javax.swing.GroupLayout.PREFERRED_SIZE)))</span>
-<span class="nc" id="L125">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
-        );
-<span class="nc" id="L127">        layout.setVerticalGroup(</span>
-<span class="nc" id="L128">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L129">            .addGroup(layout.createSequentialGroup()</span>
-<span class="nc" id="L130">                .addGap(18, 18, 18)</span>
-<span class="nc" id="L131">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L132">                    .addComponent(jLabel7)</span>
-<span class="nc" id="L133">                    .addComponent(inicio_lbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L134">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L135">                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)</span>
-<span class="nc" id="L136">                    .addComponent(rSButtonMaterialTwo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L137">                    .addComponent(rSButtonMaterialTwo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L138">                    .addComponent(rSButtonMaterialTwo6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L139">                    .addComponent(rSTextFieldMaterial1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))</span>
-<span class="nc" id="L140">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L141">                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L142">                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))</span>
-        );
-<span class="nc" id="L144">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+<span class="nc" id="L132">        tabla_pro_cadete1.setBackground(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L133">        tabla_pro_cadete1.setBorder(javax.swing.BorderFactory.createCompoundBorder());</span>
+<span class="nc" id="L134">        tabla_pro_cadete1.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L135">        tabla_pro_cadete1.setModel(new javax.swing.table.DefaultTableModel(</span>
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                &quot;Cod_Cadete&quot;, &quot;Cuit&quot;, &quot;Nombre &quot;, &quot;Cant Pedido/Dia&quot;, &quot;Pago Final/Dia&quot;
+            }
+        ));
+<span class="nc" id="L146">        tabla_pro_cadete1.setCellSelectionEnabled(true);</span>
+<span class="nc" id="L147">        tabla_pro_cadete1.setFillsViewportHeight(true);</span>
+<span class="nc" id="L148">        tabla_pro_cadete1.setFocusable(false);</span>
+<span class="nc" id="L149">        tabla_pro_cadete1.setIntercellSpacing(new java.awt.Dimension(0, 0));</span>
+<span class="nc" id="L150">        tabla_pro_cadete1.setRowHeight(25);</span>
+<span class="nc" id="L151">        tabla_pro_cadete1.setSelectionBackground(new java.awt.Color(232, 57, 95));</span>
+<span class="nc" id="L152">        tabla_pro_cadete1.getTableHeader().setReorderingAllowed(false);</span>
+<span class="nc" id="L153">        jScrollPane2.setViewportView(tabla_pro_cadete1);</span>
+<span class="nc" id="L154">        tabla_pro_cadete1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);</span>
+
+<span class="nc" id="L156">        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 1060, 200));</span>
+
+<span class="nc" id="L158">        rSButtonMaterialTwo4.setBackground(new java.awt.Color(0, 102, 102));</span>
+<span class="nc" id="L159">        rSButtonMaterialTwo4.setText(&quot;Modificar cadete&quot;);</span>
+<span class="nc" id="L160">        add(rSButtonMaterialTwo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 50, 159, -1));</span>
+
+<span class="nc" id="L162">        jLabel3.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14)); // NOI18N</span>
+<span class="nc" id="L163">        jLabel3.setForeground(new java.awt.Color(102, 102, 255));</span>
+<span class="nc" id="L164">        jLabel3.setText(&quot;Registro de los pagos del dia x Cadete&quot;);</span>
+<span class="nc" id="L165">        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, 20));</span>
+<span class="nc" id="L166">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
 
     private void rSButtonMaterialTwo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMaterialTwo2ActionPerformed
-<span class="nc" id="L147">       Registro_Cadetes x = new Registro_Cadetes();</span>
-<span class="nc" id="L148">       x.setVisible(true);</span>
-<span class="nc" id="L149">    }//GEN-LAST:event_rSButtonMaterialTwo2ActionPerformed</span>
+<span class="nc" id="L169">       Registro_Cadetes x = new Registro_Cadetes();</span>
+<span class="nc" id="L170">       x.setVisible(true);</span>
+<span class="nc" id="L171">    }//GEN-LAST:event_rSButtonMaterialTwo2ActionPerformed</span>
 
+    private void rSButtonMaterialTwo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMaterialTwo3ActionPerformed
+<span class="nc" id="L174">    obtenerpreciofinal();       </span>
+<span class="nc" id="L175">    }//GEN-LAST:event_rSButtonMaterialTwo3ActionPerformed</span>
+ public static void actualizartablacadetes(){
+<span class="nc" id="L177">    ControlCadete t = new ControlCadete();</span>
+<span class="nc" id="L178">     ControlPagoCadete z = new ControlPagoCadete();</span>
+        try {
+<span class="nc" id="L180">            t.actualizarTablaCadete();</span>
+<span class="nc" id="L181">            z.actualizarTablaPagoCadete();</span>
+<span class="nc" id="L182">        } catch (SQLException ex) {</span>
+<span class="nc" id="L183">            Logger.getLogger(pnlChat.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L184">        }</span>
+ 
+ 
+<span class="nc" id="L187"> }</span>
+ 
+ public void obtenerpreciofinal() {
+    
+        //anda bien el contador
+        
+<span class="nc" id="L193">    int contadorP=tabla_pro_cadete1.getRowCount();</span>
+<span class="nc" id="L194">     System.out.println(&quot;tiene cantidad de filas:&quot;+contadorP);</span>
+<span class="nc" id="L195">    int i = 0;</span>
+<span class="nc" id="L196">     String cantidad = &quot;&quot;;</span>
+<span class="nc" id="L197">    float PrecioTotal = 0 ;</span>
+<span class="nc" id="L198">    String Precio=&quot;&quot;;</span>
+<span class="nc" id="L199">    String precioCadete=&quot;&quot;;</span>
+<span class="nc" id="L200">    Float precioC=null;</span>
+  
+<span class="nc bnc" id="L202" title="All 2 branches missed.">    while(i&lt;contadorP){</span>
+<span class="nc" id="L203">                Precio = tabla_pro_cadete1.getValueAt(i, 4).toString();</span>
+<span class="nc" id="L204">                float pre = Float.parseFloat(Precio);</span>
+<span class="nc" id="L205">                PrecioTotal = PrecioTotal+(pre);</span>
+              
+<span class="nc" id="L207">        i++;</span>
+<span class="nc" id="L208">    }</span>
+    
+<span class="nc" id="L210">    precioCadete=Float.toString(PrecioTotal);</span>
+<span class="nc" id="L211">    String cadetecantidad= Integer.toString(contadorP);</span>
+<span class="nc" id="L212">     Realizar_Pago rt= new Realizar_Pago();</span>
+<span class="nc" id="L213">     Realizar_Pago.valorPago.setText(precioCadete);</span>
+<span class="nc" id="L214">     Realizar_Pago.cantidad_cadetes.setText(cadetecantidad);</span>
+<span class="nc" id="L215">     rt.setVisible(true);</span>
+     
+     
+   
+   
+<span class="nc" id="L220">    }</span>
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel inicio_lbl5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private RSMaterialComponent.RSButtonMaterialTwo rSButtonMaterialTwo2;
     private RSMaterialComponent.RSButtonMaterialTwo rSButtonMaterialTwo3;
-    private RSMaterialComponent.RSButtonMaterialTwo rSButtonMaterialTwo6;
-    private RSMaterialComponent.RSTextFieldMaterial rSTextFieldMaterial1;
-    public javax.swing.JTable tabla_pro_cadete;
+    private RSMaterialComponent.RSButtonMaterialTwo rSButtonMaterialTwo4;
+    public static javax.swing.JTable tabla_pro_cadete;
+    public static javax.swing.JTable tabla_pro_cadete1;
     // End of variables declaration//GEN-END:variables
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

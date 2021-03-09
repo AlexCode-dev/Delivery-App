@@ -43,131 +43,110 @@ public class Registro_Notificaciones extends javax.swing.JFrame {
 <span class="nc" id="L43">        jScrollPane1 = new javax.swing.JScrollPane();</span>
 <span class="nc" id="L44">        jTextArea1 = new javax.swing.JTextArea();</span>
 <span class="nc" id="L45">        jLabel3 = new javax.swing.JLabel();</span>
+<span class="nc" id="L46">        rSTextFieldMaterial6 = new RSMaterialComponent.RSTextFieldMaterial();</span>
+<span class="nc" id="L47">        jLabel2 = new javax.swing.JLabel();</span>
 
-<span class="nc" id="L47">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
-<span class="nc" id="L48">        setUndecorated(true);</span>
+<span class="nc" id="L49">        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L50">        setUndecorated(true);</span>
 
-<span class="nc" id="L50">        jPanel1.setBackground(new java.awt.Color(255, 255, 255));</span>
-<span class="nc" id="L51">        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray));</span>
-<span class="nc" id="L52">        jPanel1.setFocusCycleRoot(true);</span>
+<span class="nc" id="L52">        jPanel1.setBackground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L53">        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray));</span>
+<span class="nc" id="L54">        jPanel1.setFocusCycleRoot(true);</span>
+<span class="nc" id="L55">        jPanel1.setPreferredSize(new java.awt.Dimension(281, 692));</span>
+<span class="nc" id="L56">        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());</span>
 
-<span class="nc" id="L54">        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/img_subPaneles/Registro_Notificaciones.png&quot;))); // NOI18N</span>
+<span class="nc" id="L58">        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(&quot;/img_subPaneles/Registro_Notificaciones.png&quot;))); // NOI18N</span>
+<span class="nc" id="L59">        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 13, -1, 50));</span>
 
-<span class="nc" id="L56">        rSTextFieldMaterial4.setForeground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L57">        rSTextFieldMaterial4.setColorMaterial(new java.awt.Color(153, 102, 255));</span>
-<span class="nc" id="L58">        rSTextFieldMaterial4.setDisabledTextColor(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L59">        rSTextFieldMaterial4.setPhColor(new java.awt.Color(0, 0, 0));</span>
-<span class="nc" id="L60">        rSTextFieldMaterial4.setPlaceholder(&quot;Ingrese Titulo&quot;);</span>
+<span class="nc" id="L61">        rSTextFieldMaterial4.setForeground(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L62">        rSTextFieldMaterial4.setColorMaterial(new java.awt.Color(153, 102, 255));</span>
+<span class="nc" id="L63">        rSTextFieldMaterial4.setDisabledTextColor(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L64">        rSTextFieldMaterial4.setPhColor(new java.awt.Color(0, 0, 0));</span>
+<span class="nc" id="L65">        rSTextFieldMaterial4.setPlaceholder(&quot;Ingrese Titulo&quot;);</span>
+<span class="nc" id="L66">        jPanel1.add(rSTextFieldMaterial4, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 79, 227, 40));</span>
 
-<span class="nc" id="L62">        Cerrar_btn.setBackground(new java.awt.Color(153, 153, 255));</span>
-<span class="nc" id="L63">        Cerrar_btn.setForeground(new java.awt.Color(255, 255, 255));</span>
-<span class="nc" id="L64">        Cerrar_btn.setText(&quot;Volver&quot;);</span>
-<span class="nc" id="L65">        Cerrar_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
-<span class="nc" id="L66">        Cerrar_btn.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L68">        Cerrar_btn.setBackground(new java.awt.Color(153, 153, 255));</span>
+<span class="nc" id="L69">        Cerrar_btn.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L70">        Cerrar_btn.setText(&quot;Volver&quot;);</span>
+<span class="nc" id="L71">        Cerrar_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
+<span class="nc" id="L72">        Cerrar_btn.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L68">                Cerrar_btnActionPerformed(evt);</span>
-<span class="nc" id="L69">            }</span>
+<span class="nc" id="L74">                Cerrar_btnActionPerformed(evt);</span>
+<span class="nc" id="L75">            }</span>
         });
+<span class="nc" id="L77">        jPanel1.add(Cerrar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 629, 220, 50));</span>
 
-<span class="nc" id="L72">        Entrar_btn.setBackground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L73">        Entrar_btn.setForeground(new java.awt.Color(255, 255, 255));</span>
-<span class="nc" id="L74">        Entrar_btn.setText(&quot;Registrar&quot;);</span>
-<span class="nc" id="L75">        Entrar_btn.setContentAreaFilled(false);</span>
-<span class="nc" id="L76">        Entrar_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
-<span class="nc" id="L77">        Entrar_btn.addActionListener(new java.awt.event.ActionListener() {</span>
+<span class="nc" id="L79">        Entrar_btn.setBackground(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L80">        Entrar_btn.setForeground(new java.awt.Color(255, 255, 255));</span>
+<span class="nc" id="L81">        Entrar_btn.setText(&quot;Registrar&quot;);</span>
+<span class="nc" id="L82">        Entrar_btn.setContentAreaFilled(false);</span>
+<span class="nc" id="L83">        Entrar_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));</span>
+<span class="nc" id="L84">        Entrar_btn.addActionListener(new java.awt.event.ActionListener() {</span>
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-<span class="nc" id="L79">                Entrar_btnActionPerformed(evt);</span>
-<span class="nc" id="L80">            }</span>
+<span class="nc" id="L86">                Entrar_btnActionPerformed(evt);</span>
+<span class="nc" id="L87">            }</span>
         });
+<span class="nc" id="L89">        jPanel1.add(Entrar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 573, 220, 50));</span>
 
-<span class="nc" id="L83">        rSComboBoxMaterial1.setForeground(new java.awt.Color(102, 102, 102));</span>
-<span class="nc" id="L84">        rSComboBoxMaterial1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { &quot;Prioridad&quot;, &quot;Alta&quot;, &quot;Media&quot;, &quot;Baja&quot; }));</span>
+<span class="nc" id="L91">        rSComboBoxMaterial1.setForeground(new java.awt.Color(102, 102, 102));</span>
+<span class="nc" id="L92">        rSComboBoxMaterial1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { &quot;Prioridad&quot;, &quot;Alta&quot;, &quot;Media&quot;, &quot;Baja&quot; }));</span>
+<span class="nc" id="L93">        jPanel1.add(rSComboBoxMaterial1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 188, 227, -1));</span>
 
-<span class="nc" id="L86">        rSTextFieldMaterial5.setForeground(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L87">        rSTextFieldMaterial5.setColorMaterial(new java.awt.Color(153, 102, 255));</span>
-<span class="nc" id="L88">        rSTextFieldMaterial5.setDisabledTextColor(new java.awt.Color(51, 51, 51));</span>
-<span class="nc" id="L89">        rSTextFieldMaterial5.setPhColor(new java.awt.Color(0, 0, 0));</span>
-<span class="nc" id="L90">        rSTextFieldMaterial5.setPlaceholder(&quot;Hasta DD/MM/AAAA&quot;);</span>
+<span class="nc" id="L95">        rSTextFieldMaterial5.setForeground(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L96">        rSTextFieldMaterial5.setColorMaterial(new java.awt.Color(153, 102, 255));</span>
+<span class="nc" id="L97">        rSTextFieldMaterial5.setDisabledTextColor(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L98">        rSTextFieldMaterial5.setPhColor(new java.awt.Color(0, 0, 0));</span>
+<span class="nc" id="L99">        rSTextFieldMaterial5.setPlaceholder(&quot;$$&quot;);</span>
+<span class="nc" id="L100">        jPanel1.add(rSTextFieldMaterial5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 150, 40));</span>
 
-<span class="nc" id="L92">        jTextArea1.setColumns(20);</span>
-<span class="nc" id="L93">        jTextArea1.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 18)); // NOI18N</span>
-<span class="nc" id="L94">        jTextArea1.setRows(5);</span>
-<span class="nc" id="L95">        jTextArea1.setName(&quot;&quot;); // NOI18N</span>
-<span class="nc" id="L96">        jScrollPane1.setViewportView(jTextArea1);</span>
+<span class="nc" id="L102">        jTextArea1.setColumns(20);</span>
+<span class="nc" id="L103">        jTextArea1.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 18)); // NOI18N</span>
+<span class="nc" id="L104">        jTextArea1.setRows(5);</span>
+<span class="nc" id="L105">        jTextArea1.setName(&quot;&quot;); // NOI18N</span>
+<span class="nc" id="L106">        jScrollPane1.setViewportView(jTextArea1);</span>
 
-<span class="nc" id="L98">        jLabel3.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
-<span class="nc" id="L99">        jLabel3.setForeground(new java.awt.Color(153, 153, 153));</span>
-<span class="nc" id="L100">        jLabel3.setText(&quot;Descripcion&quot;);</span>
+<span class="nc" id="L108">        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 344, 230, 211));</span>
 
-<span class="nc" id="L102">        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);</span>
-<span class="nc" id="L103">        jPanel1.setLayout(jPanel1Layout);</span>
-<span class="nc" id="L104">        jPanel1Layout.setHorizontalGroup(</span>
-<span class="nc" id="L105">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L106">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
-<span class="nc" id="L107">                .addGap(22, 22, 22)</span>
-<span class="nc" id="L108">                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L109">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
-<span class="nc" id="L110">                        .addComponent(jLabel1)</span>
-<span class="nc" id="L111">                        .addContainerGap(17, Short.MAX_VALUE))</span>
-<span class="nc" id="L112">                    .addGroup(jPanel1Layout.createSequentialGroup()</span>
-<span class="nc" id="L113">                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L114">                            .addComponent(rSTextFieldMaterial5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)</span>
-<span class="nc" id="L115">                            .addGroup(jPanel1Layout.createSequentialGroup()</span>
-<span class="nc" id="L116">                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L117">                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)</span>
-<span class="nc" id="L118">                                        .addComponent(rSComboBoxMaterial1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)</span>
-<span class="nc" id="L119">                                        .addComponent(Entrar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L120">                                        .addComponent(Cerrar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L121">                                        .addComponent(rSTextFieldMaterial4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))</span>
-<span class="nc" id="L122">                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L123">                                    .addComponent(jLabel3))</span>
-<span class="nc" id="L124">                                .addGap(0, 0, Short.MAX_VALUE)))</span>
-<span class="nc" id="L125">                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))</span>
+<span class="nc" id="L110">        jLabel3.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 16)); // NOI18N</span>
+<span class="nc" id="L111">        jLabel3.setForeground(new java.awt.Color(153, 153, 153));</span>
+<span class="nc" id="L112">        jLabel3.setText(&quot;Descripcion&quot;);</span>
+<span class="nc" id="L113">        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 318, -1, -1));</span>
+
+<span class="nc" id="L115">        rSTextFieldMaterial6.setForeground(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L116">        rSTextFieldMaterial6.setColorMaterial(new java.awt.Color(153, 102, 255));</span>
+<span class="nc" id="L117">        rSTextFieldMaterial6.setDisabledTextColor(new java.awt.Color(51, 51, 51));</span>
+<span class="nc" id="L118">        rSTextFieldMaterial6.setPhColor(new java.awt.Color(0, 0, 0));</span>
+<span class="nc" id="L119">        rSTextFieldMaterial6.setPlaceholder(&quot;DD/MM/AAAA&quot;);</span>
+<span class="nc" id="L120">        jPanel1.add(rSTextFieldMaterial6, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 130, 229, 40));</span>
+
+<span class="nc" id="L122">        jLabel2.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 18)); // NOI18N</span>
+<span class="nc" id="L123">        jLabel2.setText(&quot;Costo&quot;);</span>
+<span class="nc" id="L124">        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));</span>
+
+<span class="nc" id="L126">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
+<span class="nc" id="L127">        getContentPane().setLayout(layout);</span>
+<span class="nc" id="L128">        layout.setHorizontalGroup(</span>
+<span class="nc" id="L129">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L130">            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
         );
-<span class="nc" id="L127">        jPanel1Layout.setVerticalGroup(</span>
-<span class="nc" id="L128">            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L129">            .addGroup(jPanel1Layout.createSequentialGroup()</span>
-<span class="nc" id="L130">                .addContainerGap()</span>
-<span class="nc" id="L131">                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L132">                .addGap(16, 16, 16)</span>
-<span class="nc" id="L133">                .addComponent(rSTextFieldMaterial4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L134">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)</span>
-<span class="nc" id="L135">                .addComponent(rSTextFieldMaterial5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L136">                .addGap(18, 18, 18)</span>
-<span class="nc" id="L137">                .addComponent(rSComboBoxMaterial1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L138">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)</span>
-<span class="nc" id="L139">                .addComponent(jLabel3)</span>
-<span class="nc" id="L140">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
-<span class="nc" id="L141">                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L142">                .addGap(18, 18, 18)</span>
-<span class="nc" id="L143">                .addComponent(Entrar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L144">                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)</span>
-<span class="nc" id="L145">                .addComponent(Cerrar_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
-<span class="nc" id="L146">                .addContainerGap())</span>
+<span class="nc" id="L132">        layout.setVerticalGroup(</span>
+<span class="nc" id="L133">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
+<span class="nc" id="L134">            .addGroup(layout.createSequentialGroup()</span>
+<span class="nc" id="L135">                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)</span>
+<span class="nc" id="L136">                .addGap(0, 0, Short.MAX_VALUE))</span>
         );
 
-<span class="nc" id="L149">        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());</span>
-<span class="nc" id="L150">        getContentPane().setLayout(layout);</span>
-<span class="nc" id="L151">        layout.setHorizontalGroup(</span>
-<span class="nc" id="L152">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L153">            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-        );
-<span class="nc" id="L155">        layout.setVerticalGroup(</span>
-<span class="nc" id="L156">            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)</span>
-<span class="nc" id="L157">            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)</span>
-        );
-
-<span class="nc" id="L160">        pack();</span>
-<span class="nc" id="L161">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
+<span class="nc" id="L139">        pack();</span>
+<span class="nc" id="L140">    }// &lt;/editor-fold&gt;//GEN-END:initComponents</span>
 
     private void Cerrar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cerrar_btnActionPerformed
      
-<span class="nc" id="L165">        this.dispose();</span>
-<span class="nc" id="L166">    }//GEN-LAST:event_Cerrar_btnActionPerformed</span>
+<span class="nc" id="L144">        this.dispose();</span>
+<span class="nc" id="L145">    }//GEN-LAST:event_Cerrar_btnActionPerformed</span>
 
     private void Entrar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrar_btnActionPerformed
         // TODO add your handling code here:
-<span class="nc" id="L170">    }//GEN-LAST:event_Entrar_btnActionPerformed</span>
+<span class="nc" id="L149">    }//GEN-LAST:event_Entrar_btnActionPerformed</span>
 
     /**
      * @param args the command line arguments
@@ -179,21 +158,21 @@ public class Registro_Notificaciones extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-<span class="nc bnc" id="L182" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
-<span class="nc bnc" id="L183" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName())) {</span>
-<span class="nc" id="L184">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
-<span class="nc" id="L185">                    break;</span>
+<span class="nc bnc" id="L161" title="All 2 branches missed.">            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {</span>
+<span class="nc bnc" id="L162" title="All 2 branches missed.">                if (&quot;Nimbus&quot;.equals(info.getName())) {</span>
+<span class="nc" id="L163">                    javax.swing.UIManager.setLookAndFeel(info.getClassName());</span>
+<span class="nc" id="L164">                    break;</span>
                 }
             }
-<span class="nc" id="L188">        } catch (ClassNotFoundException ex) {</span>
-<span class="nc" id="L189">            java.util.logging.Logger.getLogger(Registro_Notificaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
-<span class="nc" id="L190">        } catch (InstantiationException ex) {</span>
-<span class="nc" id="L191">            java.util.logging.Logger.getLogger(Registro_Notificaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
-<span class="nc" id="L192">        } catch (IllegalAccessException ex) {</span>
-<span class="nc" id="L193">            java.util.logging.Logger.getLogger(Registro_Notificaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
-<span class="nc" id="L194">        } catch (javax.swing.UnsupportedLookAndFeelException ex) {</span>
-<span class="nc" id="L195">            java.util.logging.Logger.getLogger(Registro_Notificaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
-<span class="nc" id="L196">        }</span>
+<span class="nc" id="L167">        } catch (ClassNotFoundException ex) {</span>
+<span class="nc" id="L168">            java.util.logging.Logger.getLogger(Registro_Notificaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L169">        } catch (InstantiationException ex) {</span>
+<span class="nc" id="L170">            java.util.logging.Logger.getLogger(Registro_Notificaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L171">        } catch (IllegalAccessException ex) {</span>
+<span class="nc" id="L172">            java.util.logging.Logger.getLogger(Registro_Notificaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L173">        } catch (javax.swing.UnsupportedLookAndFeelException ex) {</span>
+<span class="nc" id="L174">            java.util.logging.Logger.getLogger(Registro_Notificaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);</span>
+<span class="nc" id="L175">        }</span>
         //&lt;/editor-fold&gt;
         //&lt;/editor-fold&gt;
         //&lt;/editor-fold&gt;
@@ -212,17 +191,18 @@ public class Registro_Notificaciones extends javax.swing.JFrame {
         //&lt;/editor-fold&gt;
 
         /* Create and display the form */
-<span class="nc" id="L215">        java.awt.EventQueue.invokeLater(new Runnable() {</span>
+<span class="nc" id="L194">        java.awt.EventQueue.invokeLater(new Runnable() {</span>
             public void run() {
-<span class="nc" id="L217">                new Registro_Notificaciones().setVisible(true);</span>
-<span class="nc" id="L218">            }</span>
+<span class="nc" id="L196">                new Registro_Notificaciones().setVisible(true);</span>
+<span class="nc" id="L197">            }</span>
         });
-<span class="nc" id="L220">    }</span>
+<span class="nc" id="L199">    }</span>
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private necesario.MaterialButton Cerrar_btn;
     private necesario.MaterialButton Entrar_btn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -230,6 +210,7 @@ public class Registro_Notificaciones extends javax.swing.JFrame {
     private RSMaterialComponent.RSComboBoxMaterial rSComboBoxMaterial1;
     private RSMaterialComponent.RSTextFieldMaterial rSTextFieldMaterial4;
     private RSMaterialComponent.RSTextFieldMaterial rSTextFieldMaterial5;
+    private RSMaterialComponent.RSTextFieldMaterial rSTextFieldMaterial6;
     // End of variables declaration//GEN-END:variables
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

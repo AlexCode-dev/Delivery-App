@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ControlComida.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;DeliveryApp&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">controladores</a> &gt; <span class="el_source">ControlComida.java</span></div><h1>ControlComida.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package controladores;
+
+
+import conexion.Conectar;
+import datos.DatosCliente;
+import datos.DatosComida;
+import datos.DatosPedido;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import paneles.pnlCollection;
+import paneles.pnlMarket;
+import subPaneles.Registro_Comida_Nueva;
+import subPaneles.Registro_Pedido_Nuevo_otro;
+import subPaneles.Ver_Cliente;
+
+/**
+ *
+ * @author ALAN
+ */
+<span class="nc" id="L30">public class ControlComida {</span>
+    
+    public void obtenercomida() throws SQLException{
+<span class="nc" id="L33">     DatosComida GC = new DatosComida();</span>
+     
+
+<span class="nc" id="L36">        ResultSet comidas = GC.obtenerComidas();</span>
+        
+        //subPaneles.Registro_Pedido_Nuevo_otro.ingresar_Comida.addItem(comidas.getString(&quot;nombreComida&quot;));
+        
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        while(comidas.next()){</span>
+            
+<span class="nc" id="L42">            subPaneles.Registro_Pedido_Nuevo_otro.ingresar_Comida.addItem(comidas.getString(&quot;nombreComida&quot;));</span>
+        }
+    
+    
+    
+    
+    
+<span class="nc" id="L49">    }</span>
+     public void obtenerBebida() throws SQLException{
+<span class="nc" id="L51">         DatosComida GC = new DatosComida();</span>
+     
+
+<span class="nc" id="L54">        ResultSet comidas = GC.obtenerBebidas();</span>
+        
+        //subPaneles.Registro_Pedido_Nuevo_otro.ingresar_Comida.addItem(comidas.getString(&quot;nombreComida&quot;));
+        
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        while(comidas.next()){</span>
+            
+<span class="nc" id="L60">            subPaneles.Registro_Pedido_Nuevo_otro.ingresar_Bebida.addItem(comidas.getString(&quot;nombreComida&quot;));</span>
+        }
+    
+      
+    
+    
+<span class="nc" id="L66">    }</span>
+      public void obtenerPostre() throws SQLException{
+<span class="nc" id="L68">         DatosComida GC = new DatosComida();</span>
+     
+
+<span class="nc" id="L71">        ResultSet comidas = GC.obtenerPostre();</span>
+        
+        //subPaneles.Registro_Pedido_Nuevo_otro.ingresar_Comida.addItem(comidas.getString(&quot;nombreComida&quot;));
+        
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        while(comidas.next()){</span>
+            
+<span class="nc" id="L77">            subPaneles.Registro_Pedido_Nuevo_otro.ingresar_Postre.addItem(comidas.getString(&quot;nombreComida&quot;));</span>
+        }
+    
+      
+    
+    
+<span class="nc" id="L83">    }</span>
+      
+    
+    
+    
+    
+    public void obtenerzona() throws SQLException{
+<span class="nc" id="L90">         DatosComida GC = new DatosComida();</span>
+     
+
+<span class="nc" id="L93">        ResultSet zonas = GC.obtenerZonas();</span>
+        
+        //subPaneles.Registro_Pedido_Nuevo_otro.ingresar_Comida.addItem(comidas.getString(&quot;nombreComida&quot;));
+        
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        while(zonas.next()){</span>
+            
+<span class="nc" id="L99">            subPaneles.Registro_Pedido_Nuevo_otro.ingresar_Zona.addItem(zonas.getString(&quot;nombre&quot;));</span>
+        } 
+    
+    
+<span class="nc" id="L103">    }</span>
+       public void obtenercadetes() throws SQLException{
+<span class="nc" id="L105">         DatosComida GC = new DatosComida();</span>
+     
+
+<span class="nc" id="L108">        ResultSet cadete = GC.obtenerCadetes();</span>
+       
+        //subPaneles.Registro_Pedido_Nuevo_otro.ingresar_Comida.addItem(comidas.getString(&quot;nombreComida&quot;));
+        
+<span class="nc bnc" id="L112" title="All 2 branches missed.">        while(cadete.next()){</span>
+            
+<span class="nc" id="L114">            subPaneles.Registro_Pedido_Nuevo_otro.ingresar_Cadete_P.addItem(cadete.getString(&quot;nombre&quot;));</span>
+          
+        } 
+    
+     
+<span class="nc" id="L119">    }</span>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    public void AgregarComida(Registro_Comida_Nueva grafico) throws SQLException {
+
+        String nombre;
+        String precio;
+        String Tipo;
+        String Estado;
+        String Descripcion;
+<span class="nc" id="L137">        nombre = grafico.NombreComida.getText().trim();</span>
+<span class="nc" id="L138">        precio = grafico.PrecioComida.getText().trim();</span>
+<span class="nc" id="L139">        Estado= grafico.EstadoComida.getSelectedItem().toString();</span>
+<span class="nc" id="L140">        Tipo = grafico.TipoComida.getSelectedItem().toString();</span>
+<span class="nc" id="L141">        Descripcion= grafico.AreaDescripcionComida.getText();</span>
+<span class="nc" id="L142">        String idSucursal= principal.Principal.Sucursal_ID.getText().toString();</span>
+<span class="nc" id="L143">        int idsuc=Integer.parseInt(idSucursal);</span>
+
+<span class="nc bnc" id="L145" title="All 4 branches missed.">        if (nombre.isEmpty() || precio.isEmpty()) {</span>
+<span class="nc" id="L146">            JOptionPane.showMessageDialog(grafico, &quot;Debes completar todos los datos&quot;, &quot;Error&quot;, 0);</span>
+<span class="nc" id="L147">            return;</span>
+        }
+        
+<span class="nc" id="L150">        float prec = 0;</span>
+         try{
+<span class="nc" id="L152">            prec = Float.parseFloat(precio);</span>
+<span class="nc" id="L153">        }catch(NumberFormatException e){</span>
+<span class="nc" id="L154">            JOptionPane.showMessageDialog(grafico, &quot;El precio es incorrecto&quot;, &quot;Error&quot;, 0);</span>
+<span class="nc" id="L155">            return;</span>
+<span class="nc" id="L156">        }</span>
+
+<span class="nc" id="L158">        DatosComida GC = new DatosComida();</span>
+<span class="nc" id="L159">        GC.AgregarComida(nombre,Tipo,Descripcion,prec,Estado,idsuc);</span>
+
+<span class="nc" id="L161">        JOptionPane.showMessageDialog(grafico, &quot;Se registro correctamente&quot;, &quot;Registrado&quot;, 1);</span>
+<span class="nc" id="L162">        actualizarTablaComida();</span>
+<span class="nc" id="L163">        actualizarTablaPostres();</span>
+<span class="nc" id="L164">        actualizarTablaBebidas();</span>
+      
+<span class="nc" id="L166">    }</span>
+
+    public void actualizarTablaComida(Registro_Pedido_Nuevo_otro grafico) throws SQLException {
+       
+<span class="nc" id="L170">        DatosComida GC = new DatosComida();</span>
+<span class="nc" id="L171">        String ComidaRow=(String) grafico.ingresar_Comida.getSelectedItem();</span>
+<span class="nc" id="L172">        ResultSet comidas = GC.BuscarComidaNombre(ComidaRow);</span>
+
+       
+     
+<span class="nc" id="L176">       String[] dato= new String [8];</span>
+       
+    
+
+<span class="nc" id="L180">           grafico.model.setColumnIdentifiers(new Object[]{&quot;Id Comida&quot;, &quot;Nombre&quot;, &quot;Cantidad&quot;,&quot;Precio&quot;});</span>
+
+<span class="nc bnc" id="L182" title="All 2 branches missed.">            while (comidas.next()) {</span>
+<span class="nc" id="L183">                grafico.model.addRow(new Object[]{comidas.getString(1), comidas.getString(2),(String) Registro_Pedido_Nuevo_otro.Ingresar_Comida_Cant.getSelectedItem(),comidas.getString(5)});</span>
+            }
+<span class="nc" id="L185">             Registro_Pedido_Nuevo_otro.tabladecomida.setModel(grafico.model);</span>
+            //Ejecutemos la query
+           
+           
+      
+       
+
+<span class="nc" id="L192">    }</span>
+    public void actualizarTablaComida2(Registro_Pedido_Nuevo_otro grafico) throws SQLException {
+       
+<span class="nc" id="L195">        DatosComida GC = new DatosComida();</span>
+<span class="nc" id="L196">        String ComidaRow=(String) grafico.ingresar_Bebida.getSelectedItem();</span>
+<span class="nc" id="L197">        ResultSet comidas = GC.BuscarComidaNombre(ComidaRow);</span>
+
+       
+     
+<span class="nc" id="L201">       String[] dato= new String [8];</span>
+       
+    
+
+<span class="nc" id="L205">           grafico.model.setColumnIdentifiers(new Object[]{&quot;Id Comida&quot;, &quot;Nombre&quot;, &quot;Cantidad&quot;,&quot;Precio&quot;});</span>
+
+<span class="nc bnc" id="L207" title="All 2 branches missed.">            while (comidas.next()) {</span>
+<span class="nc" id="L208">                grafico.model.addRow(new Object[]{comidas.getString(1), comidas.getString(2),(String) Registro_Pedido_Nuevo_otro.ingresar_Bebida_Cant.getSelectedItem(),comidas.getString(5)});</span>
+            }
+<span class="nc" id="L210">             Registro_Pedido_Nuevo_otro.tabladecomida.setModel(grafico.model);</span>
+            //Ejecutemos la query
+           
+           
+      
+       
+
+<span class="nc" id="L217">    }</span>
+     public void actualizarTablaComida3(Registro_Pedido_Nuevo_otro grafico) throws SQLException {
+       
+<span class="nc" id="L220">        DatosComida GC = new DatosComida();</span>
+<span class="nc" id="L221">        String ComidaRow=(String) grafico.ingresar_Postre.getSelectedItem();</span>
+<span class="nc" id="L222">        ResultSet comidas = GC.BuscarComidaNombre(ComidaRow);</span>
+
+       
+     
+<span class="nc" id="L226">       String[] dato= new String [8];</span>
+       
+    
+
+<span class="nc" id="L230">           grafico.model.setColumnIdentifiers(new Object[]{&quot;Id Comida&quot;, &quot;Nombre&quot;, &quot;Cantidad&quot;,&quot;Precio&quot;});</span>
+
+<span class="nc bnc" id="L232" title="All 2 branches missed.">            while (comidas.next()) {</span>
+<span class="nc" id="L233">                grafico.model.addRow(new Object[]{comidas.getString(1), comidas.getString(2),(String) Registro_Pedido_Nuevo_otro.ingresar_Postre_Cant.getSelectedItem(),comidas.getString(5)});</span>
+            }
+<span class="nc" id="L235">             Registro_Pedido_Nuevo_otro.tabladecomida.setModel(grafico.model);</span>
+            //Ejecutemos la query
+           
+           
+      
+       
+
+<span class="nc" id="L242">    }</span>
+    
+    
+public void actualizarTablaComida() throws SQLException {
+     
+        
+      
+<span class="nc" id="L249">        DatosComida DC= new DatosComida();</span>
+
+<span class="nc" id="L251">        ResultSet comidas = DC.obtenerComidas();</span>
+
+<span class="nc" id="L253">        DefaultTableModel model = new DefaultTableModel();</span>
+<span class="nc" id="L254">        model.addColumn(&quot;ID Comida&quot;);</span>
+<span class="nc" id="L255">       model.addColumn(&quot;Nombre Comida&quot;);</span>
+<span class="nc" id="L256">       model.addColumn(&quot;Tipo Comida&quot;);</span>
+<span class="nc" id="L257">       model.addColumn(&quot;Descripcion&quot;);</span>
+<span class="nc" id="L258">       model.addColumn(&quot;PrecioxUnidad&quot;);</span>
+<span class="nc" id="L259">       model.addColumn(&quot;Estado&quot;);</span>
+<span class="nc" id="L260">       pnlMarket.TablaComida.setModel(model);</span>
+      
+<span class="nc" id="L262">       String[] dato= new String [6];</span>
+       
+        try {
+            //Ejecutemos la query
+           
+            //Este while significa mientras resultado tenga mas resultado, me va a mostrar los siguiente
+<span class="nc bnc" id="L268" title="All 2 branches missed.">            while(comidas.next()){</span>
+<span class="nc" id="L269">                dato[0]=comidas.getString(1);</span>
+<span class="nc" id="L270">                dato[1]=comidas.getString(2);</span>
+<span class="nc" id="L271">                dato[2]=comidas.getString(3);</span>
+<span class="nc" id="L272">                dato[3]=comidas.getString(4);</span>
+<span class="nc" id="L273">                dato[4]=comidas.getString(5);</span>
+<span class="nc" id="L274">                dato[5]=comidas.getString(6);</span>
+  
+<span class="nc" id="L276">                model.addRow(dato);</span>
+            }
+<span class="nc" id="L278">        } catch (SQLException ex) {</span>
+<span class="nc" id="L279">            Logger.getLogger(Ver_Cliente.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L280">        }</span>
+        
+
+<span class="nc" id="L283">    }</span>
+
+
+public void actualizarTablaPostres() throws SQLException {
+     
+        
+      
+<span class="nc" id="L290">        DatosComida DC= new DatosComida();</span>
+
+<span class="nc" id="L292">        ResultSet comidas = DC.obtenerPostre();</span>
+
+<span class="nc" id="L294">        DefaultTableModel model = new DefaultTableModel();</span>
+<span class="nc" id="L295">        model.addColumn(&quot;ID Postre&quot;);</span>
+<span class="nc" id="L296">       model.addColumn(&quot;Nombre Postre&quot;);</span>
+<span class="nc" id="L297">       model.addColumn(&quot;Tipo Postre&quot;);</span>
+<span class="nc" id="L298">       model.addColumn(&quot;Descripcion&quot;);</span>
+<span class="nc" id="L299">       model.addColumn(&quot;PrecioxUnidad&quot;);</span>
+<span class="nc" id="L300">       model.addColumn(&quot;Estado&quot;);</span>
+<span class="nc" id="L301">       pnlMarket.TablaPostres.setModel(model);</span>
+      
+<span class="nc" id="L303">       String[] dato= new String [6];</span>
+       
+        try {
+            //Ejecutemos la query
+           
+            //Este while significa mientras resultado tenga mas resultado, me va a mostrar los siguiente
+<span class="nc bnc" id="L309" title="All 2 branches missed.">            while(comidas.next()){</span>
+<span class="nc" id="L310">                dato[0]=comidas.getString(1);</span>
+<span class="nc" id="L311">                dato[1]=comidas.getString(2);</span>
+<span class="nc" id="L312">                dato[2]=comidas.getString(3);</span>
+<span class="nc" id="L313">                dato[3]=comidas.getString(4);</span>
+<span class="nc" id="L314">                dato[4]=comidas.getString(5);</span>
+<span class="nc" id="L315">                dato[5]=comidas.getString(6);</span>
+  
+<span class="nc" id="L317">                model.addRow(dato);</span>
+            }
+<span class="nc" id="L319">        } catch (SQLException ex) {</span>
+<span class="nc" id="L320">            Logger.getLogger(Ver_Cliente.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L321">        }</span>
+        
+
+<span class="nc" id="L324">    }</span>
+
+
+
+public void actualizarTablaBebidas() throws SQLException {
+     
+        
+      
+<span class="nc" id="L332">        DatosComida DC= new DatosComida();</span>
+
+<span class="nc" id="L334">        ResultSet comidas = DC.obtenerBebidas();</span>
+
+<span class="nc" id="L336">        DefaultTableModel model = new DefaultTableModel();</span>
+<span class="nc" id="L337">        model.addColumn(&quot;ID Bebida&quot;);</span>
+<span class="nc" id="L338">       model.addColumn(&quot;Nombre Bebida&quot;);</span>
+<span class="nc" id="L339">       model.addColumn(&quot;Tipo Bebida&quot;);</span>
+<span class="nc" id="L340">       model.addColumn(&quot;Descripcion&quot;);</span>
+<span class="nc" id="L341">       model.addColumn(&quot;PrecioxUnidad&quot;);</span>
+<span class="nc" id="L342">       model.addColumn(&quot;Estado&quot;);</span>
+<span class="nc" id="L343">       pnlMarket.TablaBebidas.setModel(model);</span>
+      
+<span class="nc" id="L345">       String[] dato= new String [6];</span>
+       
+        try {
+            //Ejecutemos la query
+           
+            //Este while significa mientras resultado tenga mas resultado, me va a mostrar los siguiente
+<span class="nc bnc" id="L351" title="All 2 branches missed.">            while(comidas.next()){</span>
+<span class="nc" id="L352">                dato[0]=comidas.getString(1);</span>
+<span class="nc" id="L353">                dato[1]=comidas.getString(2);</span>
+<span class="nc" id="L354">                dato[2]=comidas.getString(3);</span>
+<span class="nc" id="L355">                dato[3]=comidas.getString(4);</span>
+<span class="nc" id="L356">                dato[4]=comidas.getString(5);</span>
+<span class="nc" id="L357">                dato[5]=comidas.getString(6);</span>
+  
+<span class="nc" id="L359">                model.addRow(dato);</span>
+            }
+<span class="nc" id="L361">        } catch (SQLException ex) {</span>
+<span class="nc" id="L362">            Logger.getLogger(Ver_Cliente.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L363">        }</span>
+        
+
+<span class="nc" id="L366">    }</span>
+    
+    
+}
+    
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

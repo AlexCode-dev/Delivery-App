@@ -35,6 +35,8 @@ import static subPaneles.Modificar_Cliente.jLabel9;
 import subPaneles.Modificar_Pedido;
 import subPaneles.Registro_Pedido_Nuevo;
 import subPaneles.Registro_Pedido_Nuevo_otro;
+import static subPaneles.Registro_Pedido_Nuevo_otro.tabladecomida;
+import subPaneles.TicketImprimir;
 import subPaneles.Ver_Cliente;
 
 public class ControlPedido {
@@ -325,20 +327,61 @@ public class ControlPedido {
                  
                  
               } 
-         
+         /*
            Correcto_Registro x = new Correcto_Registro();
              
             
              x.ER_ID_PEDIDO.setText(ultimo_p2);
              x.setVisible(true);
+             */
+             TicketImprimir ti = new TicketImprimir();
+             ti.NumbPed.setText(ultimo_p2);
+             ti.NombRes.setText("Restaurante Nombre");
+             ti.Fecha.setText(fecha_A_rP);
+             ti.IdCli.setText(Grafico.Ingrese_telefono_NP.getText().trim());
+             ti.DirCli.setText(dir_AD);
+             ti.DeliveryCost.setText(Registro_Pedido_Nuevo_otro.Final_Precio_P1.getText());
+             ti.zonat.setText(Registro_Pedido_Nuevo_otro.ingresar_Zona.getSelectedItem().toString());
+             ti.TotalCost.setText(Registro_Pedido_Nuevo_otro.Final_Precio_P.getText());
+          
              
+             int contadorP=tabladecomida.getRowCount();
+             int i = 0;
             
+              ti.NombPed1.setText(tabladecomida.getValueAt(0, 1).toString());
+              ti.Cant1.setText(tabladecomida.getValueAt(0, 2).toString());
+              ti.precio1.setText(tabladecomida.getValueAt(0, 3).toString());
+              
+              ti.NombPed2.setText(tabladecomida.getValueAt(1, 1).toString());
+              ti.Cant2.setText(tabladecomida.getValueAt(1, 2).toString());
+              ti.precio2.setText(tabladecomida.getValueAt(1, 3).toString());
+            
+              ti.NombPed3.setText(tabladecomida.getValueAt(2, 1).toString());
+              ti.Cant3.setText(tabladecomida.getValueAt(2, 2).toString());
+              ti.precio3.setText(tabladecomida.getValueAt(2, 3).toString());
+            
+             
+             
+             
+             
+             
+             
+          
+             ti.setVisible(true);
           ControlPagoCadete gt = new ControlPagoCadete();
           gt.AgregarPagoCadete();
          
 
         
     }
+     
+     
+     
+     
+     
+     
+     
+     
      
      public void ValidarClientePNUEVO_prueba(Registro_Pedido_Nuevo_otro Grafico) {
 

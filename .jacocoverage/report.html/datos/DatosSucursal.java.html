@@ -158,9 +158,36 @@ import java.util.logging.Logger;
         
 <span class="fc" id="L159">        return numerosucursal;</span>
     }
+      
+       public String devolverNombSucursal(int sucursalID) {
+
+<span class="fc" id="L164">        Conectar con = new Conectar();</span>
+<span class="fc" id="L165">        Connection miConexion = con.conexion();</span>
+<span class="fc" id="L166">        String NombreSucursal = null ;</span>
+        try {
+
+<span class="fc" id="L169">            Statement miEstatement = miConexion.createStatement();</span>
+
+<span class="fc" id="L171">            String SQL = &quot;SELECT * FROM sucursal WHERE sucursal.id_sucursal = '&quot; + sucursalID + &quot;'&quot;;</span>
+
+<span class="fc" id="L173">            ResultSet rs = miEstatement.executeQuery(SQL);</span>
+
+<span class="pc bpc" id="L175" title="1 of 2 branches missed.">            if (rs.next()) {</span>
+<span class="fc" id="L176">                NombreSucursal = rs.getString(&quot;nombre_Local&quot;);</span>
+
+            } 
+
+<span class="nc" id="L180">        } catch (SQLException e) {</span>
+<span class="nc" id="L181">            System.out.println(&quot;No conecta&quot; + e.getMessage());</span>
+<span class="fc" id="L182">        }</span>
+
+<span class="fc" id="L184">        return NombreSucursal;</span>
+    }
     
+       
 
 
+    
    
     
 }

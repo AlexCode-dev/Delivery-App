@@ -74,29 +74,49 @@ import paneles.pnlHome;
 <span class="nc" id="L74">        GC.iniciarCaja(monto);</span>
 <span class="nc" id="L75">        String MontoS=String.valueOf(monto);</span>
 <span class="nc" id="L76">        pnlHome.Ganancia_diarias.setText(MontoS);</span>
-<span class="nc" id="L77">        Date objDate = new Date(); // Sistema actual La fecha y la hora se asignan a objDate </span>
+<span class="nc" id="L77">        pnlHome.Ganancia_diarias1.setText(MontoS);</span>
+<span class="nc" id="L78">        Date objDate = new Date(); // Sistema actual La fecha y la hora se asignan a objDate </span>
  
        
-<span class="nc" id="L80">        String strDateFormat = &quot;hh: mm&quot;; // El formato de fecha está especificado  </span>
-<span class="nc" id="L81">        SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat); </span>
+<span class="nc" id="L81">        String strDateFormat = &quot;hh: mm&quot;; // El formato de fecha está especificado  </span>
+<span class="nc" id="L82">        SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat); </span>
         //ver lo de arriba
         //Esto iba en un jlabel que indicaba la hora pero no funciona
        // principal.Principal.time.setText(objSDF.toString());
         
          
-<span class="nc" id="L87">         principal.Principal.status_Caja.setText(&quot;Abierta&quot;);</span>
-<span class="nc" id="L88">        principal.Principal.status_Caja.setForeground(Color.GREEN);</span>
-<span class="nc" id="L89">        JOptionPane.showMessageDialog(grafico, &quot;Se registro un valor de caja inicial&quot;, &quot;Correcto&quot;,1);</span>
+<span class="nc" id="L88">         principal.Principal.status_Caja.setText(&quot;Abierta&quot;);</span>
+<span class="nc" id="L89">        principal.Principal.status_Caja.setForeground(Color.GREEN);</span>
+<span class="nc" id="L90">        JOptionPane.showMessageDialog(grafico, &quot;Se registro un valor de caja inicial&quot;, &quot;Correcto&quot;,1);</span>
         
-<span class="nc" id="L91">        System.out.println(&quot;caja&quot;);</span>
-<span class="nc" id="L92">        grafico.dispose();</span>
-<span class="nc" id="L93">    }</span>
+<span class="nc" id="L92">        System.out.println(&quot;caja&quot;);</span>
+<span class="nc" id="L93">        grafico.dispose();</span>
+<span class="nc" id="L94">    }</span>
+    public void obtenerMontocaja() throws SQLException{
+<span class="nc" id="L96">       DatosCaja GC = new DatosCaja();</span>
+<span class="nc" id="L97">       ResultSet caja = GC.buscarCajaAbierta();</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">       while(caja.next()){</span>
+<span class="nc" id="L99">           float valorCajaF=caja.getFloat(&quot;monto_inicial&quot;);</span>
+<span class="nc" id="L100">           String valorCajaS=Float.toString(valorCajaF);</span>
+<span class="nc" id="L101">           pnlHome.Ganancia_diarias.setText(valorCajaS);</span>
+<span class="nc" id="L102">       }</span>
     
+<span class="nc" id="L104">    }</span>
+     public void obtenerMontocajaF() throws SQLException{
+<span class="nc" id="L106">       DatosCaja GC = new DatosCaja();</span>
+<span class="nc" id="L107">       ResultSet caja = GC.buscarCajaAbierta();</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">       while(caja.next()){</span>
+<span class="nc" id="L109">           float valorCajaF=caja.getFloat(&quot;monto_final&quot;);</span>
+<span class="nc" id="L110">           String valorCajaS=Float.toString(valorCajaF);</span>
+<span class="nc" id="L111">           pnlHome.Ganancia_diarias1.setText(valorCajaS);</span>
+<span class="nc" id="L112">       }</span>
+    
+<span class="nc" id="L114">    }</span>
     public void cerrarCaja(Monto_Final grafico) throws SQLException{
-<span class="nc" id="L96">        DatosCaja GC = new DatosCaja();</span>
-<span class="nc" id="L97">        GC.cerrarCaja();</span>
-<span class="nc" id="L98">        grafico.dispose();</span>
+<span class="nc" id="L116">        DatosCaja GC = new DatosCaja();</span>
+<span class="nc" id="L117">        GC.cerrarCaja();</span>
+<span class="nc" id="L118">        grafico.dispose();</span>
       
-<span class="nc" id="L100">    }</span>
+<span class="nc" id="L120">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

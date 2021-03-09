@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ControlPagoCadete.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;DeliveryApp&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">controladores</a> &gt; <span class="el_source">ControlPagoCadete.java</span></div><h1>ControlPagoCadete.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package controladores;
+
+import conexion.Conectar;
+import datos.DatosCadete;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import subPaneles.Registro_Cadetes;
+import datos.DatosPagoCadete;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import paneles.pnlChat;
+import subPaneles.Registro_Pedido_Nuevo_otro;
+import subPaneles.Ver_Cliente;
+
+/**
+ *
+ * @author alex1
+ */
+<span class="nc" id="L30">public class ControlPagoCadete {</span>
+    
+     public void AgregarPagoCadete() throws SQLException {
+       
+
+        String fecha;
+        int cuit;
+ 
+<span class="nc" id="L38">        DatosCadete GCad= new DatosCadete();</span>
+<span class="nc" id="L39">        String formatoFecha= &quot;yyyy MMMM dd&quot;;</span>
+        Date fechaD;
+<span class="nc" id="L41">         fechaD = Registro_Pedido_Nuevo_otro.recuperarfecha2.getDate();</span>
+<span class="nc" id="L42">        SimpleDateFormat formateador = new SimpleDateFormat(formatoFecha);</span>
+<span class="nc" id="L43">         String fecha_A_rP=formateador.format(fechaD);</span>
+<span class="nc" id="L44">          ResultSet cadete = GCad.buscarCadetePorNombre(Registro_Pedido_Nuevo_otro.ingresar_Cadete_P.getSelectedItem().toString().trim());</span>
+<span class="nc" id="L45">        int cadeteId=0;</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">         while(cadete.next()){</span>
+          
+<span class="nc" id="L48">           cadeteId=cadete.getInt(&quot;cuit_cadete&quot;);</span>
+          
+          }
+     
+       
+       
+<span class="nc" id="L54">       float pago= Float.parseFloat(Registro_Pedido_Nuevo_otro.Final_Precio_P1.getText());</span>
+      
+<span class="nc" id="L56">        DatosPagoCadete Gz = new DatosPagoCadete();</span>
+<span class="nc" id="L57">        Gz.AgregargananciaDiaCadete(fecha_A_rP,cadeteId,pago);</span>
+
+     
+        //actualizarTablaCadete(grafico);
+     
+<span class="nc" id="L62">    }</span>
+     
+     public void actualizarTablaPagoCadete() throws SQLException {
+
+<span class="nc" id="L66">        DatosPagoCadete GC = new DatosPagoCadete();</span>
+
+<span class="nc" id="L68">        ResultSet Cadetes = GC.obtenergananciaDiaCadete();//ver despues</span>
+
+<span class="nc" id="L70">        DefaultTableModel model = new DefaultTableModel();</span>
+<span class="nc" id="L71">        model.addColumn(&quot;id_Ganancia&quot;);</span>
+<span class="nc" id="L72">       model.addColumn(&quot;Fecha&quot;);</span>
+<span class="nc" id="L73">       model.addColumn(&quot;Cuit Cadete&quot;);</span>
+<span class="nc" id="L74">       model.addColumn(&quot;Estado&quot;);</span>
+<span class="nc" id="L75">       model.addColumn(&quot;Pago&quot;);</span>
+ 
+<span class="nc" id="L77">       pnlChat.tabla_pro_cadete1.setModel(model);</span>
+<span class="nc" id="L78">       String[] dato= new String [9];</span>
+       
+        try {
+            //Ejecutemos la query
+           
+            //Este while significa mientras resultado tenga mas resultado, me va a mostrar los siguiente
+<span class="nc bnc" id="L84" title="All 2 branches missed.">            while(Cadetes.next()){</span>
+<span class="nc" id="L85">                dato[0]=Cadetes.getString(1);</span>
+<span class="nc" id="L86">                dato[1]=Cadetes.getString(2);</span>
+<span class="nc" id="L87">                dato[2]=Cadetes.getString(3);</span>
+<span class="nc" id="L88">                dato[3]=Cadetes.getString(4);</span>
+<span class="nc" id="L89">                dato[4]=Cadetes.getString(5);</span>
+               
+<span class="nc" id="L91">                model.addRow(dato);</span>
+            }
+<span class="nc" id="L93">        } catch (SQLException ex) {</span>
+<span class="nc" id="L94">            Logger.getLogger(Ver_Cliente.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L95">        }</span>
+
+<span class="nc" id="L97">    }</span>
+     
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

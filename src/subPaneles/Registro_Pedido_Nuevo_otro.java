@@ -557,6 +557,11 @@ public class Registro_Pedido_Nuevo_otro extends javax.swing.JFrame {
 
         ingresar_Zona.setForeground(new java.awt.Color(102, 102, 102));
         ingresar_Zona.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione Zona" }));
+        ingresar_Zona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresar_ZonaActionPerformed(evt);
+            }
+        });
         jPanel1.add(ingresar_Zona, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 180, 150, 43));
 
         jLabel35.setForeground(new java.awt.Color(102, 51, 0));
@@ -723,6 +728,10 @@ ControlComida cs = new ControlComida();
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        obtenerpreciofinal();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void ingresar_ZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresar_ZonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ingresar_ZonaActionPerformed
     public void obtenerpreciofinal(){
     
         //anda bien el contador
@@ -752,6 +761,15 @@ ControlComida cs = new ControlComida();
     PrecioTotal=PrecioTotal+precioC;
     Final_Precio_P.setText(Float.toString(PrecioTotal));
    
+    }
+    
+    
+    public void obtenerinfoticket(){
+    
+    
+    
+    
+    
     }
     /**
      * @param args the command line arguments
@@ -808,7 +826,7 @@ ControlComida cs = new ControlComida();
     public RSMaterialComponent.RSTextFieldMaterial Domicilio_RP;
     private necesario.MaterialButton Entrar_btn;
     private necesario.MaterialButton Entrar_btn1;
-    public RSMaterialComponent.RSTextFieldMaterial Final_Precio_P;
+    public static RSMaterialComponent.RSTextFieldMaterial Final_Precio_P;
     public static RSMaterialComponent.RSTextFieldMaterial Final_Precio_P1;
     public static RSMaterialComponent.RSComboBoxMaterial Ingresar_Comida_Cant;
     public RSMaterialComponent.RSTextFieldMaterial Ingrese_telefono_NP;
